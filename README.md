@@ -3,8 +3,14 @@ Webowa wersja:
 
 -Przyklad backendu do kontrolowania zawartosci strony internetowej z bazą danych
 https://www.baeldung.com/spring-mybatis
+
 i github ich przykładowego projektu z jedną encją
 https://github.com/eugenp/tutorials/tree/master/persistence-modules/spring-mybatis
+
+-blizniaczy projekt z baza
+https://github.com/springframeworkguru/spring5webapp/tree/adding-thymeleaf-v2
+
+Moge Ci udostępnić udemy jak chlop to pisze albo samemu w skrócie powiedziec co i jak
 
 Okienkowa wersja:
 
