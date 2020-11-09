@@ -12,9 +12,9 @@ import java.sql.Date;
 public class BikeService {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private long id;
+    private Long id;
 
     @DateTimeFormat(pattern = "dd/MM/yyyy")
     private Date startDate;
-    //...
+    //... serwisanta trzeba stworzyć i tu dopisać
 }

@@ -9,7 +9,7 @@ import javax.persistence.Id;
 public class BikeModel {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private long id;
-    private String modelName;
-    // ...
+    private Long id;
+    private String name;
+    // ... dopisać kolejne pola
 }

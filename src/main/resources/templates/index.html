@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Lista Rowerów</title>
+    <style>td {
+        border: 1px solid black;
+    }</style>
+</head>
+<body>
+<table>
+    <tr>
+        <th>ID</th>
+        <th>Cena</th>
+        <th>Stan</th>
+        <th>Serwis</th>
+        <th>Model</th>
+    </tr>
+    <tr th:each="bike : ${bikes}">
+        <td th:text="${bike.id}">ID</td>
+        <td th:text="${bike.pricePerHour}">Cena</td>
+        <td th:text="${bike.bikeState}">Stan</td>
+        <td th:text="${bike.bikeService?.id}">ID Serwisu</td>
+        <td th:text="${bike.bikeModel?.name}">Nazwa Modelu</td>
+    </tr>
+</table>
+</body>
+</html>
