@@ -25,7 +25,7 @@ public class ListBikeRestController {
     @GetMapping(value = "/rentalOffice/{id}")
     public String bikeList(@PathVariable(value = "id") Long id, Model model) {
         model.addAttribute("bikes", bikeRepository.findAll());
-        return "index";
+        return "rental-office";
     }
 
     @GetMapping(value = "/rentalOffice/register")
