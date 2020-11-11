@@ -11,5 +11,6 @@ public class BikeModel {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     private String name;
-    // ... dopisać kolejne pola
+    private String brand;
+    private String type;
 }
