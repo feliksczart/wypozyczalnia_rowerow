@@ -8,6 +8,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 @Controller
@@ -21,21 +22,21 @@ public class ListBikeRestController {
         this.rentalOfficeRepository = rentalOfficeRepository;
     }
 
-    @GetMapping(value = "/")
-    public String bikeList(Model model) {
+    @GetMapping(value = "/rentalOffice/{id}")
+    public String bikeList(@PathVariable(value = "id") Long id, Model model) {
         model.addAttribute("bikes", bikeRepository.findAll());
         return "index";
     }
 
-    @GetMapping(value = "/register")
+    @GetMapping(value = "/rentalOffice/register")
     public String rentalOfficeAdd(Model model) {
         model.addAttribute("RentalOffice", new RentalOffice());
         return "register-rental-office";
     }
 
-    @PostMapping(value = "/register")
+    @PostMapping(value = "/rentalOffice/register")
     public String rentalOfficeClaim(@ModelAttribute RentalOffice rentalOffice) {
         rentalOfficeRepository.save(rentalOffice);
-        return "index";
+        return "redirect:/rentalOffice/" + rentalOffice.getId();
     }
 }

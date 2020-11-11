@@ -6,7 +6,7 @@
 </head>
 <body>
 <h1>Formularz Dodania Wypożyczalni</h1>
-<form action="#" method="post" th:action="@{/register}">
+<form action="#" method="post" th:action="@{/rentalOffice/register}">
     <p>Miasto: <input required th:name="city" th:value="${RentalOffice.city}" type="text"/></p>
     <p>Kod pocztowy: <input required th:name="zip" th:value="${RentalOffice.zip}" type="text"/></p>
     <p>Adres: <input required th:name="address" th:value="${RentalOffice.address}" type="text"/></p>
