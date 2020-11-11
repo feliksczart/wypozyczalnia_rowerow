@@ -5,6 +5,8 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.util.HashSet;
+import java.util.Set;
 
 @Data
 @NoArgsConstructor
@@ -24,5 +26,5 @@ public class RentalOffice {
 
     //tu jednak bym dał żeby wypozyczalnia miała listę klientów z relacją One wypozyczalnia to many klienci xD
     @OneToMany
-    private Client client;
+    private Set<Client> clients = new HashSet<>();
 }

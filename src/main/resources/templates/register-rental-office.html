@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Dodaj Wypożyczalnie</title>
+</head>
+<body>
+<h1>Formularz Dodania Wypożyczalni</h1>
+<form action="#" method="post" th:action="@{/register}">
+    <p>Miasto: <input required th:name="city" th:value="${RentalOffice.city}" type="text"/></p>
+    <p>Kod pocztowy: <input required th:name="zip" th:value="${RentalOffice.zip}" type="text"/></p>
+    <p>Adres: <input required th:name="address" th:value="${RentalOffice.address}" type="text"/></p>
+    <p><input type="submit" value="Zapisz"/> <input type="reset" value="Reset"/></p>
+</form>
+<a th:href="@{/}">Wróć</a>
+</body>
+</html>

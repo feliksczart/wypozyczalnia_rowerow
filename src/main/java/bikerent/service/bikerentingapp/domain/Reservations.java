@@ -5,6 +5,8 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.util.HashSet;
+import java.util.Set;
 
 @Data
 @NoArgsConstructor
@@ -21,5 +23,5 @@ public class Reservations {
 
     //ze wiele rowerow mozna dac do rezerwacji? nwm xD
     @OneToMany
-    private Bike bike;
+    private Set<Bike> bikes = new HashSet<>();
 }

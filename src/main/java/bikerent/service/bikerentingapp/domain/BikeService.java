@@ -7,6 +7,8 @@ import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
 import java.sql.Date;
+import java.util.HashSet;
+import java.util.Set;
 
 @Data
 @NoArgsConstructor
@@ -21,5 +23,5 @@ public class BikeService {
     private Date startDate;
 
     @OneToMany
-    private ServiceTechnician serviceTechnician;
+    private Set<ServiceTechnician> serviceTechnicians = new HashSet<>();
 }
