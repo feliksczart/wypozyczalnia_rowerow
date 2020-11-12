@@ -23,11 +23,7 @@ public class BootstrapData implements CommandLineRunner {
 
     @Override
     public void run(String... args) throws Exception {
-        User user = new User();
-        user.setName("Piotr");
-        user.setSurname("Derenowski");
-        user.setNick("");
-        user.setPassword("");
+        User user = new User("Piotr", "Derenowski", "", "");
         userService.signUpUser(user);
         Bike bike = new Bike(15, "dobry");
         bikeRepository.save(bike);

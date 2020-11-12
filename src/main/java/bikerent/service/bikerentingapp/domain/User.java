@@ -44,6 +44,13 @@ public class User implements UserDetails {
         return Collections.singletonList(simpleGrantedAuthority);
     }
 
+    public User(String name, String surname, String nick, String password) {
+        this.name = name;
+        this.surname = surname;
+        this.nick = nick;
+        this.password = password;
+    }
+
     @Override
     public String getPassword() {
         return password;
