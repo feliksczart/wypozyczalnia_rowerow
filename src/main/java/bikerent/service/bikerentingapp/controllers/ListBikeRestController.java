@@ -3,6 +3,8 @@ package bikerent.service.bikerentingapp.controllers;
 import bikerent.service.bikerentingapp.domain.RentalOffice;
 import bikerent.service.bikerentingapp.repositories.BikeRepository;
 import bikerent.service.bikerentingapp.repositories.RentalOfficeRepository;
+import bikerent.service.bikerentingapp.repositories.ReservationsRepository;
+import bikerent.service.bikerentingapp.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -15,17 +17,17 @@ import org.springframework.web.bind.annotation.PostMapping;
 public class ListBikeRestController {
     private final BikeRepository bikeRepository;
     private final RentalOfficeRepository rentalOfficeRepository;
+    private final ReservationsRepository reservationsRepository;
+    private final UserRepository userRepository;
 
     @Autowired
-    public ListBikeRestController(BikeRepository bikeRepository, RentalOfficeRepository rentalOfficeRepository) {
+    public ListBikeRestController(BikeRepository bikeRepository, RentalOfficeRepository rentalOfficeRepository, ReservationsRepository reservationsRepository, UserRepository userRepository) {
         this.bikeRepository = bikeRepository;
         this.rentalOfficeRepository = rentalOfficeRepository;
+        this.reservationsRepository = reservationsRepository;
+        this.userRepository = userRepository;
     }
 
-    @GetMapping(value = "/")
-    public String mainPage() {
-        return "index";
-    }
 
     @GetMapping(value = "/rentalOffice/{id}")
     public String bikeList(@PathVariable(value = "id") Long id, Model model) {
@@ -44,4 +46,12 @@ public class ListBikeRestController {
         rentalOfficeRepository.save(rentalOffice);
         return "redirect:/rentalOffice/" + rentalOffice.getId();
     }
+/*
+    @PostMapping(value = "/rentalOffice/{id}/reservations/{id}")
+    public String rentalOfficeAdd(@PathVariable(value = "id") Long id, Model model) {
+        model.addAttribute("RentalOffice", new RentalOffice());
+        return "register-rental-office";
+    }
+
+ */
 }

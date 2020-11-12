@@ -19,7 +19,7 @@ public class Reservations {
 
     // jedna rezerwacja na jednego klienta?
     @OneToOne
-    private Client client;
+    private User user;
 
     //ze wiele rowerow mozna dac do rezerwacji? nwm xD
     @OneToMany

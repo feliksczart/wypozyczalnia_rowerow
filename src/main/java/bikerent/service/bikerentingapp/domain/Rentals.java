@@ -30,7 +30,7 @@ public class Rentals {
     private Bike bike;
 
     @OneToOne
-    private Client client;
+    private User user;
 
     //to tez bym odwrócił i dał po stronie wypozyczalni
     @ManyToOne

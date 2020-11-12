@@ -26,5 +26,5 @@ public class RentalOffice {
 
     //tu jednak bym dał żeby wypozyczalnia miała listę klientów z relacją One wypozyczalnia to many klienci xD
     @OneToMany
-    private Set<Client> clients = new HashSet<>();
+    private Set<User> users = new HashSet<>();
 }
