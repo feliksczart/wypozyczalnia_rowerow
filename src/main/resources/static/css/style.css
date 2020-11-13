@@ -49,4 +49,49 @@ main {
 	margin: 10px auto;
 	padding: 80px 20px 0;
 }
+.oferts__block {
+	margin-top: 100px;
+	margin-right: 80px;
+	margin-bottom: 100px;
+	width: 400px;
+	height: 400px;
+	display: inline-flex;
+	justify-content: center;
+	align-items: center;
+	text-align: center;
+	background-color: #342E37;
+	border: 1px solid #121232;
+	border-radius: 50%;
+	-webkit-filter: drop-shadow(0 4px 4px rgba(0,0,0,.25));
+	filter: drop-shadow(0 4px 4px rgba(0,0,0,.25));
+	transition: all .2s ease-in-out;
+}
 
+.oferts__block:hover { transform: scale(1.1); }
+
+.oferts__block-title{
+	color: #FAFFFD;
+	font-size: 35px;
+}
+
+footer{
+	margin-top: 150px;
+	background-color: #342E37;
+	color: #FAFFFD;
+}
+
+::-webkit-scrollbar {
+	width: 10px;
+}
+
+::-webkit-scrollbar-track {
+	background: #FAFFFD;
+}
+
+::-webkit-scrollbar-thumb {
+	background: #453F48;
+}
+
+::-webkit-scrollbar-thumb:hover {
+	background: #342E37;
+}
