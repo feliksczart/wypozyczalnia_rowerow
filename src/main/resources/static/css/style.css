@@ -1,121 +1,52 @@
 body
 {
-	background-color: #303030;
-	color: #ffffff;
-	font-family: 'Lato';
+	background-color: #FAFFFD;
+	color: #000000;
+	font-family: Hack, monospace;
 	font-size: 20px;
 }
-#container
-{
-	width: 1000px;
-	margin-left: auto;
-	margin-right: auto;	
-}
-.rectangle
-{
-	width: 960px;
-	margin: 20px;
-	text-align: center;
-}
-.square
-{
-	width: 50%;
-	float: left;
-}
-#logo
-{
-	float: left;
-	font-family: 'Josefin Slab';
-	font-size: 70px;
-	width: 600px;
-	margin-top: 5px;
-	margin-bottom: 5px;
-	text-align: left;
-}
-#zegar
-{
-	float: left;
-	font-family: 'Josefin Slab';
-	font-size: 70px;
-	margin-top: 5px;
-	margin-bottom: 5px;
-	text-align: left;
-}
-.tile1
-{
-	margin: 10px;
-	width: 230px;
-	height: 142px; /* Złoty podział ~ 1.618 -> 230px/1.618 ~ 142px */
-	background-color: #3095d3;
-	float: left;
-	text-align: center;
-	border-radius: 16px;
-}
-.tile1:hover
-{
-	background-color: #2084c2;
-}
-.tile2
-{
-	margin: 10px;
-	width: 230px;
-	height: 142px; /* Złoty podział ~ 1.618 -> 230px/1.618 ~ 142px */
-	background-color: #666666;
-	float: left;
-	text-align: center;
-	border-radius: 16px;
-}
-.tile2:hover
-{
-	background-color: #555555;
-}
-.tile3
-{
-	margin: 10px;
-	width: 230px;
-	height: 142px; /* Złoty podział ~ 1.618 -> 230px/1.618 ~ 142px */
-	background-color: #93c748;
-	float: left;
-	text-align: center;
-	border-radius: 16px;
-}
-.tile3:hover
-{
-	background-color: #82b637;
-}
-.tile4
-{
-	margin: 10px;
-	width: 420px;
-	height: 82px; 
-	background-color: #ee5a32;
-	text-align: center;
-	font-size: 26px;
-	padding: 30px;
-	line-height: 150%;
-	border-radius: 16px;
-}
-.tile5
-{
-	margin: 10px;
-	width: 420px;
-	height: 244px;
-	background-color: #666666;
-	text-align: justify;
-	padding: 30px;
-	border-radius: 16px;
+
+.navigation {
+	background: #342E37;
+	padding: 16px;
+	border-radius: 8px;
+	display: flex;
+	align-items: center;
+	position: fixed;
+	width: 95%;
+	height: 35px;
+	z-index: 1000;
 }
 
-a.tilelink
-{
-	color: #ffffff;
-	text-decoration: none;
-	display: block;
-	width: 230px;
-	height: 142px;
+.navigation__logo {
+	width: 65px;
+	height: 53.69px;
+	margin-right: 70px;
 }
-a.tilelinkhtml5
-{
-	color: #ffffff;
+
+.navigation__link {
+	color: #FAFFFD;
+	display: inline-block;
+	margin-right: 35px;
 	text-decoration: none;
+	font-size: 22px;
 }
+
+.navigation__link:hover {
+	color: #FAFFFD;
+	background: #453F48;
+	border-radius: 7px;
+}
+
+.navigation__link-homepage {
+	font-size: 30px;
+	margin-right: 55px;
+}
+
+main {
+	width: 1000px;
+	overflow: auto;
+	margin: 10px auto;
+	padding: 80px 20px 0;
+}
+

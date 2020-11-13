@@ -18,57 +18,54 @@
 </head>
 
 <body>
-<div id="container">
-    <div class="rectangle">
-        <div id="logo"><a href="index.html" class="tilelinkhtml5">Wypożyczalnia Rowerów CzaDer</a></div>
-        <div style="clear: both;"></div>
-    </div>
-    <div class="square">
-        <a th:href="@{/rentalOffice/register}">
-            <div class="tile1">
-                Zarejestruj wypożyczalnię
-            </div>
-        </a>
-        <a th:href="@{/rentalOffice/register}">
-            <div class="tile1">
-                Zarejestruj wypożyczalnię
-            </div>
-        </a>
-        <div style="clear: both;"></div>
-        <a th:href="@{/rentalOffice/register}">
-            <div class="tile2">
-                Zarejestruj wypożyczalnię
-            </div>
-        </a>
-        <a th:href="@{/rentalOffice/register}">
-            <div class="tile3">
-                Zarejestruj wypożyczalnię
-            </div>
-        </a>
-        <div style="clear: both;"></div>
-        <div class="tile4">
-            <i>Wypożycz rower swoich marzeń!</i><br/>- Feliks Czart, twórca Linuxa
-        </div>
-    </div>
-    <div class="square">
-        <div class="tile5">
-            Opis aplikacji <br/><br/> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce vel odio ac enim
-            vulputate vestibulum. Nam sed velit ornare, suscipit sapien et, gravida lacus. Pellentesque sed lectus et
-            elit aliquam luctus. Curabitur
-            tempor lacinia nulla, sed cursus erat sodales vitae. Donec at cursus lectus. Morbi non tempor arcu. Etiam
-            nec nisi nisl.
-        </div>
-        <div style="clear: both;"></div>
-    </div>
-    <div style="clear: both;"></div>
-    <div class="rectangle">
-        2020 &copy; Feliks Czart - Portfolio. Programista webowy zaprasza do współpracy! <br/> <i
-            class="icon-mail-alt"></i> czart78@gmail.com
-    </div>
-    <form method="post" th:action="@{/logout}">
-        <input type="submit" value="Sign Out"/>
-    </form>
-</div>
+
+    <header>
+        <nav class="navigation">
+            <a th:href="@{/index}">
+                <img class="navigation__logo" th:src="@{/images/czader.png}" alt="company logo">
+            </a>
+            <a class="navigation__link navigation__link-homepage" th:href="@{/index}">Strona główna</a>
+            <a class="navigation__link" th:href="@{/registration}" target="_blank">Rejestracja <br/> klienta</a>
+            <a class="navigation__link" href="nauka-html.html" target="_blank">Wynajmij rowej <br/> bez rejestracji</a>
+            <a class="navigation__link" th:href="@{/rentalOffice/register}" target="_blank">Rejestracja <br/> wypożyczalni</a>
+        </nav>
+    </header>
+
+    <main>
+        <header id="top">
+            <h1 class="main-heading main-heading--js">Main heading!</h1>
+            <!-- main-heading--js - klasa potrzebna do połączenia z js-->
+            <h2 class="hotpink-header">Siema jestem Felek i nie mam szelek! - Strona robiona w ramach WTF!!!!!!!!!!!!</h2>
+            <h2 id="hotpink-id">Siema jestem Felek i nie mam szelek!</h2>
+        </header>
+        <section>
+            <h2>Link do szkolenia:</h2>
+            <a href="https://devstyle.mykajabi.com/library" target="_blank">WTF</a> <br />
+            <a href="#notatki">Przejdz do notatek</a>
+        </section>
+        <section>
+            <h2>Kim jestem?</h2>
+            <img class="photo" src="ja.jpg" alt="To ja :)" />
+            <p> <b>Donec</b> <strong>sit amet</strong> <i>asaafsdgs</i> massa <em>vdfksnjf</em> sit amet orci elementum gravida id quis magna.
+                <br /> Integer ornare quam vitae ante iaculis, nec porttitor lorem cursus. In ac bibendum ante.</p>
+        </section>
+        <section id="notatki">
+            <h2>Notes:</h2>
+            <article class="week-summary">
+                <h3 class="week-summary__title">Proin congue pulvinar tellus, vel congue ex maximus vitae.</h3>
+                <p class="week-summary__description">Sed fringilla neque leo. Etiam rhoncus, ante sed ullamcorper mollis, sem enim pharetra leo, aliquam finibus magna erat imperdiet lacus.</p>
+            </article>
+            <article class="week-summary">
+                <h3 class="week-summary__title">Pytanie?</h3>
+                <p class="week-summary__description">Mauris in tortor magna. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Mauris scelerisque nunc eget metus posuere egestas. Quisque dapibus commodo ipsum.
+                </p>
+            </article>
+        </section>
+    </main>
+    <footer>
+        Stopa <a href="#top">Przejdz do nagłówka</a>
+    </footer>
+
 
 </body>
 
