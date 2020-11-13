@@ -1,0 +1,32 @@
+<head xmlns:th="http://www.w3.org/1999/xhtml">
+    <meta charset="UTF-8">
+    <title>Lista Wypożyczalni</title>
+    <style>td {
+        border: 1px solid black;
+    }</style>
+</head>
+<body>
+<table>
+    <tr>
+        <th>ID</th>
+        <th>Miasto</th>
+        <th>Kod Pocztowy</th>
+        <th>Adres</th>
+        <th>Województwo</th>
+        <th>Powiat</th>
+        <th>Rowery</th>
+        <!--        <th>Rezerwacja</th>-->
+    </tr>
+    <tr th:each="rentalOffice : ${rentalOffices}">
+        <td th:text="${rentalOffice.id}">ID</td>
+        <td th:text="${rentalOffice.city}">Miasto</td>
+        <td th:text="${rentalOffice.zip}">Kod pocztowy</td>
+        <td th:text="${rentalOffice.address}">Adres</td>
+        <td th:text="${rentalOffice.region?.voivodeship}">Województwo</td>
+        <td th:text="${rentalOffice.region?.district}">Powiat</td>
+        <td><a th:href="@{/rentalOffice/{id} (id = ${rentalOffice.id})}">Zobacz Rowery</a></td>
+    </tr>
+</table>
+<a th:href="@{/}"> Wróć<a/>
+</body>
+</html>

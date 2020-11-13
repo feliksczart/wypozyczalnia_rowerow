@@ -20,4 +20,9 @@ public class Region {
 
     private String voivodeship;
     private String district;
+
+    public Region(String voivodeship, String district) {
+        this.voivodeship = voivodeship;
+        this.district = district;
+    }
 }

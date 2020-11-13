@@ -5,8 +5,6 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
-import java.util.HashSet;
-import java.util.Set;
 
 @Data
 @NoArgsConstructor
@@ -24,7 +22,9 @@ public class RentalOffice {
     @ManyToOne
     private Region region;
 
-    //tu jednak bym dał żeby wypozyczalnia miała listę klientów z relacją One wypozyczalnia to many klienci xD
-    @OneToMany
-    private Set<User> users = new HashSet<>();
+    public RentalOffice(String city, String zip, String address) {
+        this.city = city;
+        this.zip = zip;
+        this.address = address;
+    }
 }
