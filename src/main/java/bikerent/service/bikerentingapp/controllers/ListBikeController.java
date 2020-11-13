@@ -3,8 +3,6 @@ package bikerent.service.bikerentingapp.controllers;
 import bikerent.service.bikerentingapp.domain.RentalOffice;
 import bikerent.service.bikerentingapp.repositories.BikeRepository;
 import bikerent.service.bikerentingapp.repositories.RentalOfficeRepository;
-import bikerent.service.bikerentingapp.repositories.ReservationsRepository;
-import bikerent.service.bikerentingapp.repositories.UserRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -18,8 +16,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 public class ListBikeController {
     private final BikeRepository bikeRepository;
     private final RentalOfficeRepository rentalOfficeRepository;
-    private final ReservationsRepository reservationsRepository;
-    private final UserRepository userRepository;
 
     @GetMapping(value = "/rentalOffice")
     public String bikeList(Model model) {
