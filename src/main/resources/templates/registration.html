@@ -2,26 +2,37 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <title>Spring Boot User Authentication</title>
+    <link th:href="@{/css/style.css}" rel="stylesheet" />
 </head>
 <body>
+<header>
+    <nav class="navigation">
+        <a th:href="@{/index}">
+            <img class="navigation__logo" th:src="@{/images/czader.png}" alt="company logo">
+        </a>
+        <a class="navigation__link navigation__link-homepage" th:href="@{/index}">Strona główna</a>
+        <a class="navigation__link" th:href="@{/registration}" target="_blank">Rejestracja <br/> klienta</a>
+        <a class="navigation__link" href="nauka-html.html" target="_blank">Wynajmij rowej <br/> bez rejestracji</a>
+        <a class="navigation__link" th:href="@{/rentalOffice/register}" target="_blank">Rejestracja <br/> wypożyczalni</a>
+    </nav>
+</header>
+
+<main>
+    <h1 class="registry__header">Utwórz konto w wypożyczalni</h1>
 <form role="form" th:action="@{/registration}" th:method="post" th:object="${user}">
-    <lable>Imię</lable>
-    <br>
-    <input id="name" name="name" th:field="*{name}" type="text">
-    <br>
-    <lable>Nazwisko</lable>
-    <br>
-    <input id="surname" name="surname" th:field="*{surname}" type="text">
-    <br>
-    <lable>Nick</lable>
-    <br>
-    <input id="nick" name="nick" th:field="*{nick}" type="text">
-    <br>
-    <lable>Hasło</lable>
-    <br>
-    <input id="password" name="password" th:field="*{password}" type="password">
-    <br>
-    <input name="Zarejestruj się" type="submit">
+    <div class="registry__element">
+    <input id="name" name="name" th:field="*{name}" type="text" placeholder="Imię" title="Podaj swoje imię" class="registry__element-label">
+    <input id="surname" name="surname" th:field="*{surname}" type="text" placeholder="Nazwisko" title="Podaj swoje nazwisko" class="registry__element-label">
+    </div>
+
+    <div class="registry__element">
+    <input id="nick" name="nick" th:field="*{nick}" type="text" placeholder="Nick" title="Podaj nazwę użytkownika" class="registry__element-label">
+    <input id="password" name="password" th:field="*{password}" type="password" placeholder="Hasło" title="Podaj hasło" class="registry__element-label">
+    </div>
+    <div class="registry__element">
+        <input name="Zarejestruj się" type="Submit" class="registry__element-submit">
+    </div>
 </form>
+</main>
 </body>
 </html>
