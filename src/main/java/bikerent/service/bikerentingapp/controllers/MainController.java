@@ -23,9 +23,6 @@ public class MainController {
         return "redirect:/index";
     }
 
-    /**
-     * Home page.
-     */
     @RequestMapping("/index")
     public String mainPage() {
         return "index";

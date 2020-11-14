@@ -28,13 +28,14 @@ public class BootstrapData implements CommandLineRunner {
         user.setSurname("Derenowski");
         user.setNick("");
         user.setPassword("");
-
         userService.signUpUser(user);
+
         Bike bike = new Bike(15, "dobry");
         bikeRepository.save(bike);
 
         Region region = new Region("Wielkopolskie", "Poznań");
         regionRepository.save(region);
+
         RentalOffice rentalOffice = new RentalOffice("Poznan", "60-226", "Palacza 5");
         rentalOffice.setRegion(region);
         rentalOfficeRepository.save(rentalOffice);

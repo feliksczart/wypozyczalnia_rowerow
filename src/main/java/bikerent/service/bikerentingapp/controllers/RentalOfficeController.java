@@ -1,5 +1,6 @@
 package bikerent.service.bikerentingapp.controllers;
 
+import bikerent.service.bikerentingapp.domain.Bike;
 import bikerent.service.bikerentingapp.domain.RentalOffice;
 import bikerent.service.bikerentingapp.repositories.BikeRepository;
 import bikerent.service.bikerentingapp.repositories.RentalOfficeRepository;
@@ -13,7 +14,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 
 @Controller
 @AllArgsConstructor
-public class ListBikeController {
+public class RentalOfficeController {
     private final BikeRepository bikeRepository;
     private final RentalOfficeRepository rentalOfficeRepository;
 
@@ -26,7 +27,24 @@ public class ListBikeController {
     @GetMapping(value = "/rentalOffice/{id}")
     public String bikeList(@PathVariable(value = "id") Long id, Model model) {
         model.addAttribute("bikes", bikeRepository.findAll());
+        model.addAttribute("id", id);
         return "rental-office";
+    }
+
+    @GetMapping(value = "/rentalOffice/{id}/bikes")
+    public String bikeAddForm(@PathVariable(value = "id") Long id, Model model) {
+        Integer number = 0;
+        model.addAttribute("rentalOffice", rentalOfficeRepository.findById(id).orElseThrow(null));
+        model.addAttribute("number", number);
+        model.addAttribute("bike", new Bike());
+        return "bike-add-form";
+    }
+
+    @PostMapping(value = "/rentalOffice/{idx}/bikes")
+    public String bikeAddForm(@ModelAttribute Bike bike, @PathVariable(value = "idx") Long id) {
+        bike.setRentalOffice(rentalOfficeRepository.findById(id).orElseThrow(null));
+        bikeRepository.save(bike);
+        return "redirect:/rentalOffice/" + id;
     }
 
     @GetMapping(value = "/rentalOffice/register")

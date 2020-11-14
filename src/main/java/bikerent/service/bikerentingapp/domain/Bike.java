@@ -28,6 +28,9 @@ public class Bike {
     @ManyToOne
     private BikeService bikeService;
 
+    @ManyToOne
+    private RentalOffice rentalOffice;
+
     public Bike(int pricePerHour, String bikeState) {
         this.pricePerHour = pricePerHour;
         this.bikeState = bikeState;
