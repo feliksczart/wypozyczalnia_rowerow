@@ -25,18 +25,18 @@
                 <img class="navigation__logo" th:src="@{/images/czader.png}" alt="company logo">
             </a>
             <a class="navigation__link navigation__link-homepage" th:href="@{/index}">Strona główna</a>
-            <a class="navigation__link" th:href="@{/registration}" target="_blank">Rejestracja <br/> klienta</a>
-            <a class="navigation__link" href="nauka-html.html" target="_blank">Wynajmij rowej <br/> bez rejestracji</a>
-            <a class="navigation__link" th:href="@{/rentalOffice/register}" target="_blank">Rejestracja <br/> wypożyczalni</a>
+            <a class="navigation__link" th:href="@{/registration}">Rejestracja <br/> klienta</a>
+            <a class="navigation__link" href="nauka-html.html">Wynajmij rowej <br/> bez rejestracji</a>
+            <a class="navigation__link" th:href="@{/rentalOffice/register}">Rejestracja <br/> wypożyczalni</a>
         </nav>
     </header>
 
     <main>
         <section class="oferts__block">
-            <h3 class="oferts__block-title">Rowery</h3>
+            <a class="oferts__block-title" th:href="@{/rentalOffice}"><b>Twoje<br/>wypożyczenia</b></a>
         </section>
         <section class="oferts__block">
-            <a class="oferts__block-title" th:href="@{/rentalOffice}">Lista <br/> wypożyczalni</a>
+            <a class="oferts__block-title" th:href="@{/rentalOffice}"><b>Lista <br/> wypożyczalni</b></a>
             <!--            <h3 class="oferts__block-title">Wypożyczalnie</h3>-->
         </section>
     </main>

@@ -6,6 +6,11 @@ body
 	font-size: 20px;
 }
 
+a{
+	text-decoration: none;
+
+}
+
 .navigation {
 	background: #342E37;
 	padding: 16px;
@@ -79,7 +84,7 @@ main {
 	height: 53.69px;
 	position: relative;
 	animation-name: ride;
-	animation-duration: 10s;
+	animation-duration: 60s;
 	animation-delay: 2s;
 	animation-iteration-count: infinite;
 }
