@@ -80,6 +80,21 @@ footer{
 	color: #FAFFFD;
 }
 
+.footer__animation{
+	width: 65px;
+	height: 53.69px;
+	position: relative;
+	animation-name: ride;
+	animation-duration: 10s;
+	animation-delay: 2s;
+	animation-iteration-count: infinite;
+}
+
+@keyframes ride {
+	0%   {left:0px; top:0px;}
+	100% {left:95%; top:0px;}
+}
+
 ::-webkit-scrollbar {
 	width: 10px;
 }
@@ -125,11 +140,10 @@ footer{
 	border-radius: 8px;
 	width: 250px;
 	height: 50px;
-	margin-top: 20px;
 	margin-left: 10px;
+	margin-top: 30px;
 	font-size: 28px;
 	color: #FAFFFD;
-	margin-top: 30px;
 }
 
 .registry__element-submit:hover {
