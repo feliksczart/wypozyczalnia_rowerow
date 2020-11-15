@@ -1,22 +1,23 @@
 package bikerent.service.bikerentingapp.controllers;
 
 import bikerent.service.bikerentingapp.domain.Bike;
+import bikerent.service.bikerentingapp.domain.BikeModel;
 import bikerent.service.bikerentingapp.domain.RentalOffice;
+import bikerent.service.bikerentingapp.repositories.BikeModelRepository;
 import bikerent.service.bikerentingapp.repositories.BikeRepository;
 import bikerent.service.bikerentingapp.repositories.RentalOfficeRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.*;
 
 @Controller
 @AllArgsConstructor
 public class RentalOfficeController {
     private final BikeRepository bikeRepository;
     private final RentalOfficeRepository rentalOfficeRepository;
+    private final BikeModelRepository bikeModelRepository;
+    private final RentalOfficeBean rentalOfficeBean;
 
     @GetMapping(value = "/rentalOffice")
     public String bikeList(Model model) {
@@ -37,15 +38,17 @@ public class RentalOfficeController {
         model.addAttribute("rentalOffice", rentalOfficeRepository.findById(id).
                 orElseThrow(null));
         model.addAttribute("number", number);
-        model.addAttribute("bike", new Bike());
+        BikeModel bikemodel = new BikeModel();
+        bikeModelRepository.save(bikemodel);
+        model.addAttribute("bike", new Bike(bikemodel));
         return "bike-add-form";
     }
 
     @PostMapping(value = "/rentalOffice/{idx}/bikes")
-    public String bikeAddForm(@ModelAttribute Bike bike, @PathVariable(value = "idx") Long id) {
+    public String bikeAddForm(@ModelAttribute Bike bike, @RequestParam(value = "number", defaultValue = "1") Integer number, @PathVariable(value = "idx") Long id) {
         bike.setRentalOffice(rentalOfficeRepository.findById(id).
                 orElseThrow(null));
-        bikeRepository.save(bike);
+        rentalOfficeBean.insertBikes(bike, number);
         return "redirect:/rentalOffice/" + id;
     }
 

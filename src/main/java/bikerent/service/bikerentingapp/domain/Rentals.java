@@ -14,7 +14,7 @@ import java.sql.Date;
 @Entity
 public class Rentals {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @DateTimeFormat(pattern = "HH:mm:ss dd/MM/yyyy")

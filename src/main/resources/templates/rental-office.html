@@ -13,16 +13,18 @@
         <th>ID</th>
         <th>Cena</th>
         <th>Stan</th>
-        <th>Serwis</th>
         <th>Model</th>
-<!--        <th>Rezerwacja</th>-->
+        <th>Marka</th>
+        <th>Typ</th>
+        <!--        <th>Rezerwacja</th>-->
     </tr>
     <tr th:each="bike : ${bikes}">
         <td th:text="${bike.id}">ID</td>
         <td th:text="${bike.pricePerHour}">Cena</td>
         <td th:text="${bike.bikeState}">Stan</td>
-        <td th:text="${bike.bikeService?.id}">ID Serwisu</td>
-        <td th:text="${bike.bikeModel?.name}">Nazwa Modelu</td>
+        <td th:text="${bike.bikeModel?.name}">Model</td>
+        <td th:text="${bike.bikeModel?.brand}">Marka</td>
+        <td th:text="${bike.bikeModel?.type}">Typ</td>
         <!--        <td><a th:href="@{/reservations/{id} (id = ${bike.id})}">Rezerwuj</a></td>-->
     </tr>
 </table>

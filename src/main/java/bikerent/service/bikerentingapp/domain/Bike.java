@@ -14,7 +14,7 @@ import javax.persistence.*;
 @Entity
 public class Bike {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     
     private int pricePerHour;
@@ -31,5 +31,16 @@ public class Bike {
     public Bike(int pricePerHour, String bikeState) {
         this.pricePerHour = pricePerHour;
         this.bikeState = bikeState;
+    }
+
+    public Bike(BikeModel bikeModel) {
+        this.bikeModel = bikeModel;
+    }
+
+    public Bike(int pricePerHour, String bikeState, BikeModel bikeModel, RentalOffice rentalOffice) {
+        this.pricePerHour = pricePerHour;
+        this.bikeState = bikeState;
+        this.bikeModel = bikeModel;
+        this.rentalOffice = rentalOffice;
     }
 }

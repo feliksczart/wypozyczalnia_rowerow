@@ -2,10 +2,7 @@ package bikerent.service.bikerentingapp.bootstrap;
 
 import bikerent.service.bikerentingapp.controllers.UserService;
 import bikerent.service.bikerentingapp.domain.*;
-import bikerent.service.bikerentingapp.repositories.BikeRepository;
-import bikerent.service.bikerentingapp.repositories.LoginRepository;
-import bikerent.service.bikerentingapp.repositories.RegionRepository;
-import bikerent.service.bikerentingapp.repositories.RentalOfficeRepository;
+import bikerent.service.bikerentingapp.repositories.*;
 import lombok.AllArgsConstructor;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
@@ -19,6 +16,7 @@ public class BootstrapData implements CommandLineRunner {
     private final RentalOfficeRepository rentalOfficeRepository;
     private final RegionRepository regionRepository;
     private final LoginRepository loginRepository;
+    private final BikeModelRepository bikeModelRepository;
 
     @Override
     public void run(String... args) throws Exception {
@@ -30,7 +28,11 @@ public class BootstrapData implements CommandLineRunner {
         user.setLogin(login);
         userService.signUpUser(user);
 
+        BikeModel bikeModel = new BikeModel("Destruktor", "Ferrari", "górski");
+        bikeModelRepository.save(bikeModel);
+
         Bike bike = new Bike(15, "dobry");
+        bike.setBikeModel(bikeModel);
         bikeRepository.save(bike);
 
         Region region = new Region("Wielkopolskie", "Poznań");
