@@ -1,7 +1,7 @@
 package bikerent.service.bikerentingapp.controllers;
 
+import bikerent.service.bikerentingapp.beans.RentalOfficeBean;
 import bikerent.service.bikerentingapp.domain.Bike;
-import bikerent.service.bikerentingapp.domain.BikeModel;
 import bikerent.service.bikerentingapp.domain.RentalOffice;
 import bikerent.service.bikerentingapp.repositories.BikeModelRepository;
 import bikerent.service.bikerentingapp.repositories.BikeRepository;
@@ -35,17 +35,15 @@ public class RentalOfficeController {
     @GetMapping(value = "/rentalOffice/{id}/bikes")
     public String bikeAddForm(@PathVariable(value = "id") Long id, Model model) {
         Integer number = 0;
-        model.addAttribute("rentalOffice", rentalOfficeRepository.findById(id).
-                orElseThrow(null));
+        model.addAttribute("rentalOffice", rentalOfficeRepository.findById(id)
+                .orElseThrow(null));
         model.addAttribute("number", number);
-        BikeModel bikemodel = new BikeModel();
-        bikeModelRepository.save(bikemodel);
-        model.addAttribute("bike", new Bike(bikemodel));
+        model.addAttribute("bike", rentalOfficeBean.bindingModelAndBike());
         return "bike-add-form";
     }
 
     @PostMapping(value = "/rentalOffice/{idx}/bikes")
-    public String bikeAddForm(@ModelAttribute Bike bike, @RequestParam(value = "number", defaultValue = "1") Integer number, @PathVariable(value = "idx") Long id) {
+    public String bikeAddForm(@PathVariable(value = "idx") Long id, @ModelAttribute Bike bike, @RequestParam(value = "number", defaultValue = "1") Integer number) {
         bike.setRentalOffice(rentalOfficeRepository.findById(id).
                 orElseThrow(null));
         rentalOfficeBean.insertBikes(bike, number);

@@ -1,6 +1,7 @@
-package bikerent.service.bikerentingapp.controllers;
+package bikerent.service.bikerentingapp.beans;
 
 import bikerent.service.bikerentingapp.domain.Bike;
+import bikerent.service.bikerentingapp.domain.BikeModel;
 import bikerent.service.bikerentingapp.repositories.BikeModelRepository;
 import bikerent.service.bikerentingapp.repositories.BikeRepository;
 import lombok.AllArgsConstructor;
@@ -19,5 +20,12 @@ public class RentalOfficeBean {
             Bike tempBike = new Bike(bike.getPricePerHour(), bike.getBikeState(), bike.getBikeModel(), bike.getRentalOffice());
             bikeRepository.save(tempBike);
         }
+    }
+
+    public Bike bindingModelAndBike() {
+        BikeModel bikemodel = new BikeModel();
+        bikeModelRepository.save(bikemodel);
+        Bike bike = new Bike(bikemodel);
+        return bike;
     }
 }
