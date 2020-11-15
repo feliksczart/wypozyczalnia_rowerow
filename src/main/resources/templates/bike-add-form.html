@@ -7,9 +7,9 @@
 <body>
 <h1>Formularz Dodania Wypożyczalni</h1>
 <form action="#" method="post" th:action="@{/rentalOffice/{idx}/bikes(idx=${rentalOffice.id})}">
-    <p>Cena: <input required th:name="pricePerHour" th:value="${bike.pricePerHour}" type="number"/></p>
+    <p>Cena: <input required th:name="pricePerHour" th:value="${bike.pricePerHour}" type="number" min="0" step="0.01"/></p>
     <p>Stan: <input required th:name="bikeState" th:value="${bike.bikeState}" type="text"/></p>
-    <p>Liczba: <input required th:name="number" th:value="${number}" type="number"/></p>
+    <p>Liczba: <input required th:name="number" th:value="${number}" type="number" min="1"/></p>
     <p><input type="submit" value="Zapisz"/> <input type="reset" value="Reset"/></p>
 </form>
 <a th:href="@{/}">Wróć</a>
