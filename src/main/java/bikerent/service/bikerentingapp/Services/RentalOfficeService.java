@@ -1,4 +1,4 @@
-package bikerent.service.bikerentingapp.controllers;
+package bikerent.service.bikerentingapp.Services;
 
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;

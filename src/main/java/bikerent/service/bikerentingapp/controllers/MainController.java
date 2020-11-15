@@ -1,5 +1,6 @@
 package bikerent.service.bikerentingapp.controllers;
 
+import bikerent.service.bikerentingapp.Services.UserService;
 import bikerent.service.bikerentingapp.domain.Login;
 import bikerent.service.bikerentingapp.domain.User;
 import org.springframework.beans.factory.annotation.Autowired;

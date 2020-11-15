@@ -1,6 +1,6 @@
 package bikerent.service.bikerentingapp.bootstrap;
 
-import bikerent.service.bikerentingapp.controllers.UserService;
+import bikerent.service.bikerentingapp.Services.UserService;
 import bikerent.service.bikerentingapp.domain.*;
 import bikerent.service.bikerentingapp.repositories.*;
 import lombok.AllArgsConstructor;

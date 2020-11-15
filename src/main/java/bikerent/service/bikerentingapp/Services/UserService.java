@@ -1,4 +1,4 @@
-package bikerent.service.bikerentingapp.controllers;
+package bikerent.service.bikerentingapp.Services;
 
 import bikerent.service.bikerentingapp.domain.Login;
 import bikerent.service.bikerentingapp.domain.User;
