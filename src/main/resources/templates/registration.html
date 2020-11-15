@@ -26,8 +26,10 @@
     </div>
 
     <div class="registry__element">
-    <input id="nick" name="nick" th:field="*{nick}" type="text" placeholder="Nick" title="Podaj nazwę użytkownika" class="registry__element-label">
-    <input id="password" name="password" th:field="*{password}" type="password" placeholder="Hasło" title="Podaj hasło" class="registry__element-label">
+        <input class="registry__element-label" id="nick" name="login.nick" placeholder="Nick" th:field="*{login.nick}"
+               title="Podaj nazwę użytkownika" type="text">
+        <input class="registry__element-label" id="password" name="login.password" placeholder="Hasło"
+               th:field="*{login.password}" title="Podaj hasło" type="password">
     </div>
     <div class="registry__element">
         <input name="Zarejestruj się" type="Submit" class="registry__element-submit">

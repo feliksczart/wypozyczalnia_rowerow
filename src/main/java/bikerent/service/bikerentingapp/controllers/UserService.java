@@ -1,6 +1,8 @@
 package bikerent.service.bikerentingapp.controllers;
 
+import bikerent.service.bikerentingapp.domain.Login;
 import bikerent.service.bikerentingapp.domain.User;
+import bikerent.service.bikerentingapp.repositories.LoginRepository;
 import bikerent.service.bikerentingapp.repositories.UserRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -17,24 +19,28 @@ import java.util.Optional;
 public class UserService implements UserDetailsService {
 
     private final UserRepository userRepository;
+    private final LoginRepository loginRepository;
     private final BCryptPasswordEncoder bCryptPasswordEncoder;
 
     @Override
     public UserDetails loadUserByUsername(String nick) throws UsernameNotFoundException {
 
-        final Optional<User> optionalUser = userRepository.findByNick(nick);
+        final Optional<Login> optionalUser = loginRepository.findByNick(nick);
 
         if (optionalUser.isPresent()) {
-            return (UserDetails) optionalUser.get();
+            return optionalUser.get();
         } else {
             throw new UsernameNotFoundException(MessageFormat.format("User with nick {0} cannot be found.", nick));
         }
     }
 
     public void signUpUser(User user) {
-        final String encryptedPassword = bCryptPasswordEncoder.encode(user.getLogin().getPassword());
-        user.getLogin().setPassword(encryptedPassword);
-        user.getLogin().setEnabled(true);
+        Login login = user.getLogin();
+        final String encryptedPassword = bCryptPasswordEncoder.encode(login.getPassword());
+        login.setPassword(encryptedPassword);
+        login.setEnabled(true);
+        loginRepository.save(login);
+        user.setLogin(login);
         userRepository.save(user);
     }
 }

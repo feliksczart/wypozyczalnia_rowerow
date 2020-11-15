@@ -1,5 +1,6 @@
 package bikerent.service.bikerentingapp.controllers;
 
+import bikerent.service.bikerentingapp.domain.Login;
 import bikerent.service.bikerentingapp.domain.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -30,7 +31,10 @@ public class MainController {
 
     @GetMapping("/registration")
     String signUp(Model model) {
-        model.addAttribute("user", new User());
+        User user = new User();
+        Login login = new Login();
+        user.setLogin(login);
+        model.addAttribute("user", user);
         return "registration";
     }
 
@@ -41,7 +45,7 @@ public class MainController {
     }
 
     @GetMapping("/login")
-    String signIn(Model model) {
+    String signIn() {
         return "login";
     }
 }
