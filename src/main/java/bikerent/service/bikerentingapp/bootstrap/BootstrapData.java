@@ -26,8 +26,8 @@ public class BootstrapData implements CommandLineRunner {
         User user = new User();
         user.setName("Piotr");
         user.setSurname("Derenowski");
-        user.setNick("");
-        user.setPassword("");
+        user.getLogin().setNick("");
+        user.getLogin().setPassword("");
         userService.signUpUser(user);
 
         Bike bike = new Bike(15, "dobry");

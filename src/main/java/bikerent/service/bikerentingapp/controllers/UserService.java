@@ -25,16 +25,16 @@ public class UserService implements UserDetailsService {
         final Optional<User> optionalUser = userRepository.findByNick(nick);
 
         if (optionalUser.isPresent()) {
-            return optionalUser.get();
+            return (UserDetails) optionalUser.get();
         } else {
             throw new UsernameNotFoundException(MessageFormat.format("User with nick {0} cannot be found.", nick));
         }
     }
 
     public void signUpUser(User user) {
-        final String encryptedPassword = bCryptPasswordEncoder.encode(user.getPassword());
-        user.setPassword(encryptedPassword);
-        user.setEnabled(true);
+        final String encryptedPassword = bCryptPasswordEncoder.encode(user.getLogin().getPassword());
+        user.getLogin().setPassword(encryptedPassword);
+        user.getLogin().setEnabled(true);
         userRepository.save(user);
     }
 }

@@ -26,9 +26,6 @@ public class Bike {
     private BikeModel bikeModel;
 
     @ManyToOne
-    private BikeService bikeService;
-
-    @ManyToOne
     private RentalOffice rentalOffice;
 
     public Bike(int pricePerHour, String bikeState) {

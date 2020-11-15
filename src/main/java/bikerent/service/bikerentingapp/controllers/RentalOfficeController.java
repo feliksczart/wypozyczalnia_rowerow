@@ -34,7 +34,8 @@ public class RentalOfficeController {
     @GetMapping(value = "/rentalOffice/{id}/bikes")
     public String bikeAddForm(@PathVariable(value = "id") Long id, Model model) {
         Integer number = 0;
-        model.addAttribute("rentalOffice", rentalOfficeRepository.findById(id).orElseThrow(null));
+        model.addAttribute("rentalOffice", rentalOfficeRepository.findById(id).
+                orElseThrow(null));
         model.addAttribute("number", number);
         model.addAttribute("bike", new Bike());
         return "bike-add-form";
@@ -42,7 +43,8 @@ public class RentalOfficeController {
 
     @PostMapping(value = "/rentalOffice/{idx}/bikes")
     public String bikeAddForm(@ModelAttribute Bike bike, @PathVariable(value = "idx") Long id) {
-        bike.setRentalOffice(rentalOfficeRepository.findById(id).orElseThrow(null));
+        bike.setRentalOffice(rentalOfficeRepository.findById(id).
+                orElseThrow(null));
         bikeRepository.save(bike);
         return "redirect:/rentalOffice/" + id;
     }
