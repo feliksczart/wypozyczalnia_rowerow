@@ -2,22 +2,43 @@
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml"
       xmlns:th="https://www.thymeleaf.org">
 <head>
-    <title>Spring Security Example </title>
+    <title>Login </title>
+    <link th:href="@{/css/style.css}" rel="stylesheet" />
 </head>
 <body>
-<div th:if="${param.error}">
-    Invalid username and password.
-</div>
-<div th:if="${param.logout}">
-    You have been logged out.
-</div>
-<h1>Zaloguj sie</h1>
-<form method="post" th:action="@{/login}">
-    <div><label> User Name : <input name="username" type="text"/> </label></div>
-    <div><label> Password: <input name="password" type="password"/> </label></div>
-    <div><input type="submit" value="Sign In"/></div>
-</form>
-<p>Nie masz konta?</p>
-<a th:href="@{/registration}"> Zarejestruj się</a>
+<header>
+    <nav class="navigation">
+        <a th:href="@{/index}">
+            <img class="navigation__logo" th:src="@{/images/czader.png}" alt="company logo">
+        </a>
+        <a class="navigation__link navigation__link-homepage" th:href="@{/index}">Strona główna</a>
+        <a class="navigation__link" th:href="@{/registration}">Rejestracja <br/> klienta</a>
+        <a class="navigation__link" href="nauka-html.html">Wynajmij rowej <br/> bez rejestracji</a>
+        <a class="navigation__link" th:href="@{/rentalOffice/register}">Rejestracja <br/> wypożyczalni</a>
+
+        <a class="navigation__login" th:href="@{/login}">Zaloguj się</a>
+    </nav>
+</header>
+<main>
+    <div th:if="${param.error}">
+        Invalid username and password.
+    </div>
+    <div th:if="${param.logout}">
+        You have been logged out.
+    </div>
+    <h1 class="registry__header">Zaloguj się do serwisu</h1>
+    <form role="form" method="post" th:action="@{/login}"> <!--dodać th:object="${user}"-->
+        <div class="registry__element"> <!--dodać th:field="*{nick}" v-->
+            <input class="registry__element-label" id="nick" name="login.nick" placeholder="Nick"
+                   title="Podaj nazwę użytkownika" type="text">
+            <input class="registry__element-label" id="password" name="login.password" placeholder="Hasło" title="Podaj hasło" type="password">
+        </div>
+        <div class="registry__element">
+            <input name="Zaloguj się" type="Submit" value="Zaloguj" class="registry__element-submit">
+        </div>
+    </form>
+
+    <p class="no-account">Nie masz konta? <a th:href="@{/registration}"> Zarejestruj się</a></p>
+</main>
 </body>
 </html>

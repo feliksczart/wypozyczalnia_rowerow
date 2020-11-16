@@ -20,7 +20,7 @@
 <body>
 <!--<p>Witaj, </p>-->
 <!--<p th:text ="${username}">Witaj</p>-->
-<header>
+    <header>
         <nav class="navigation">
             <a th:href="@{/index}">
                 <img class="navigation__logo" th:src="@{/images/czader.png}" alt="company logo">
@@ -29,6 +29,8 @@
             <a class="navigation__link" th:href="@{/registration}">Rejestracja <br/> klienta</a>
             <a class="navigation__link" href="nauka-html.html">Wynajmij rowej <br/> bez rejestracji</a>
             <a class="navigation__link" th:href="@{/rentalOffice/register}">Rejestracja <br/> wypożyczalni</a>
+
+            <a class="navigation__login" th:href="@{/login}">Zaloguj się</a>
         </nav>
     </header>
 

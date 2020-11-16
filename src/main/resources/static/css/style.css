@@ -37,7 +37,22 @@ a{
 	font-size: 22px;
 }
 
+.navigation__login {
+	color: #FAFFFD;
+	display: inline-block;
+	margin-left: 60px;
+	margin-right: 0px;
+	text-decoration: none;
+	font-size: 30px;
+}
+
 .navigation__link:hover {
+	color: #FAFFFD;
+	background: #453F48;
+	border-radius: 7px;
+}
+
+.navigation__login:hover {
 	color: #FAFFFD;
 	background: #453F48;
 	border-radius: 7px;
@@ -147,5 +162,26 @@ main {
 
 .registry__element-submit:hover {
 	background-color: #709C4B;
+	cursor: pointer;
+}
+
+.no-account{
+	text-align: center;
+	font-size: 15px;
+	margin-top: 20px;
+}
+
+.registry__element-reset{
+	background-color: #FB3640;
+	border-radius: 8px;
+	width: 250px;
+	height: 50px;
+	margin-left: 10px;
+	margin-top: 30px;
+	font-size: 28px;
+	color: #FAFFFD;
+}
+.registry__element-reset:hover {
+	background-color: #D91420;
 	cursor: pointer;
 }
