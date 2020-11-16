@@ -27,11 +27,11 @@
         <input required placeholder="Kod pocztowy" th:name="zip" th:value="${RentalOffice.zip}" type="text" class="registry__element-label"/>
         <input required placeholder="Adres" th:name="address" th:value="${RentalOffice.address}" type="text" class="registry__element-label"/>
     </div>
-</form>
     <div class="registry__element">
         <input class="registry__element-submit" type="submit" value="Dodaj"/>
-        <input class="registry__element-reset" type="reset" value="Reset"/>
+        <input type="reset" value="Reset" class="registry__element-reset"/>
     </div>
+</form>
 </main>
 </body>
 </html>
