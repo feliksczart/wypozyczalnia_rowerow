@@ -28,6 +28,9 @@ public class User {
     @OneToOne
     private Login login;
 
+    @OneToOne
+    private RentalOffice rentalOffice;
+
     public User(String name, String surname) {
         this.name = name;
         this.surname = surname;

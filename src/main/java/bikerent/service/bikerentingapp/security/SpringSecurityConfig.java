@@ -1,6 +1,7 @@
 package bikerent.service.bikerentingapp.security;
 
 import bikerent.service.bikerentingapp.Services.UserService;
+import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
@@ -10,23 +11,31 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 @Configuration
+@AllArgsConstructor
 @EnableWebSecurity
 public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
 
     private final UserService userService;
     private final BCryptPasswordEncoder bCryptPasswordEncoder;
 
-    @Autowired
-    public SpringSecurityConfig(UserService userService, BCryptPasswordEncoder bCryptPasswordEncoder) {
-        this.userService = userService;
-        this.bCryptPasswordEncoder = bCryptPasswordEncoder;
+    @Override
+    protected void configure(final AuthenticationManagerBuilder auth) throws Exception {
+        auth.inMemoryAuthentication()
+                .withUser("us").password(bCryptPasswordEncoder.encode("us")).roles("USER")
+                .and()
+                .withUser("ad").password(bCryptPasswordEncoder.encode("ad")).roles("ADMIN");
     }
+
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
 
         http.authorizeRequests()
-                .antMatchers("/", "/index", "/registration", "/css/**", "/images/**", "/rentalOffice/**", "/rentalOffice", "/h2-console/**", "/console/**")
+                .antMatchers("/", "/index", "/rentalOffice/**", "/rentalOffice", "/h2-console/**", "/console/**")
+                .hasRole("ADMIN")
+                .antMatchers("/", "/index")
+                .hasRole("USER")
+                .antMatchers("/", "/index", "/registration", "/rentalOffice/**", "/rentalOffice", "/myRentals", "/css/**", "/images/**")
                 .permitAll()
                 .anyRequest()
                 .authenticated()

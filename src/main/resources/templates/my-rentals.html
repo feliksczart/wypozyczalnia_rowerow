@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Moje Wypożyczenia</title>
+</head>
+<body>
+<table>
+    <tr>
+        <th>ID</th>
+        <th>Data Rozpoczęcia</th>
+        <th>Data Zakończenia</th>
+        <th>Cena</th>
+        <th>Nazwa Roweru</th>
+        <th>Nazwisko Użytkownika</th>
+        <th>Miasto</th>
+        <th>Zakończ Wypożyczenie</th>
+    </tr>
+    <tr th:each="rental : ${rentals}">
+        <td th:text="${rental.id}">ID</td>
+        <td th:text="${rental.startDate}">Miasto</td>
+        <td th:text="${rental?.endDate}">Kod pocztowy</td>
+        <td th:text="${rental?.price}">Adres</td>
+        <td th:text="${rental.bike.bikeModel.name}">Województwo</td>
+        <td th:text="${rental.user?.surname}">Adres</td>
+        <td th:text="${rental.rentalOffice.city}">Powiat</td>
+        <td><a th:href="@{/}">Zakończ Wypożyczenie</a></td>
+    </tr>
+</table>
+<a th:href="@{/}"> Wróć</a>
+</body>
+</html>

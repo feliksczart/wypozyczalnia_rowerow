@@ -52,7 +52,7 @@ public class RentalOfficeController {
     @GetMapping(value = "/rentalOffice/{rental_id}/bike/{bike_id}")
     public String bikeList(@PathVariable(value = "rental_id") Long rentalId, @PathVariable(value = "bike_id") Long bikeId) {
         rentalOfficeBean.bikeRental(rentalId, bikeId);
-        return "redirect:/rentalOffice/";
+        return "redirect:/myRentals";
     }
 
     @GetMapping(value = "/rentalOffice/register")
