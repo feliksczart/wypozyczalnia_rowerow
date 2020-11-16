@@ -3,7 +3,6 @@ package bikerent.service.bikerentingapp.controllers;
 import bikerent.service.bikerentingapp.beans.RentalOfficeBean;
 import bikerent.service.bikerentingapp.domain.Bike;
 import bikerent.service.bikerentingapp.domain.RentalOffice;
-import bikerent.service.bikerentingapp.repositories.BikeModelRepository;
 import bikerent.service.bikerentingapp.repositories.BikeRepository;
 import bikerent.service.bikerentingapp.repositories.RentalOfficeRepository;
 import lombok.AllArgsConstructor;
@@ -16,7 +15,6 @@ import org.springframework.web.bind.annotation.*;
 public class RentalOfficeController {
     private final BikeRepository bikeRepository;
     private final RentalOfficeRepository rentalOfficeRepository;
-    private final BikeModelRepository bikeModelRepository;
     private final RentalOfficeBean rentalOfficeBean;
 
     @GetMapping(value = "/rentalOffice")
@@ -27,6 +25,7 @@ public class RentalOfficeController {
 
     @GetMapping(value = "/rentalOffice/{id}")
     public String bikeList(@PathVariable(value = "id") Long id, Model model) {
+        //model.addAttribute("bikes", bikeRepository.findByRentalOfficeId(id));
         model.addAttribute("bikes", bikeRepository.findAll());
         model.addAttribute("id", id);
         return "rental-office";
@@ -42,12 +41,18 @@ public class RentalOfficeController {
         return "bike-add-form";
     }
 
-    @PostMapping(value = "/rentalOffice/{idx}/bikes")
-    public String bikeAddForm(@PathVariable(value = "idx") Long id, @ModelAttribute Bike bike, @RequestParam(value = "number", defaultValue = "1") Integer number) {
+    @PostMapping(value = "/rentalOffice/{rental_id}/bikes")
+    public String bikeAddForm(@PathVariable(value = "rental_id") Long id, @ModelAttribute Bike bike, @RequestParam(value = "number", defaultValue = "1") Integer number) {
         bike.setRentalOffice(rentalOfficeRepository.findById(id).
                 orElseThrow(null));
         rentalOfficeBean.insertBikes(bike, number);
         return "redirect:/rentalOffice/" + id;
+    }
+
+    @GetMapping(value = "/rentalOffice/{rental_id}/bike/{bike_id}")
+    public String bikeList(@PathVariable(value = "rental_id") Long rentalId, @PathVariable(value = "bike_id") Long bikeId) {
+        rentalOfficeBean.bikeRental(rentalId, bikeId);
+        return "redirect:/rentalOffice/";
     }
 
     @GetMapping(value = "/rentalOffice/register")

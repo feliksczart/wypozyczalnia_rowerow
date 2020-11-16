@@ -16,7 +16,7 @@
         <th>Model</th>
         <th>Marka</th>
         <th>Typ</th>
-        <!--        <th>Rezerwacja</th>-->
+        <th>Wypożycz</th>
     </tr>
     <tr th:each="bike : ${bikes}">
         <td th:text="${bike.id}">ID</td>
@@ -25,7 +25,9 @@
         <td th:text="${bike.bikeModel?.name}">Model</td>
         <td th:text="${bike.bikeModel?.brand}">Marka</td>
         <td th:text="${bike.bikeModel?.type}">Typ</td>
-        <!--        <td><a th:href="@{/reservations/{id} (id = ${bike.id})}">Rezerwuj</a></td>-->
+        <td>
+            <a th:href="@{/rentalOffice/{rental_id}/bike/{bike_id} (rental_id = ${id}, bike_id = ${bike.id})}">Wypożycz</a>
+        </td>
     </tr>
 </table>
 <a th:href="@{/}"> Wróć</a>

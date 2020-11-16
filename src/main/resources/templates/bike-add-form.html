@@ -6,7 +6,7 @@
 </head>
 <body>
 <h1>Formularz Dodania Wypożyczalni</h1>
-<form action="#" method="post" th:action="@{/rentalOffice/{idx}/bikes(idx=${rentalOffice.id})}">
+<form action="#" method="post" th:action="@{/rentalOffice/{rental_id}/bikes(rental_id=${rentalOffice.id})}">
     <p>Cena: <input min="0" required step="0.01" th:name="pricePerHour" th:value="${bike.pricePerHour}" type="number"/>
     </p>
     <p>Stan: <input required th:name="bikeState" th:value="${bike.bikeState}" type="text"/></p>
