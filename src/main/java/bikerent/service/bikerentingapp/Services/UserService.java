@@ -1,6 +1,7 @@
 package bikerent.service.bikerentingapp.Services;
 
 import bikerent.service.bikerentingapp.domain.Login;
+import bikerent.service.bikerentingapp.domain.Role;
 import bikerent.service.bikerentingapp.domain.User;
 import bikerent.service.bikerentingapp.repositories.LoginRepository;
 import bikerent.service.bikerentingapp.repositories.UserRepository;
@@ -39,6 +40,7 @@ public class UserService implements UserDetailsService {
         final String encryptedPassword = bCryptPasswordEncoder.encode(login.getPassword());
         login.setPassword(encryptedPassword);
         login.setEnabled(true);
+        login.setRole(Role.ADMIN);
         loginRepository.save(login);
         user.setLogin(login);
         userRepository.save(user);

@@ -23,7 +23,7 @@ public class BootstrapData implements CommandLineRunner {
         User user = new User();
         user.setName("Piotr");
         user.setSurname("Derenowski");
-        Login login = new Login("", "", false, false);
+        Login login = new Login("", "", false, false, Role.ADMIN);
         loginRepository.save(login);
         user.setLogin(login);
         userService.signUpUser(user);

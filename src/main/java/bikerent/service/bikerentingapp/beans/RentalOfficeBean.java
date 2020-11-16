@@ -3,13 +3,11 @@ package bikerent.service.bikerentingapp.beans;
 import bikerent.service.bikerentingapp.domain.Bike;
 import bikerent.service.bikerentingapp.domain.BikeModel;
 import bikerent.service.bikerentingapp.domain.Rental;
-import bikerent.service.bikerentingapp.repositories.BikeModelRepository;
-import bikerent.service.bikerentingapp.repositories.BikeRepository;
-import bikerent.service.bikerentingapp.repositories.RentalOfficeRepository;
-import bikerent.service.bikerentingapp.repositories.RentalRepository;
+import bikerent.service.bikerentingapp.repositories.*;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Component;
 
+import java.security.Principal;
 import java.time.LocalDateTime;
 
 @Component
@@ -19,6 +17,9 @@ public class RentalOfficeBean {
     private final BikeRepository bikeRepository;
     private final RentalRepository rentalRepository;
     private RentalOfficeRepository rentalOfficeRepository;
+    private LoginRepository loginRepository;
+    private UserRepository userRepository;
+    private LoginBean loginBean;
 
     public void insertBikes(Bike bike, int number) {
         bikeModelRepository.save(bike.getBikeModel());
@@ -36,8 +37,9 @@ public class RentalOfficeBean {
         return bike;
     }
 
-    public void bikeRental(Long rentalId, Long bikeId) {
+    public void bikeRental(Long rentalId, Long bikeId, Principal principal) {
         Rental rental = new Rental();
+        rental.setUser(loginBean.getUser(principal));
         rental.setBike(bikeRepository.findById(bikeId)
                 .orElseThrow(null));
         rental.setRentalOffice(rentalOfficeRepository.findById(rentalId)

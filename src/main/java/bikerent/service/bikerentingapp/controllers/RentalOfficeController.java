@@ -10,6 +10,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import java.security.Principal;
+
 @Controller
 @AllArgsConstructor
 public class RentalOfficeController {
@@ -50,8 +52,8 @@ public class RentalOfficeController {
     }
 
     @GetMapping(value = "/rentalOffice/{rental_id}/bike/{bike_id}")
-    public String bikeList(@PathVariable(value = "rental_id") Long rentalId, @PathVariable(value = "bike_id") Long bikeId) {
-        rentalOfficeBean.bikeRental(rentalId, bikeId);
+    public String bikeList(@PathVariable(value = "rental_id") Long rentalId, @PathVariable(value = "bike_id") Long bikeId, Principal principal) {
+        rentalOfficeBean.bikeRental(rentalId, bikeId, principal);
         return "redirect:/myRentals";
     }
 

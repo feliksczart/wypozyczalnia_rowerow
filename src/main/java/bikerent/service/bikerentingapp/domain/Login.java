@@ -8,12 +8,10 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.Collection;
-import java.util.Collections;
+import java.util.List;
 
 @Data
 @Builder
@@ -25,14 +23,20 @@ public class Login implements UserDetails {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    private String prefix = "ROLE_";
+
     private String nick;
     private String password;
 
-    public Login(String nick, String password, Boolean locked, Boolean enabled) {
+    @Enumerated(EnumType.STRING)
+    private Role role;
+
+    public Login(String nick, String password, Boolean locked, Boolean enabled, Role role) {
         this.nick = nick;
         this.password = password;
         this.locked = locked;
         this.enabled = enabled;
+        this.role = role;
     }
 
     @Builder.Default
@@ -43,8 +47,11 @@ public class Login implements UserDetails {
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        final SimpleGrantedAuthority simpleGrantedAuthority = new SimpleGrantedAuthority("USER");
-        return Collections.singletonList(simpleGrantedAuthority);
+        List<GrantedAuthority> list = new ArrayList<GrantedAuthority>();
+
+        list.add(new SimpleGrantedAuthority(prefix + role));
+
+        return list;
     }
 
     @Override

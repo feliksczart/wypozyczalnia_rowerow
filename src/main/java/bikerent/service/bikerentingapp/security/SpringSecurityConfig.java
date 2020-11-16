@@ -17,7 +17,7 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
 
     private final UserService userService;
     private final BCryptPasswordEncoder bCryptPasswordEncoder;
-
+/*
     @Override
     protected void configure(final AuthenticationManagerBuilder auth) throws Exception {
         auth.inMemoryAuthentication()
@@ -25,7 +25,7 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
                 .and()
                 .withUser("ad").password(bCryptPasswordEncoder.encode("ad")).roles("ADMIN");
     }
-
+*/
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
@@ -35,7 +35,7 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
                 .hasRole("ADMIN")
                 .antMatchers("/", "/index")
                 .hasRole("USER")
-                .antMatchers("/", "/index", "/registration", "/rentalOffice/**", "/rentalOffice", "/myRentals", "/css/**", "/images/**")
+                .antMatchers("/", "/index", "/registration", "/css/**", "/images/**", "/rentalOffice/**", "/rentalOffice", "/myRentals")
                 .permitAll()
                 .anyRequest()
                 .authenticated()

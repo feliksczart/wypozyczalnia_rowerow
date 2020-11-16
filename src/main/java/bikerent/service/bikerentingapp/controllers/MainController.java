@@ -10,6 +10,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import java.security.Principal;
+
 @Controller
 @AllArgsConstructor
 public class MainController {
@@ -23,7 +25,8 @@ public class MainController {
     }
 
     @RequestMapping("/index")
-    public String mainPage() {
+    public String mainPage(Model model, Principal principal) {
+//        model.addAttribute("username", loginBean.getUser(principal).getName(););
         return "index";
     }
 
