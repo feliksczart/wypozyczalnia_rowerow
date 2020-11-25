@@ -24,7 +24,11 @@
         <td th:text="${rental.bike.bikeModel.name}">Województwo</td>
         <td th:text="${rental.user?.surname}">Adres</td>
         <td th:text="${rental.rentalOffice.city}">Powiat</td>
-        <td><a th:href="@{/myRentals/{id}(id = ${rental.id})}">Zakończ Wypożyczenie</a></td>
+        <td>
+            <span th:if="${rental?.endDate != null}">Zakończono</span>
+            <span th:if="${rental?.endDate == null}"><a th:href="@{/myRentals/{id}(id = ${rental.id})}">Zakończ Wypożyczenie</a></span>
+        </td>
+
     </tr>
 </table>
 <a th:href="@{/}"> Wróć</a>

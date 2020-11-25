@@ -13,4 +13,6 @@ import javax.transaction.Transactional;
 @Transactional
 public interface RentalRepository extends CrudRepository<Rental, Long> {
     void deleteRentalById(Long rentalId);
+
+    Rental findRentalById(Long rentalId);
 }
