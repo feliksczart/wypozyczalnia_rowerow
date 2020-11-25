@@ -24,7 +24,7 @@
         <td th:text="${rental.bike.bikeModel.name}">Województwo</td>
         <td th:text="${rental.user?.surname}">Adres</td>
         <td th:text="${rental.rentalOffice.city}">Powiat</td>
-        <td><a th:href="@{/}">Zakończ Wypożyczenie</a></td>
+        <td><a th:href="@{/myRentals/{id}(id = ${rental.id})}">Zakończ Wypożyczenie</a></td>
     </tr>
 </table>
 <a th:href="@{/}"> Wróć</a>

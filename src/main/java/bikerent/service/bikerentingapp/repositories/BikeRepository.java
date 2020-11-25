@@ -12,4 +12,6 @@ public interface BikeRepository extends CrudRepository<Bike, Long> {
     List<Bike> findByRentalOfficeId(Long id);
 
     Optional<Bike> findById(Long bike_id);
+
+    void deleteBikeById(Long bike_id);
 }
