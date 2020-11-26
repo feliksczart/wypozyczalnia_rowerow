@@ -27,7 +27,7 @@ public class BootstrapData implements CommandLineRunner {
         rentalOffice.setRegion(region);
         rentalOfficeRepository.save(rentalOffice);
 
-        User user = new User();
+        /*User user = new User();
         user.setName("Piotr");
         user.setSurname("Derenowski");
         user.setRentalOffice(rentalOffice);
@@ -35,7 +35,7 @@ public class BootstrapData implements CommandLineRunner {
         loginRepository.save(login);
         user.setLogin(login);
         userService.signUpUser(user);
-
+*/
         BikeModel bikeModel = new BikeModel("Destruktor", "Ferrari", "górski");
         bikeModelRepository.save(bikeModel);
 

@@ -3,8 +3,22 @@
 <head>
     <meta charset="UTF-8">
     <title>Dodaj Wypożyczalnie</title>
+    <link th:href="@{/css/style.css}" rel="stylesheet" />
 </head>
 <body>
+<header>
+    <nav class="navigation">
+        <a th:href="@{/index}">
+            <img class="navigation__logo" th:src="@{/images/czader.png}" alt="company logo">
+        </a>
+        <a class="navigation__link navigation__link-homepage" th:href="@{/index}">Strona główna</a>
+        <a class="navigation__link" th:href="@{/registration}">Rejestracja <br/> klienta</a>
+        <a class="navigation__link" href="nauka-html.html">Wynajmij rowej <br/> bez rejestracji</a>
+        <a class="navigation__link" th:href="@{/rentalOffice/register}">Rejestracja <br/> wypożyczalni</a>
+        <a class="navigation__login" th:href="@{/login}">Zaloguj się</a>
+    </nav>
+</header>
+<main>
 <h1>Formularz Dodania Wypożyczalni</h1>
 <form action="#" method="post" th:action="@{/rentalOffice/{rental_id}/bikes(rental_id=${rentalOffice.id})}">
     <p>Cena: <input min="0" required step="0.01" th:name="pricePerHour" th:value="${bike.pricePerHour}" type="number"/>
@@ -17,5 +31,6 @@
     <p><input type="submit" value="Zapisz"/> <input type="reset" value="Reset"/></p>
 </form>
 <a th:href="@{/}">Wróć</a>
+</main>
 </body>
 </html>

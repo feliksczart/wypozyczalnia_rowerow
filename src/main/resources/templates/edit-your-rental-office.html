@@ -3,8 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <title>Edytuj</title>
+    <link th:href="@{/css/style.css}" rel="stylesheet" />
 </head>
 <body>
+<header>
+    <nav class="navigation">
+        <a th:href="@{/index}">
+            <img class="navigation__logo" th:src="@{/images/czader.png}" alt="company logo">
+        </a>
+        <a class="navigation__link navigation__link-homepage" th:href="@{/index}">Strona główna</a>
+        <a class="navigation__link" th:href="@{/registration}">Rejestracja <br/> klienta</a>
+        <a class="navigation__link" href="nauka-html.html">Wynajmij rowej <br/> bez rejestracji</a>
+        <a class="navigation__link" th:href="@{/rentalOffice/register}">Rejestracja <br/> wypożyczalni</a>
+        <a class="navigation__login" th:href="@{/login}">Zaloguj się</a>
+    </nav>
+</header>
 <main>
     <h1 class="registry__header">Edytuj dane swojej wypożyczalni</h1>
     <p>Jeżeli nie chcesz zmieniać danego elementu, zostaw puste miejsce</p>
