@@ -1,8 +1,6 @@
 package bikerent.service.bikerentingapp.beans;
 
-import bikerent.service.bikerentingapp.domain.Bike;
-import bikerent.service.bikerentingapp.domain.BikeModel;
-import bikerent.service.bikerentingapp.domain.Rental;
+import bikerent.service.bikerentingapp.domain.*;
 import bikerent.service.bikerentingapp.repositories.*;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Component;
@@ -46,5 +44,17 @@ public class RentalOfficeBean {
                 .orElseThrow(null));
         rental.setStartDate(LocalDateTime.now());
         rentalRepository.save(rental);
+    }
+
+    public void editRentalOffice(RentalOffice rentalOffice, Principal principal) {
+        User user = loginBean.getUser(principal);
+        if (rentalOffice.getAddress() != "")
+            user.getRentalOffice().setAddress(rentalOffice.getAddress());
+        if (rentalOffice.getZip() != "")
+            user.getRentalOffice().setZip(rentalOffice.getZip());
+        if (rentalOffice.getCity() != "")
+            user.getRentalOffice().setCity(rentalOffice.getCity());
+        rentalOfficeRepository.save(user.getRentalOffice());
+        userRepository.save(user);
     }
 }

@@ -20,9 +20,17 @@ public class BootstrapData implements CommandLineRunner {
 
     @Override
     public void run(String... args) throws Exception {
+        Region region = new Region("Wielkopolskie", "Poznań");
+        regionRepository.save(region);
+
+        RentalOffice rentalOffice = new RentalOffice("Poznan", "60-226", "Palacza 5");
+        rentalOffice.setRegion(region);
+        rentalOfficeRepository.save(rentalOffice);
+
         User user = new User();
         user.setName("Piotr");
         user.setSurname("Derenowski");
+        user.setRentalOffice(rentalOffice);
         Login login = new Login("", "", false, false, Role.ADMIN);
         loginRepository.save(login);
         user.setLogin(login);
@@ -35,11 +43,5 @@ public class BootstrapData implements CommandLineRunner {
         bike.setBikeModel(bikeModel);
         bikeRepository.save(bike);
 
-        Region region = new Region("Wielkopolskie", "Poznań");
-        regionRepository.save(region);
-
-        RentalOffice rentalOffice = new RentalOffice("Poznan", "60-226", "Palacza 5");
-        rentalOffice.setRegion(region);
-        rentalOfficeRepository.save(rentalOffice);
     }
 }

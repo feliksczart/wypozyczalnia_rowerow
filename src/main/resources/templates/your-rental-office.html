@@ -1,0 +1,36 @@
+<head xmlns:th="http://www.w3.org/1999/xhtml">
+    <meta charset="UTF-8">
+    <title>Lista Wypożyczalni</title>
+    <style> p {
+        display: inline-flex;
+    }</style>
+</head>
+<body>
+<div>
+    <p>Właściciel: </p>
+    <p th:text="${user.surname}">Nazwisko</p>
+</div>
+<div>
+    <p>Miasto: </p>
+    <p th:text="${user.rentalOffice.city}">miasto</p>
+</div>
+<div>
+    <p>Kod pocztowy: </p>
+    <p th:text="${user.rentalOffice.zip}">Kod pocztowy</p>
+</div>
+<div>
+    <p>Adres: </p>
+    <p th:text="${user.rentalOffice.address}">Adres</p>
+</div>
+<div>
+    <p>Województwo: </p>
+    <p th:text="${user.rentalOffice.region?.voivodeship}">Wojewodztwo</p>
+</div>
+<div>
+    <p>Powiat: </p>
+    <p th:text="${user.rentalOffice.region?.district}">Powiat</p>
+</div>
+<a th:href="@{/rentalOffice/edit}">Edytuj</a>
+<a th:href="@{/}"> Wróć</a>
+</body>
+</html>

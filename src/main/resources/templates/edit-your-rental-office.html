@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Edytuj</title>
+</head>
+<body>
+<main>
+    <h1 class="registry__header">Edytuj dane swojej wypożyczalni</h1>
+    <p>Jeżeli nie chcesz zmieniać danego elementu, zostaw puste miejsce</p>
+    <form action="#" method="post" th:action="@{/rentalOffice/edit}">
+        <div class="registry__element">
+            <input class="registry__element-label" placeholder="Miasto" th:name="city" th:value="${RentalOffice?.city}"
+                   type="text"/>
+            <input class="registry__element-label" placeholder="Kod pocztowy" th:name="zip"
+                   th:value="${RentalOffice?.zip}" type="text"/>
+            <input class="registry__element-label" placeholder="Adres" th:name="address"
+                   th:value="${RentalOffice?.address}" type="text"/>
+        </div>
+        <div class="registry__element">
+            <input class="registry__element-submit" type="submit" value="Zapisz"/>
+            <input class="registry__element-reset" type="reset" value="Reset"/>
+        </div>
+    </form>
+</main>
+</body>
+</html>
