@@ -30,4 +30,7 @@ public class Rental {
 
     @ManyToOne
     private RentalOffice rentalOffice;
+
+    @OneToOne
+    private Complaints complaints;
 }

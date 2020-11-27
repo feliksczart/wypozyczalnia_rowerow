@@ -29,6 +29,7 @@
         <th>Nazwisko Użytkownika</th>
         <th>Miasto</th>
         <th>Zakończ Wypożyczenie</th>
+        <th>reklamacja</th>
     </tr>
     <tr th:each="rental : ${rentals}">
         <td th:text="${rental.id}">ID</td>
@@ -41,6 +42,10 @@
         <td>
             <span th:if="${rental?.endDate != null}">Zakończono</span>
             <span th:if="${rental?.endDate == null}"><a th:href="@{/myRentals/{id}(id = ${rental.id})}">Zakończ Wypożyczenie</a></span>
+        </td>
+        <td>
+            <span th:if="${rental?.endDate != null}"><a th:href="@{/myRentals/{id}/complaint (id = ${rental.id})}">reklamacja</a></span>
+            <span th:if="${rental?.endDate == null}"></span>
         </td>
 
     </tr>
