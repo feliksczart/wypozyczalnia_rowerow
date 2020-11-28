@@ -1,10 +1,12 @@
-<head xmlns:th="http://www.w3.org/1999/xhtml">
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
     <meta charset="UTF-8">
     <title>Lista Wypożyczalni</title>
     <style> p {
         display: inline-flex;
     }</style>
-    <link th:href="@{/css/style.css}" rel="stylesheet" />
+    <link rel="stylesheet" th:href="@{/css/style.css}"/>
 </head>
 <body>
 <header>
@@ -14,7 +16,7 @@
         </a>
         <a class="navigation__link navigation__link-homepage" th:href="@{/index}">Strona główna</a>
         <a class="navigation__link" th:href="@{/registration}">Rejestracja <br/> klienta</a>
-        <a class="navigation__link" href="nauka-html.html">Wynajmij rowej <br/> bez rejestracji</a>
+        <a class="navigation__link" th:href="@{/your/rentalOffice}">Twoja <br/> Wypożyczalnia</a>
         <a class="navigation__link" th:href="@{/rentalOffice/register}">Rejestracja <br/> wypożyczalni</a>
         <a class="navigation__login" th:href="@{/login}">Zaloguj się</a>
     </nav>
