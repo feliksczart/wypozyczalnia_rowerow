@@ -8,6 +8,7 @@ import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
@@ -27,8 +28,8 @@ public class RentalController {
     }
 
     //trzeba poprawić te daty i liczyć czas wypożyczenia xd
-    @GetMapping(value = "/myRentals/{id}")
-    public String rentalEnd(@PathVariable(name = "id") Long id) {
+    @GetMapping(value = "/myRentals/{rental_id}")
+    public String rentalEnd(@PathVariable(name = "rental_id") Long id) {
         Rental rental = rentalRepository.findRentalById(id);
         rental.setEndDate(LocalDateTime.now());
         rental.setPrice(rental.getBike().getPricePerHour());
@@ -37,21 +38,32 @@ public class RentalController {
         return "redirect:/myRentals";
     }
 
-    @GetMapping(value = "/myRentals/{id}/complaint")
-    public String rentalComplaint(@PathVariable(name = "id") Long id, Model model) {
-        Complaints complaint = new Complaints();
-        complaintsRepository.save(complaint);
+    @GetMapping(value = "/myRentals/{rental_id}/complaint")
+    public String rentalComplaint(@PathVariable(name = "rental_id") Long id, Model model) {
         Rental rental = rentalRepository.findRentalById(id);
+        Complaints complaint = new Complaints();
+        complaint.setRental(rental);
+        complaintsRepository.save(complaint);
         rental.setComplaints(complaint);
+        rentalRepository.save(rental);
         model.addAttribute("rental", rental);
         return "complaint-form";
     }
 
-    @PostMapping(value = "/myRentals/{id}/complaint")
-    public String processComplaint(@PathVariable(name = "id") Long id) {
-        Rental rental = rentalRepository.findRentalById(id);
-        complaintsRepository.save(rental.getComplaints());
-        rentalRepository.save(rental);
+    @PostMapping(value = "/myRentals/{rental_id}/complaint")
+    public String processComplaint(@PathVariable(name = "rental_id") Long id, @ModelAttribute("rental") Rental rental) {
+        Complaints complaint = rental.getComplaints();
+        complaintsRepository.save(complaint);
+        Rental rental_original = rentalRepository.findRentalById(id);
+        rental_original.setComplaints(complaint);
+        rentalRepository.save(rental_original);
         return "redirect:/myRentals";
+    }
+
+    @GetMapping(value = "/myRentals/{rental_id}/show")
+    public String rentalComplaintDisplay(@PathVariable(name = "rental_id") Long id, Model model) {
+        Rental rental = rentalRepository.findRentalById(id);
+        model.addAttribute("rental", rental);
+        return "rental-complaint";
     }
 }
