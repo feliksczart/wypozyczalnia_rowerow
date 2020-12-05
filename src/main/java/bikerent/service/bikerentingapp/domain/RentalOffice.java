@@ -5,14 +5,16 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.io.Serializable;
 
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-public class RentalOffice {
+public class RentalOffice implements Serializable {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "rental_office_sequence")
+    @SequenceGenerator(name = "rental_office_sequence", sequenceName = "RENTAL_OFFICE_SEQ")
     private Long id;
 
     private String city;

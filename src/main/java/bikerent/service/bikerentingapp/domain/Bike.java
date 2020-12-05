@@ -6,17 +6,19 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.io.Serializable;
 
 @Data
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-public class Bike {
+public class Bike implements Serializable {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "bike_sequence")
+    @SequenceGenerator(name = "bike_sequence", sequenceName = "BIKE_SEQ")
     private Long id;
-    
+
     private int pricePerHour;
     private String bikeState;
 

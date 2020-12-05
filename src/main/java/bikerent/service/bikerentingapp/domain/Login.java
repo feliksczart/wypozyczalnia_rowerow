@@ -20,7 +20,8 @@ import java.util.List;
 @Entity
 public class Login implements UserDetails {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "login_sequence")
+    @SequenceGenerator(name = "login_sequence", sequenceName = "LOGIN_SEQ")
     private Long id;
 
     private String prefix = "ROLE_";

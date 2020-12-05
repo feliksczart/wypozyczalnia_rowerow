@@ -5,14 +5,16 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.io.Serializable;
 
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-public class Complaints {
+public class Complaints implements Serializable {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "complaints_sequence")
+    @SequenceGenerator(name = "complaints_sequence", sequenceName = "COMPLAINTS_SEQ")
     private Long id;
 
     private String title;
