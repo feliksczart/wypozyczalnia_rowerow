@@ -1,7 +1,6 @@
 package bikerent.service.bikerentingapp.bootstrap;
 
 import bikerent.service.bikerentingapp.Services.UserService;
-import bikerent.service.bikerentingapp.domain.*;
 import bikerent.service.bikerentingapp.repositories.*;
 import lombok.AllArgsConstructor;
 import org.springframework.boot.CommandLineRunner;
@@ -20,7 +19,7 @@ public class BootstrapData implements CommandLineRunner {
 
     @Override
     public void run(String... args) throws Exception {
-        Region region = new Region("Wielkopolskie", "Poznań");
+       /* Region region = new Region("Wielkopolskie", "Poznań");
         regionRepository.save(region);
 
         RentalOffice rentalOffice = new RentalOffice("Poznan", "60-226", "Palacza 5");
@@ -42,6 +41,6 @@ public class BootstrapData implements CommandLineRunner {
         Bike bike = new Bike(15, "dobry");
         bike.setBikeModel(bikeModel);
         bikeRepository.save(bike);
-
+        */
     }
 }
