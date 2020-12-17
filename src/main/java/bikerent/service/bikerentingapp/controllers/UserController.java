@@ -3,6 +3,7 @@ package bikerent.service.bikerentingapp.controllers;
 import bikerent.service.bikerentingapp.Services.SecurityService;
 import bikerent.service.bikerentingapp.Services.UserService;
 import bikerent.service.bikerentingapp.domain.User;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -15,8 +16,14 @@ import java.security.Principal;
 @Controller
 public class UserController {
 
-    private UserService userService;
-    private SecurityService securityService;
+    private final UserService userService;
+    private final SecurityService securityService;
+
+    @Autowired
+    public UserController(UserService userService, SecurityService securityService) {
+        this.userService = userService;
+        this.securityService = securityService;
+    }
 
     @RequestMapping("/")
     public String root() {
