@@ -4,9 +4,13 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.springframework.security.core.GrantedAuthority;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.Collection;
+import java.util.HashSet;
+import java.util.Set;
 
 @Data
 @Builder
@@ -28,8 +32,8 @@ public class User implements Serializable {
     private String gender;
     private int phoneNumber;
 
-    @OneToOne
-    private Login login;
+    @ManyToMany
+    private Set<Role> roles;
 
     @OneToOne
     private RentalOffice rentalOffice;
@@ -37,5 +41,10 @@ public class User implements Serializable {
     public User(String name, String surname) {
         this.name = name;
         this.surname = surname;
+    }
+
+    public User(String nick, String password, Set<GrantedAuthority> grantedAuthorities) {
+        this.nick = nick;
+        this.password = password;
     }
 }

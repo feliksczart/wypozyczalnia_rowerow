@@ -36,7 +36,7 @@ public class RentalOfficeBean {
 
     public void bikeRental(Long rentalId, Long bikeId, Principal principal) {
         Rental rental = new Rental();
-        rental.setUser(loginBean.getUser(principal));
+        //rental.setUser(loginBean.getUser(principal));
         rental.setBike(bikeRepository.findById(bikeId)
                 .orElseThrow(null));
         rental.setRentalOffice(rentalOfficeRepository.findById(rentalId)

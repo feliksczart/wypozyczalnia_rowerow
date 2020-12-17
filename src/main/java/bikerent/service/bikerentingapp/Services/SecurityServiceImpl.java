@@ -9,13 +9,16 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.stereotype.Service;
 
 @Service
-@AllArgsConstructor
 public class SecurityServiceImpl implements SecurityService{
 
-    @Autowired
     private final AuthenticationManager authenticationManager;
-    @Autowired
     private final UserDetailsService userDetailsService;
+
+    @Autowired
+    public SecurityServiceImpl(AuthenticationManager authenticationManager, UserDetailsService userDetailsService) {
+        this.authenticationManager = authenticationManager;
+        this.userDetailsService = userDetailsService;
+    }
 
 
     @Override

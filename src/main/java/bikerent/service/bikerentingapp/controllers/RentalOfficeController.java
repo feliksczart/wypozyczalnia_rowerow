@@ -79,7 +79,7 @@ public class RentalOfficeController {
 
     @GetMapping(value = "/your/rentalOffice")
     public String yourRentalOffice(Model model, Principal principal) {
-        model.addAttribute("user", loginBean.getUser(principal));
+        //model.addAttribute("user", loginBean.getUser(principal));
         return "your-rental-office";
     }
 

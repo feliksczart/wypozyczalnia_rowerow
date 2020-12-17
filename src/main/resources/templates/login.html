@@ -29,9 +29,9 @@
     <h1 class="registry__header">Zaloguj się do serwisu</h1>
     <form role="form" method="post" th:action="@{/login}"> <!--dodać th:object="${user}"-->
         <div class="registry__element"> <!--dodać th:field="*{nick}" v-->
-            <input class="registry__element-label" id="nick" name="login.nick" placeholder="Nick"
+            <input class="registry__element-label" id="nick" name="user.nick" placeholder="Nick"
                    title="Podaj nazwę użytkownika" type="text">
-            <input class="registry__element-label" id="password" name="login.password" placeholder="Hasło" title="Podaj hasło" type="password">
+            <input class="registry__element-label" id="password" name="user.password" placeholder="Hasło" title="Podaj hasło" type="password">
         </div>
         <div class="registry__element">
             <input name="Zaloguj się" type="Submit" value="Zaloguj" class="registry__element-submit">
