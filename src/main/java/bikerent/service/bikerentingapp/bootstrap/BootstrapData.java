@@ -1,6 +1,6 @@
 package bikerent.service.bikerentingapp.bootstrap;
 
-import bikerent.service.bikerentingapp.Services.UserService;
+import bikerent.service.bikerentingapp.Services.UserDetailsServiceImpl;
 import bikerent.service.bikerentingapp.domain.*;
 import bikerent.service.bikerentingapp.repositories.*;
 import lombok.AllArgsConstructor;
@@ -12,7 +12,7 @@ import org.springframework.stereotype.Component;
 public class BootstrapData implements CommandLineRunner {
 
     private final BikeRepository bikeRepository;
-    private final UserService userService;
+    private final UserDetailsServiceImpl userDetailsServiceImpl;
     private final RentalOfficeRepository rentalOfficeRepository;
     private final RegionRepository regionRepository;
     private final BikeModelRepository bikeModelRepository;
