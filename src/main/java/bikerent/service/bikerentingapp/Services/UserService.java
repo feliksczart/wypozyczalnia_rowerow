@@ -1,48 +1,37 @@
 package bikerent.service.bikerentingapp.Services;
 
-import bikerent.service.bikerentingapp.domain.Login;
 import bikerent.service.bikerentingapp.domain.Role;
 import bikerent.service.bikerentingapp.domain.User;
-import bikerent.service.bikerentingapp.repositories.LoginRepository;
 import bikerent.service.bikerentingapp.repositories.UserRepository;
 import lombok.AllArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
-import org.springframework.security.core.userdetails.UsernameNotFoundException;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
-import java.text.MessageFormat;
-import java.util.Optional;
+import javax.transaction.Transactional;
+import java.util.HashSet;
+import java.util.Set;
 
 @Service
 @AllArgsConstructor
 public class UserService implements UserDetailsService {
 
+    @Autowired
     private final UserRepository userRepository;
-    private final LoginRepository loginRepository;
-    private final BCryptPasswordEncoder bCryptPasswordEncoder;
 
     @Override
-    public UserDetails loadUserByUsername(String nick) throws UsernameNotFoundException {
+    @Transactional
+    public UserDetails loadUserByUsername(String username) {
+        User user = userRepository.findByNick(username)
+                .orElseThrow(null);
 
-        final Optional<Login> optionalUser = loginRepository.findByNick(nick);
-
-        if (optionalUser.isPresent()) {
-            return optionalUser.get();
-        } else {
-            throw new UsernameNotFoundException(MessageFormat.format("User with nick {0} cannot be found.", nick));
+        Set<GrantedAuthority> grantedAuthorities = new HashSet<>();
+        for (Role role : user.getRoles()){
+            grantedAuthorities.add(new SimpleGrantedAuthority(role.getName()));
         }
-    }
-
-    public void signUpUser(User user) {
-        Login login = user.getLogin();
-        final String encryptedPassword = bCryptPasswordEncoder.encode(login.getPassword());
-        login.setPassword(encryptedPassword);
-        login.setEnabled(true);
-        login.setRole(Role.ADMIN);
-        loginRepository.save(login);
-        user.setLogin(login);
-        userRepository.save(user);
+        return (UserDetails) new User(user.getNick(), user.getPassword(), grantedAuthorities);
     }
 }

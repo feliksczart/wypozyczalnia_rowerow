@@ -71,9 +71,9 @@ public class RentalOfficeController {
     @PostMapping(value = "/rentalOffice/register")
     public String rentalOfficeClaim(@ModelAttribute RentalOffice rentalOffice, Principal principal) {
         rentalOfficeRepository.save(rentalOffice);
-        User user = loginBean.getUser(principal);
-        user.setRentalOffice(rentalOffice);
-        userRepository.save(user);
+        //User user = loginBean.getUser(principal);
+        //user.setRentalOffice(rentalOffice);
+        //userRepository.save(user);
         return "redirect:/rentalOffice/" + rentalOffice.getId();
     }
 
@@ -91,7 +91,7 @@ public class RentalOfficeController {
 
     @PostMapping(value = "/rentalOffice/edit")
     public String saveYourRentalOffice(@ModelAttribute RentalOffice rentalOffice, Principal principal) {
-        rentalOfficeBean.editRentalOffice(rentalOffice, principal);
+        //rentalOfficeBean.editRentalOffice(rentalOffice, principal);
         return "redirect:/your/rentalOffice";
     }
 }

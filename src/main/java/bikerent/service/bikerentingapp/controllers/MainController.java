@@ -32,13 +32,13 @@ public class MainController {
 
     @GetMapping("/registration")
     String signUp(Model model) {
-        model.addAttribute("user", loginBean.bindingUserAndLogin());
+
         return "registration";
     }
 
     @PostMapping("/registration")
     String signUp(User user) {
-        userService.signUpUser(user);
+        //userService.signUpUser(user);
         return "redirect:/login";
     }
 

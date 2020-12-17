@@ -15,7 +15,6 @@ public class RentalOfficeBean {
     private final BikeRepository bikeRepository;
     private final RentalRepository rentalRepository;
     private RentalOfficeRepository rentalOfficeRepository;
-    private LoginRepository loginRepository;
     private UserRepository userRepository;
     private LoginBean loginBean;
 
@@ -46,15 +45,15 @@ public class RentalOfficeBean {
         rentalRepository.save(rental);
     }
 
-    public void editRentalOffice(RentalOffice rentalOffice, Principal principal) {
-        User user = loginBean.getUser(principal);
-        if (rentalOffice.getAddress() != "")
-            user.getRentalOffice().setAddress(rentalOffice.getAddress());
-        if (rentalOffice.getZip() != "")
-            user.getRentalOffice().setZip(rentalOffice.getZip());
-        if (rentalOffice.getCity() != "")
-            user.getRentalOffice().setCity(rentalOffice.getCity());
-        rentalOfficeRepository.save(user.getRentalOffice());
-        userRepository.save(user);
-    }
+//    public void editRentalOffice(RentalOffice rentalOffice, Principal principal) {
+//        User user = loginBean.getUser(principal);
+//        if (rentalOffice.getAddress() != "")
+//            user.getRentalOffice().setAddress(rentalOffice.getAddress());
+//        if (rentalOffice.getZip() != "")
+//            user.getRentalOffice().setZip(rentalOffice.getZip());
+//        if (rentalOffice.getCity() != "")
+//            user.getRentalOffice().setCity(rentalOffice.getCity());
+//        rentalOfficeRepository.save(user.getRentalOffice());
+//        userRepository.save(user);
+//    }
 }

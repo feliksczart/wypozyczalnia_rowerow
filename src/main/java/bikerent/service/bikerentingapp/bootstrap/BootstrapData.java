@@ -15,7 +15,6 @@ public class BootstrapData implements CommandLineRunner {
     private final UserService userService;
     private final RentalOfficeRepository rentalOfficeRepository;
     private final RegionRepository regionRepository;
-    private final LoginRepository loginRepository;
     private final BikeModelRepository bikeModelRepository;
 
     @Override
