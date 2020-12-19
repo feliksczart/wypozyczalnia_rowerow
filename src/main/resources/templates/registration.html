@@ -2,6 +2,7 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <title>Spring Boot User Authentication</title>
+    <link rel="icon" th:href="@{/images/row-logo.png}">
     <link th:href="@{/css/style.css}" rel="stylesheet" />
 </head>
 <body>
@@ -27,10 +28,10 @@
     </div>
 
     <div class="registry__element">
-        <input class="registry__element-label" id="nick" name="user.nick" placeholder="Nick" th:field="*{user.nick}"
+        <input class="registry__element-label" id="nick" name="user.nick" placeholder="Nick" th:field="*{nick}"
                title="Podaj nazwę użytkownika" type="text">
         <input class="registry__element-label" id="password" name="user.password" placeholder="Hasło"
-               th:field="*{user.password}" title="Podaj hasło" type="password">
+               th:field="*{password}" title="Podaj hasło" type="password">
     </div>
     <div class="registry__element">
         <input name="Zarejestruj się" type="Submit" class="registry__element-submit">
