@@ -38,13 +38,15 @@ public class User implements Serializable {
     @OneToOne
     private RentalOffice rentalOffice;
 
-    public User(String name, String surname) {
+    public User(String name, String surname, String nick, String password, Set<GrantedAuthority> grantedAuthorities) {
         this.name = name;
         this.surname = surname;
-    }
-
-    public User(String nick, String password, Set<GrantedAuthority> grantedAuthorities) {
         this.nick = nick;
         this.password = password;
     }
+
+//    public User(String nick, String password, Set<GrantedAuthority> grantedAuthorities) {
+//        this.nick = nick;
+//        this.password = password;
+//    }
 }

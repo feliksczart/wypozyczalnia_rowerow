@@ -1,11 +1,17 @@
 package bikerent.service.bikerentingapp.bootstrap;
 
 import bikerent.service.bikerentingapp.Services.UserDetailsServiceImpl;
+import bikerent.service.bikerentingapp.Services.UserService;
+import bikerent.service.bikerentingapp.Services.UserServiceImpl;
 import bikerent.service.bikerentingapp.domain.*;
 import bikerent.service.bikerentingapp.repositories.*;
 import lombok.AllArgsConstructor;
 import org.springframework.boot.CommandLineRunner;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Component;
+
+import java.util.Set;
 
 @Component
 @AllArgsConstructor
@@ -17,6 +23,12 @@ public class BootstrapData implements CommandLineRunner {
     private final RegionRepository regionRepository;
     private final BikeModelRepository bikeModelRepository;
 
+    private final UserRepository userRepository;
+    private final RoleRepository roleRepository;
+    private final BCryptPasswordEncoder bCryptPasswordEncoder;
+    private UserServiceImpl userService;
+    Set<GrantedAuthority> grantedAuthority;
+
     @Override
     public void run(String... args) throws Exception {
         Region region = new Region("Wielkopolskie", "Poznań");
@@ -26,14 +38,13 @@ public class BootstrapData implements CommandLineRunner {
         rentalOffice.setRegion(region);
         rentalOfficeRepository.save(rentalOffice);
 
-//        User user = new User();
-//        user.setName("Piotr");
-//        user.setSurname("Derenowski");
-//        user.setRentalOffice(rentalOffice);
-//        Login login = new Login("", "", false, false, Role.ADMIN);
-//        loginRepository.save(login);
-//        user.setLogin(login);
-//        userService.signUpUser(user);
+        User feliks = new User("Feliks","Czart","fff","123",grantedAuthority);
+        userService.handleUser(feliks, userRepository, roleRepository, bCryptPasswordEncoder);
+        userService.save(feliks);
+
+        User piotr = new User("Piotr","Derenowski","ppp","123",grantedAuthority);
+        userService.handleUser(piotr, userRepository, roleRepository, bCryptPasswordEncoder);
+        userService.save(piotr);
 
         BikeModel bikeModel = new BikeModel("Destruktor", "Ferrari", "górski");
         bikeModelRepository.save(bikeModel);

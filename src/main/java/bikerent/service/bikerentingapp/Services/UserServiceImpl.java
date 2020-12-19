@@ -36,4 +36,13 @@ public class UserServiceImpl implements UserService {
     public User findByUsername(String username) {
         return userRepository.findByNick(username);
     }
+
+    public UserServiceImpl handleUser(User user, UserRepository userRepository, RoleRepository roleRepository, BCryptPasswordEncoder bCryptPasswordEncoder){
+        UserServiceImpl userService;
+        userRepository.findByNick(user.getNick());
+        roleRepository.findAll();
+        bCryptPasswordEncoder.encode(user.getPassword());
+        userService = new UserServiceImpl(userRepository,roleRepository,bCryptPasswordEncoder);
+        return userService;
+    }
 }
