@@ -46,6 +46,10 @@ public class BootstrapData implements CommandLineRunner {
         userService.handleUser(piotr, userRepository, roleRepository, bCryptPasswordEncoder);
         userService.save(piotr);
 
+        User one = new User("1","1","1","1",grantedAuthority);
+        userService.handleUser(one, userRepository, roleRepository, bCryptPasswordEncoder);
+        userService.save(one);
+
         BikeModel bikeModel = new BikeModel("Destruktor", "Ferrari", "górski");
         bikeModelRepository.save(bikeModel);
 

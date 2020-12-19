@@ -185,3 +185,27 @@ main {
 	background-color: #D91420;
 	cursor: pointer;
 }
+
+.rental__item{
+	margin-top: 25px;
+	margin-right: 20px;
+	margin-bottom: 25px;
+	width: 200px;
+	height: 200px;
+	display: inline-flex;
+	justify-content: center;
+	align-items: center;
+	text-align: center;
+	background-color: #342E37;
+	border: 1px solid #121232;
+	border-radius: 50%;
+	-webkit-filter: drop-shadow(0 4px 4px rgba(0,0,0,.25));
+	filter: drop-shadow(0 4px 4px rgba(0,0,0,.25));
+	transition: all .2s ease-in-out;
+}
+.rental__item:hover { transform: scale(1.1); }
+
+.rental__item-title{
+	color: #FAFFFD;
+	font-size: 20px;
+}
