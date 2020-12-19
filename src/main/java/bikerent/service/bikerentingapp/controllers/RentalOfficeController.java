@@ -1,7 +1,5 @@
 package bikerent.service.bikerentingapp.controllers;
 
-import bikerent.service.bikerentingapp.Services.SecurityService;
-import bikerent.service.bikerentingapp.Services.UserService;
 import bikerent.service.bikerentingapp.beans.LoginBean;
 import bikerent.service.bikerentingapp.beans.RentalOfficeBean;
 import bikerent.service.bikerentingapp.domain.Bike;
@@ -14,8 +12,6 @@ import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-
-import java.security.Principal;
 
 @Controller
 @AllArgsConstructor
@@ -59,8 +55,8 @@ public class RentalOfficeController {
     }
 
     @GetMapping(value = "/rentalOffice/{rental_id}/bike/{bike_id}")
-    public String bikeList(@PathVariable(value = "rental_id") Long rentalId, @PathVariable(value = "bike_id") Long bikeId, Principal principal) {
-        rentalOfficeBean.bikeRental(rentalId, bikeId, principal);
+    public String bikeList(@PathVariable(value = "rental_id") Long rentalId, @PathVariable(value = "bike_id") Long bikeId) {
+        rentalOfficeBean.bikeRental(rentalId, bikeId);
         return "redirect:/myRentals";
     }
 
@@ -71,17 +67,17 @@ public class RentalOfficeController {
     }
 
     @PostMapping(value = "/rentalOffice/register")
-    public String rentalOfficeClaim(@ModelAttribute RentalOffice rentalOffice, Principal principal) {
+    public String rentalOfficeClaim(@ModelAttribute RentalOffice rentalOffice) {
         rentalOfficeRepository.save(rentalOffice);
-        //User user = loginBean.getUser(principal);
-        //user.setRentalOffice(rentalOffice);
-        //userRepository.save(user);
+        User user = loginBean.getUser();
+        user.setRentalOffice(rentalOffice);
+        userRepository.save(user);
         return "redirect:/rentalOffice/" + rentalOffice.getId();
     }
 
     @GetMapping(value = "/your/rentalOffice")
-    public String yourRentalOffice(Model model, Principal principal) {
-        //model.addAttribute("user", loginBean.getUser(principal));
+    public String yourRentalOffice(Model model) {
+        model.addAttribute("user", loginBean.getUser());
         return "your-rental-office";
     }
 
@@ -92,8 +88,8 @@ public class RentalOfficeController {
     }
 
     @PostMapping(value = "/rentalOffice/edit")
-    public String saveYourRentalOffice(@ModelAttribute RentalOffice rentalOffice, Principal principal) {
-        //rentalOfficeBean.editRentalOffice(rentalOffice, principal);
+    public String saveYourRentalOffice(@ModelAttribute RentalOffice rentalOffice) {
+        rentalOfficeBean.editRentalOffice(rentalOffice);
         return "redirect:/your/rentalOffice";
     }
 }

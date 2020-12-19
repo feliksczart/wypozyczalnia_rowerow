@@ -5,7 +5,6 @@ import bikerent.service.bikerentingapp.repositories.*;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Component;
 
-import java.security.Principal;
 import java.time.LocalDateTime;
 
 @Component
@@ -34,9 +33,9 @@ public class RentalOfficeBean {
         return bike;
     }
 
-    public void bikeRental(Long rentalId, Long bikeId, Principal principal) {
+    public void bikeRental(Long rentalId, Long bikeId) {
         Rental rental = new Rental();
-        //rental.setUser(loginBean.getUser(principal));
+        rental.setUser(loginBean.getUser());
         rental.setBike(bikeRepository.findById(bikeId)
                 .orElseThrow(null));
         rental.setRentalOffice(rentalOfficeRepository.findById(rentalId)
@@ -45,15 +44,15 @@ public class RentalOfficeBean {
         rentalRepository.save(rental);
     }
 
-//    public void editRentalOffice(RentalOffice rentalOffice, Principal principal) {
-//        User user = loginBean.getUser(principal);
-//        if (rentalOffice.getAddress() != "")
-//            user.getRentalOffice().setAddress(rentalOffice.getAddress());
-//        if (rentalOffice.getZip() != "")
-//            user.getRentalOffice().setZip(rentalOffice.getZip());
-//        if (rentalOffice.getCity() != "")
-//            user.getRentalOffice().setCity(rentalOffice.getCity());
-//        rentalOfficeRepository.save(user.getRentalOffice());
-//        userRepository.save(user);
-//    }
+    public void editRentalOffice(RentalOffice rentalOffice) {
+        User user = loginBean.getUser();
+        if (rentalOffice.getAddress() != "")
+            user.getRentalOffice().setAddress(rentalOffice.getAddress());
+        if (rentalOffice.getZip() != "")
+            user.getRentalOffice().setZip(rentalOffice.getZip());
+        if (rentalOffice.getCity() != "")
+            user.getRentalOffice().setCity(rentalOffice.getCity());
+        rentalOfficeRepository.save(user.getRentalOffice());
+        userRepository.save(user);
+    }
 }
