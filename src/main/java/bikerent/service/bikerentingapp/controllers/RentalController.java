@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
 @Controller
 @AllArgsConstructor
@@ -31,7 +32,10 @@ public class RentalController {
     @GetMapping(value = "/myRentals/{rental_id}")
     public String rentalEnd(@PathVariable(name = "rental_id") Long id) {
         Rental rental = rentalRepository.findRentalById(id);
-        rental.setEndDate(LocalDateTime.now());
+        LocalDateTime now = LocalDateTime.now();
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+        String formatDateTime = now.format(formatter);
+        rental.setEndDate(formatDateTime);
         rental.setPrice(rental.getBike().getPricePerHour());
         rentalRepository.save(rental);
         //rentalRepository.deleteRentalById(id);

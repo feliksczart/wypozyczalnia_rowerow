@@ -6,7 +6,6 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.io.Serializable;
-import java.time.LocalDateTime;
 
 @Data
 @NoArgsConstructor
@@ -18,9 +17,9 @@ public class Rental implements Serializable {
     @SequenceGenerator(name = "rental_sequence", sequenceName = "RENTAL_SEQ")
     private Long id;
 
-    private LocalDateTime startDate;
+    private String startDate;
 
-    private LocalDateTime endDate;
+    private String endDate;
 
     private int price;
 
