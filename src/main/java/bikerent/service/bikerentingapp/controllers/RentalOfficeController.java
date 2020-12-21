@@ -9,6 +9,7 @@ import bikerent.service.bikerentingapp.repositories.BikeRepository;
 import bikerent.service.bikerentingapp.repositories.RentalOfficeRepository;
 import bikerent.service.bikerentingapp.repositories.UserRepository;
 import lombok.AllArgsConstructor;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;

@@ -8,6 +8,10 @@
     }</style>
     <link rel="icon" th:href="@{/images/row-logo.png}">
     <link th:href="@{/css/style.css}" rel="stylesheet" />
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script type="text/javascript" th:src="@{/js/filter.js}"></script>
 </head>
 <body>
 <header>
@@ -23,7 +27,8 @@
     </nav>
 </header>
 <main>
-<table>
+    <input id="search" name="keyword" placeholder="Szukaj..." type="text">
+<table id="bikeList">
     <tr>
         <th>ID</th>
         <th>Cena</th>
@@ -45,6 +50,11 @@
         </td>
     </tr>
 </table>
+    <script th:inline="javascript">
+        var bikes = [[${bikes}]];
+        search(bikes, [[${id}]])
+    </script>
+
 <a th:href="@{/}"> Wróć</a>
 <a th:href="@{/rentalOffice/{id}/bikes(id=${id})}"> Dodaj Rower</a>
 </main>

@@ -20,12 +20,40 @@
     </nav>
 </header>
 <main>
-    <section class="rental__item">
-        <tr th:each="rental : ${rentals}">
-            <a class="rental__item-title" th:text="${rental.bike.bikeModel.name}" th:href="@{/rentalOffice}">Rower</a>
+    <table>
+        <tr>
+            <th>ID</th>
+            <th>Data Rozpoczęcia</th>
+            <th>Data Zakończenia</th>
+            <th>Cena</th>
+            <th>Nazwa Roweru</th>
+            <th>Nazwisko Użytkownika</th>
+            <th>Miasto</th>
+            <th>Zakończ Wypożyczenie</th>
+            <th>reklamacja</th>
         </tr>
-    </section>
+        <tr th:each="rental : ${rentals}">
+            <td th:text="${rental.id}">ID</td>
+            <td th:text="${rental.startDate}">Miasto</td>
+            <td th:text="${rental?.endDate}">Kod pocztowy</td>
+            <td th:text="${rental?.price}">Adres</td>
+            <td th:text="${rental.bike.bikeModel.name}">Województwo</td>
+            <td th:text="${rental.user?.surname}">Adres</td>
+            <td th:text="${rental.rentalOffice.city}">Powiat</td>
+            <td>
+                <span th:if="${rental?.endDate != null}">Zakończono</span>
+                <span th:if="${rental?.endDate == null}"><a th:href="@{/myRentals/{id}(id = ${rental.id})}">Zakończ Wypożyczenie</a></span>
+            </td>
+            <td>
+            <span th:if="${rental?.complaints == null}"><a
+                    th:href="@{/myRentals/{rental_id}/complaint (rental_id = ${rental.id})}">złóż</a></span>
+                <span th:if="${rental?.complaints != null}"><a
+                        th:href="@{/myRentals/{rental_id}/show (rental_id = ${rental.id})}">zobacz</a></span>
+            </td>
 
+        </tr>
+    </table>
+    <a th:href="@{/}"> Wróć</a>
 </main>
 </body>
 </html>
