@@ -6,6 +6,7 @@ import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Component;
 
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
 @Component
 @AllArgsConstructor
@@ -40,7 +41,10 @@ public class RentalOfficeBean {
                 .orElseThrow(null));
         rental.setRentalOffice(rentalOfficeRepository.findById(rentalId)
                 .orElseThrow(null));
-        rental.setStartDate(LocalDateTime.now());
+        LocalDateTime now = LocalDateTime.now();
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+        String formatDateTime = now.format(formatter);
+        rental.setStartDate(formatDateTime);
         rentalRepository.save(rental);
     }
 

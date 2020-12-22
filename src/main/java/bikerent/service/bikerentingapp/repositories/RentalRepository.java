@@ -3,6 +3,7 @@ package bikerent.service.bikerentingapp.repositories;
 import bikerent.service.bikerentingapp.domain.Rental;
 import org.springframework.context.annotation.Scope;
 import org.springframework.context.annotation.ScopedProxyMode;
+import org.springframework.data.jpa.repository.query.Procedure;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
@@ -15,4 +16,7 @@ public interface RentalRepository extends CrudRepository<Rental, Long> {
     void deleteRentalById(Long rentalId);
 
     Rental findRentalById(Long rentalId);
+
+    @Procedure
+    void update_price(Long id, int total_price);
 }

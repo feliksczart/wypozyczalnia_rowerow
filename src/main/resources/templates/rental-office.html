@@ -30,23 +30,25 @@
     <input id="search" name="keyword" placeholder="Szukaj..." type="text">
 <table id="bikeList">
     <tr>
-        <th>ID</th>
         <th>Cena</th>
-        <th>Stan</th>
         <th>Model</th>
         <th>Marka</th>
         <th>Typ</th>
-        <th>Wypożycz</th>
+        <th>Stan</th>
+        <th></th>
+        <th></th>
     </tr>
     <tr th:each="bike : ${bikes}">
-        <td th:text="${bike.id}">ID</td>
         <td th:text="${bike.pricePerHour}">Cena</td>
-        <td th:text="${bike.bikeState}">Stan</td>
         <td th:text="${bike.bikeModel?.name}">Model</td>
         <td th:text="${bike.bikeModel?.brand}">Marka</td>
         <td th:text="${bike.bikeModel?.type}">Typ</td>
+        <td th:text="${bike.bikeState}">Stan</td>
         <td>
             <a th:href="@{/rentalOffice/{rental_id}/bike/{bike_id} (rental_id = ${id}, bike_id = ${bike.id})}">Wypożycz</a>
+        </td>
+        <td>
+            <a th:href="@{/rentalOffice/{rental_id}/remove/{bike_id}(rental_id = ${id}, bike_id = ${bike.id})}">Usuń</a>
         </td>
     </tr>
 </table>

@@ -37,6 +37,12 @@ public class RentalOfficeController {
         return "rental-office";
     }
 
+    @GetMapping(value = "/rentalOffice/{rental_id}/remove/{bike_id}")
+    public String removeBike(@PathVariable(value = "rental_id") Long rentalOfficeId, @PathVariable(value = "bike_id") Long bikeId) {
+        bikeRepository.deleteBikeById(bikeId);
+        return "redirect:/rentalOffice/" + rentalOfficeId;
+    }
+
     @GetMapping(value = "/rentalOffice/{id}/bikes")
     public String bikeAddForm(@PathVariable(value = "id") Long id, Model model) {
         Integer number = 0;
