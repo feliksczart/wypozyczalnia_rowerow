@@ -36,9 +36,8 @@ public class RentalController {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
         String formatDateTime = now.format(formatter);
         rental.setEndDate(formatDateTime);
-//        rental.setPrice(rental.getBike().getPricePerHour());
-        rentalRepository.update_price(id, 50);
         rental.setPrice(rental.getBike().getPricePerHour());
+//        rentalRepository.update_price(id.intValue(), 50);
         rentalRepository.save(rental);
         //rentalRepository.deleteRentalById(id);
         return "redirect:/myRentals";

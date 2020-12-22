@@ -18,5 +18,5 @@ public interface RentalRepository extends CrudRepository<Rental, Long> {
     Rental findRentalById(Long rentalId);
 
     @Procedure
-    void update_price(Long id, int total_price);
+    void update_price(Integer rental_id, Integer total_price);
 }
