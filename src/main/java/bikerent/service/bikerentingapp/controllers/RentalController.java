@@ -38,6 +38,7 @@ public class RentalController {
         rental.setEndDate(formatDateTime);
 //        rental.setPrice(rental.getBike().getPricePerHour());
         rentalRepository.update_price(id, 50);
+        rental.setPrice(rental.getBike().getPricePerHour());
         rentalRepository.save(rental);
         //rentalRepository.deleteRentalById(id);
         return "redirect:/myRentals";
