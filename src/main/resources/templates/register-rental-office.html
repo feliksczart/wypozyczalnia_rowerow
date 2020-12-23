@@ -24,9 +24,9 @@
 
 <form action="#" method="post" th:action="@{/rentalOffice/register}">
     <div class="registry__element">
-        <input required placeholder="Miasto" th:name="city" th:value="${RentalOffice.city}" type="text" class="registry__element-label"/>
-        <input required placeholder="Kod pocztowy" th:name="zip" th:value="${RentalOffice.zip}" type="text" class="registry__element-label"/>
-        <input required placeholder="Adres" th:name="address" th:value="${RentalOffice.address}" type="text" class="registry__element-label"/>
+        <input required placeholder="Miasto" th:name="city" th:value="${RentalOffice.city}" type="text" class="registry__element-label" autocomplete="off"/>
+        <input required placeholder="Kod pocztowy" th:name="zip" th:value="${RentalOffice.zip}" type="text" class="registry__element-label" autocomplete="off"/>
+        <input required placeholder="Adres" th:name="address" th:value="${RentalOffice.address}" type="text" class="registry__element-label" autocomplete="off"/>
     </div>
     <div class="registry__element">
         <input class="registry__element-submit" type="submit" value="Dodaj"/>

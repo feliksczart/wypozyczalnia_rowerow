@@ -25,11 +25,11 @@
     <form action="#" method="post" th:action="@{/rentalOffice/edit}">
         <div class="registry__element">
             <input class="registry__element-label" placeholder="Miasto" th:name="city" th:value="${RentalOffice?.city}"
-                   type="text"/>
+                   type="text" autocomplete="off"/>
             <input class="registry__element-label" placeholder="Kod pocztowy" th:name="zip"
-                   th:value="${RentalOffice?.zip}" type="text"/>
+                   th:value="${RentalOffice?.zip}" type="text" autocomplete="off"/>
             <input class="registry__element-label" placeholder="Adres" th:name="address"
-                   th:value="${RentalOffice?.address}" type="text"/>
+                   th:value="${RentalOffice?.address}" type="text" autocomplete="off"/>
         </div>
         <div class="registry__element">
             <input class="registry__element-submit" type="submit" value="Zapisz"/>

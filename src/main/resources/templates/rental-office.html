@@ -27,7 +27,7 @@
     </nav>
 </header>
 <main>
-    <input id="search" name="keyword" placeholder="Szukaj..." type="text">
+    <input id="search" name="keyword" placeholder="Szukaj..." type="text" autocomplete="off">
 <table id="bikeList">
     <tr>
         <th>Cena</th>
@@ -39,6 +39,7 @@
         <th></th>
     </tr>
     <tr th:each="bike : ${bikes}">
+        <div th:if="${bike.bikeState != 'niedostępny'}">
         <td th:text="${bike.pricePerHour}">Cena</td>
         <td th:text="${bike.bikeModel?.name}">Model</td>
         <td th:text="${bike.bikeModel?.brand}">Marka</td>
@@ -50,6 +51,7 @@
         <td>
             <a th:href="@{/rentalOffice/{rental_id}/remove/{bike_id}(rental_id = ${id}, bike_id = ${bike.id})}">Usuń</a>
         </td>
+        </div>
     </tr>
 </table>
     <script th:inline="javascript">

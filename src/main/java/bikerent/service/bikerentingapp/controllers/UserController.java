@@ -2,6 +2,7 @@ package bikerent.service.bikerentingapp.controllers;
 
 import bikerent.service.bikerentingapp.Services.SecurityService;
 import bikerent.service.bikerentingapp.Services.UserService;
+import bikerent.service.bikerentingapp.beans.LoginBean;
 import bikerent.service.bikerentingapp.domain.User;
 import bikerent.service.bikerentingapp.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,12 +21,14 @@ public class UserController {
     private final UserService userService;
     private final SecurityService securityService;
     private final UserRepository userRepository;
+    private final LoginBean loginBean;
 
     @Autowired
-    public UserController(UserService userService, SecurityService securityService, UserRepository userRepository) {
+    public UserController(UserService userService, SecurityService securityService, UserRepository userRepository, LoginBean loginBean) {
         this.userService = userService;
         this.securityService = securityService;
         this.userRepository = userRepository;
+        this.loginBean = loginBean;
     }
 
     @RequestMapping("/")
@@ -35,7 +38,7 @@ public class UserController {
 
     @RequestMapping("/index")
     public String mainPage(Model model, Principal principal) {
-//        model.addAttribute("username", loginBean.getUser(principal).getName(););
+        model.addAttribute("user", loginBean.getUser());
         return "index";
     }
 

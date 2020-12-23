@@ -25,11 +25,17 @@
                 <img class="navigation__logo" th:src="@{/images/czader.png}" alt="company logo">
             </a>
             <a class="navigation__link navigation__link-homepage" th:href="@{/index}">Strona główna</a>
-            <a class="navigation__link" th:href="@{/registration}">Rejestracja <br/> klienta</a>
+            <div th:if="${user == null}">
+                <a class="navigation__link" th:href="@{/registration}">Rejestracja <br/> klienta</a>
+            </div>
             <a class="navigation__link" th:href="@{/your/rentalOffice}">Twoja <br/> Wypożyczalnia</a>
             <a class="navigation__link" th:href="@{/rentalOffice/register}">Rejestracja <br/> wypożyczalni</a>
-
-            <a class="navigation__login" th:href="@{/login}">Zaloguj się</a>
+            <div th:if="${user == null}">
+                <a class="navigation__login" th:href="@{/login}">Zaloguj się</a>
+            </div>
+            <div th:if="${user != null}">
+                <a class="navigation__login" th:href="@{/logout}">Wyloguj się</a>
+            </div>
         </nav>
     </header>
 

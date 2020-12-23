@@ -47,7 +47,10 @@ function rebuildTable(data, id) {
                     <a href="@{/rentalOffice/${id}/remove/${data[i].id}">Usuń</a>
                 </td>
                 </tr>`
-        rows += row
+        if(data[i].bikeState != 'niedostępny')
+        {
+            rows += row
+        }
     }
     table.innerHTML = rows;
 }

@@ -37,12 +37,12 @@ public class UserServiceImpl implements UserService {
         return userRepository.findByNick(username);
     }
 
-    public UserServiceImpl handleUser(User user, UserRepository userRepository, RoleRepository roleRepository, BCryptPasswordEncoder bCryptPasswordEncoder){
+    public UserServiceImpl handleUser(User user, UserRepository userRepository, RoleRepository roleRepository, BCryptPasswordEncoder bCryptPasswordEncoder) {
         UserServiceImpl userService;
         userRepository.findByNick(user.getNick());
         roleRepository.findAll();
         bCryptPasswordEncoder.encode(user.getPassword());
-        userService = new UserServiceImpl(userRepository,roleRepository,bCryptPasswordEncoder);
+        userService = new UserServiceImpl(userRepository, roleRepository, bCryptPasswordEncoder);
         return userService;
     }
 }

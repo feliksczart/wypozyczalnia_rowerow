@@ -9,7 +9,6 @@ import bikerent.service.bikerentingapp.repositories.BikeRepository;
 import bikerent.service.bikerentingapp.repositories.RentalOfficeRepository;
 import bikerent.service.bikerentingapp.repositories.UserRepository;
 import lombok.AllArgsConstructor;
-import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -37,9 +36,17 @@ public class RentalOfficeController {
         return "rental-office";
     }
 
+
     @GetMapping(value = "/rentalOffice/{rental_id}/remove/{bike_id}")
     public String removeBike(@PathVariable(value = "rental_id") Long rentalOfficeId, @PathVariable(value = "bike_id") Long bikeId) {
-        bikeRepository.deleteBikeById(bikeId);
+        try {
+            bikeRepository.deleteBikeById(bikeId);
+        }catch(Throwable e){
+            Bike bike = bikeRepository.findById(bikeId)
+                    .orElseThrow(null);
+            bike.setBikeState("niedostępny");
+            bikeRepository.save(bike);
+        }
         return "redirect:/rentalOffice/" + rentalOfficeId;
     }
 
@@ -86,6 +93,12 @@ public class RentalOfficeController {
     public String yourRentalOffice(Model model) {
         model.addAttribute("user", loginBean.getUser());
         return "your-rental-office";
+    }
+
+    @GetMapping(value = "/your/rentalOffice/block/{id}")
+    public String blockUser(@PathVariable(value = "id") Long id) {
+
+        return "rental-office";
     }
 
     @GetMapping(value = "/rentalOffice/edit")

@@ -27,16 +27,16 @@
     <form role="form" th:action="@{/registration}" th:method="post" th:object="${user}">
         <div class="registry__element">
             <input id="name" name="name" th:field="*{name}" type="text" placeholder="Imię" title="Podaj swoje imię"
-                   class="registry__element-label">
+                   class="registry__element-label" autocomplete="off">
             <input id="surname" name="surname" th:field="*{surname}" type="text" placeholder="Nazwisko"
-                   title="Podaj swoje nazwisko" class="registry__element-label">
+                   title="Podaj swoje nazwisko" class="registry__element-label" autocomplete="off">
         </div>
 
         <div class="registry__element">
             <input class="registry__element-label" id="nick" name="user.nick" placeholder="Nick" th:field="*{nick}"
-                   title="Podaj nazwę użytkownika" type="text">
+                   title="Podaj nazwę użytkownika" type="text" autocomplete="off">
             <input class="registry__element-label" id="password" name="user.password" placeholder="Hasło"
-               th:field="*{password}" title="Podaj hasło" type="password">
+               th:field="*{password}" title="Podaj hasło" type="password" autocomplete="off">
     </div>
     <div class="registry__element">
         <input name="Zarejestruj się" type="Submit" class="registry__element-submit">

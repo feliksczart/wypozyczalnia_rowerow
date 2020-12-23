@@ -22,13 +22,13 @@
 <main>
 <h1>Formularz Dodania Wypożyczalni</h1>
 <form action="#" method="post" th:action="@{/rentalOffice/{rental_id}/bikes(rental_id=${rentalOffice.id})}">
-    <p>Cena: <input min="0" required step="0.01" th:name="pricePerHour" th:value="${bike.pricePerHour}" type="number"/>
+    <p>Cena: <input min="0" required step="0.01" th:name="pricePerHour" th:value="${bike.pricePerHour}" type="number" autocomplete="off"/>
     </p>
-    <p>Stan: <input required th:name="bikeState" th:value="${bike.bikeState}" type="text"/></p>
-    <p>Nazwa Modelu: <input required th:name="bikeModel.name" th:value="${bike.bikeModel.name}" type="text"/></p>
-    <p>Marka: <input required th:name="bikeModel.brand" th:value="${bike.bikeModel.brand}" type="text"/></p>
-    <p>Typ roweru: <input required th:name="bikeModel.type" th:value="${bike.bikeModel.type}" type="text"/></p>
-    <p>Liczba: <input required th:name="number" th:value="${number}" type="number" min="1"/></p>
+    <p>Stan: <input required th:name="bikeState" th:value="${bike.bikeState}" type="text" autocomplete="off"/></p>
+    <p>Nazwa Modelu: <input required th:name="bikeModel.name" th:value="${bike.bikeModel.name}" type="text" autocomplete="off"/></p>
+    <p>Marka: <input required th:name="bikeModel.brand" th:value="${bike.bikeModel.brand}" type="text" autocomplete="off"/></p>
+    <p>Typ roweru: <input required th:name="bikeModel.type" th:value="${bike.bikeModel.type}" type="text" autocomplete="off"/></p>
+    <p>Liczba: <input required th:name="number" th:value="${number}" type="number" min="1" autocomplete="off"/></p>
     <p><input type="submit" value="Zapisz"/> <input type="reset" value="Reset"/></p>
 </form>
 <a th:href="@{/}">Wróć</a>

@@ -1,94 +1,27 @@
--- CREATE TABLE Client
--- (
---     ID_KLIENTA NUMBER (6),
---     IMIE VARCHAR2 (15),
---     NAZWISKO VARCHAR2 (15),
---     NUMER_TELEFONU NUMBER (9),
---     WIEK NUMBER (6),
---     PLEC VARCHAR2 (15),
---     PRIMARY KEY (ID_KLIENTA)
--- );
+-- create or replace function calculate_time (start_time in date, end_time in date)
+--               return float is
+--               vTime float;
+-- begin
+-- select 24 * (end_time - start_time) into vTime from dual;
+-- return CEIL(vTime);
+-- end;
 --
--- CREATE TABLE Bike
--- (
---     ID_ROWERU NUMBER(6) NOT NULL,
---     ID_MODELU NUMBER (6) NOT NULL,
---     CENA_WYPOZYCZENIA NUMBER (6,2) NOT NULL,
---     STAN_ROWERU VARCHAR2 (20),
---     ID_SERWISU NUMBER (6),
---     PRIMARY KEY (ID_ROWERU),
---     CONSTRAINT FK_BIKE_MODEL FOREIGN KEY (ID_MODELU) REFERENCES BikeModel (ID_MODELU)
--- );
+-- create or replace function count_payment (price IN NUMBER, time_calculated IN NUMBER)
+--               return float is
+--               total_price float;
+-- begin
+-- select price * time_calculated into total_price from dual;
+-- return total_price;
+-- end;
 --
--- CREATE TABLE BikeModel
--- (
---     ID_MODELU NUMBER (6) NOT NULL,
---     NAZWA_MODELU VARCHAR2 (15) NOT NULL,
---     NAZWA_MARKI VARCHAR2 (15),
---     TYP VARCHAR2 (15),
---     PRIMARY KEY (ID_MODELU)
--- );
+-- -- SELECT count_payment(6.33232,10) from dual;
+-- -- SELECT calculate_time(to_date('2012-02-28 15:20', 'YYYY-MM-DD hh24:mi'),to_date('2012-02-28 16:21', 'YYYY-MM-DD hh24:mi')) from dual;
 --
--- CREATE TABLE BlackList
--- (
---     ID_KLIENTA NUMBER (6) NOT NULL,
---     POWOD VARCHAR2 (100),
---     PRIMARY KEY (ID_KLIENTA),
---     CONSTRAINT FK_CZARNA_LISTA FOREIGN KEY (ID_KLIENTA) REFERENCES Client (ID_KLIENTA)
--- );
---
--- --  CREATE TABLE Login
--- --  (
--- --
--- --  );
---
--- CREATE TABLE Region
--- (
---     ID_REGIONU NUMBER (6) NOT NULL,
---     WOJEWODZTWO VARCHAR2 (20) NOT NULL,
---     POWIAT VARCHAR2 (20) NOT NULL,
---     PRIMARY KEY (ID_REGIONU)
--- );
---
--- CREATE TABLE RentalOffice
--- (
---     ID_WYPOZYCZALNI NUMBER (6) NOT NULL,
---     ID_KLIENTA NUMBER (6),
---     MIASTO VARCHAR2 (15) NOT NULL,
---     KOD_POCZTOWY VARCHAR2 (15),
---     ADRES VARCHAR2 (6),
---     ID_REGIONU NUMBER (6),
---     PRIMARY KEY (ID_WYPOZYCZALNI),
---     CONSTRAINT FK_RENT_REGION FOREIGN KEY (ID_REGIONU)
---         REFERENCES REGION (ID_REGIONU),
---     CONSTRAINT FK_CLIENT_RENT FOREIGN KEY (ID_KLIENTA)
---         REFERENCES Client (ID_KLIENTA)
--- );
---
--- CREATE TABLE Rental
--- (
---     ID_WYPOZYCZENIA NUMBER (6) NOT NULL,
---     DATA_ROZPOCZECIA DATE NOT NULL,
---     DATA_ZAKONCZENIA DATE,
---     CENA NUMBER (6) NOT NULL,
---     ID_ROWERU NUMBER (6) NOT NULL,
---     ID_KLIENTA NUMBER (6) NOT NULL,
---     ID_WYPOZYCZALNI NUMBER (6),
---     PRIMARY KEY (ID_WYPOZYCZENIA),
---     CONSTRAINT FK_RENT_BIKE FOREIGN KEY (ID_ROWERU)
---         REFERENCES Bike (ID_ROWERU),
---     CONSTRAINT FK_RENT_CLIENT FOREIGN KEY (ID_KLIENTA)
---         REFERENCES Client(ID_KLIENTA),
---     CONSTRAINT FK_RENT_RENTPLACE FOREIGN KEY (ID_WYPOZYCZALNI)
---         REFERENCES RentalOffice (ID_WYPOZYCZALNI)
--- );
---
--- CREATE TABLE Complaints
--- (
---     ID_REKLAMACJI NUMBER (6),
---     ID_KLIENTA NUMBER (6),
---     TYTUL_REKLAMACJI VARCHAR2 (20),
---     TRESC_REKLAMACJI VARCHAR2 (100),
---     PRIMARY KEY (ID_REKLAMACJI),
---     CONSTRAINT FK_ID_KLIENTA FOREIGN KEY (ID_KLIENTA) REFERENCES Client(ID_KLIENTA)
--- );
+-- CREATE OR REPLACE PROCEDURE update_price
+-- (rental_id IN NUMBER, total_price IN NUMBER)
+-- IS
+-- BEGIN
+-- UPDATE Rental
+-- SET PRICE = total_price
+-- WHERE Rental.ID = rental_id;
+-- END update_price;

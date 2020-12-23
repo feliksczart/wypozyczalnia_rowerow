@@ -24,6 +24,9 @@ public class RentalOffice implements Serializable {
     @ManyToOne
     private Region region;
 
+    @OneToOne
+    private BlackList blackList;
+
     public RentalOffice(String city, String zip, String address) {
         this.city = city;
         this.zip = zip;

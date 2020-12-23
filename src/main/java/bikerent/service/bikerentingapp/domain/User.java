@@ -8,8 +8,6 @@ import org.springframework.security.core.GrantedAuthority;
 
 import javax.persistence.*;
 import java.io.Serializable;
-import java.util.Collection;
-import java.util.HashSet;
 import java.util.Set;
 
 @Data
@@ -23,7 +21,7 @@ public class User implements Serializable {
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "user_sequence")
     @SequenceGenerator(name = "user_sequence", sequenceName = "USER_SEQ")
     private Long id;
-
+    @Column(unique = true)
     private String name;
     private String surname;
     private String nick;

@@ -31,11 +31,11 @@
     <form role="form" method="post" th:action="@{/login}"> <!--dodać th:object="${user}"-->
         <div class="registry__element"> <!--dodać th:field="*{nick}" v-->
             <input class="registry__element-label" id="nick" name="username" placeholder="Nick"
-                   title="Podaj nazwę użytkownika" type="text">
-            <input class="registry__element-label" id="password" name="password" placeholder="Hasło" title="Podaj hasło" type="password">
+                   title="Podaj nazwę użytkownika" type="text" autocomplete="off">
+            <input class="registry__element-label" id="password" name="password" placeholder="Hasło" title="Podaj hasło" type="password" autocomplete="off">
         </div>
         <div class="registry__element">
-            <input name="Zaloguj się" type="Submit" value="Zaloguj" class="registry__element-submit">
+            <input name="Zaloguj się" type="Submit" value="Zaloguj" class="registry__element-submit" autocomplete="off">
         </div>
     </form>
 
