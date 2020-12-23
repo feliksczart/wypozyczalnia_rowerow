@@ -3,6 +3,7 @@ package bikerent.service.bikerentingapp.controllers;
 import bikerent.service.bikerentingapp.Services.SecurityService;
 import bikerent.service.bikerentingapp.Services.UserService;
 import bikerent.service.bikerentingapp.domain.User;
+import bikerent.service.bikerentingapp.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -18,11 +19,13 @@ public class UserController {
 
     private final UserService userService;
     private final SecurityService securityService;
+    private final UserRepository userRepository;
 
     @Autowired
-    public UserController(UserService userService, SecurityService securityService) {
+    public UserController(UserService userService, SecurityService securityService, UserRepository userRepository) {
         this.userService = userService;
         this.securityService = securityService;
+        this.userRepository = userRepository;
     }
 
     @RequestMapping("/")
@@ -38,13 +41,18 @@ public class UserController {
 
     @GetMapping("/registration")
     public String registration(Model model) {
+        model.addAttribute("exist", 0);
         model.addAttribute("user", new User());
-
         return "registration";
     }
 
     @PostMapping("/registration")
-    public String registration(@ModelAttribute("user") User userForm) {
+    public String registration(Model model, @ModelAttribute("user") User userForm) {
+        if (userRepository.findByNick(userForm.getNick()) != null) {
+            model.addAttribute("exist", 1);
+            model.addAttribute("user", new User());
+            return "registration";
+        }
 
         userService.save(userForm);
 
