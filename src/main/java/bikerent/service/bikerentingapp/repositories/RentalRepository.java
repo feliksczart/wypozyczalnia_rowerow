@@ -8,6 +8,7 @@ import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
 import javax.transaction.Transactional;
+import java.util.List;
 
 @Repository
 @Scope(proxyMode = ScopedProxyMode.INTERFACES)
@@ -16,6 +17,8 @@ public interface RentalRepository extends CrudRepository<Rental, Long> {
     void deleteRentalById(Long rentalId);
 
     Rental findRentalById(Long rentalId);
+
+    List<Rental> findRentalsByUserId(Long userId);
 
     @Procedure
     void update_price(Integer rental_id, Integer total_price);

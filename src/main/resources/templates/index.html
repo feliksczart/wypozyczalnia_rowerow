@@ -1,15 +1,16 @@
 <!DOCTYPE HTML>
-<html lang="pl" xmlns:th="http://www.w3.org/1999/xhtml">
+<html lang="pl" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="https://www.thymeleaf.org">
 <head>
-    <meta charset="utf-8" />
+    <meta charset="utf-8"/>
     <!-- enkodowanie -->
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 
     <title> Wypożyczalnia Rowerów</title>
 
-    <meta name="description" content="Możesz u nas wypożyczyczyć każdy rower jaki sobie wymarzysz!" />
+    <meta content="Możesz u nas wypożyczyczyć każdy rower jaki sobie wymarzysz!" name="description"/>
     <!-- to pod tytułem w google (155-160 znaków)" -->
-    <meta name="keywords" content="wynajmij, rower, wypozyczanie, rowerzysta, tanio" />
+    <meta content="wynajmij, rower, wypozyczanie, rowerzysta, tanio" name="keywords"/>
     <!-- słowa kluczowe wyszukiwania -->
 
     <link rel="icon" th:href="@{/images/row-logo.png}">
@@ -34,7 +35,9 @@
                 <a class="navigation__login" th:href="@{/login}">Zaloguj się</a>
             </div>
             <div th:if="${user != null}">
-                <a class="navigation__login" th:href="@{/logout}">Wyloguj się</a>
+                <form method="post" th:action="@{/logout}">
+                    <button type="submit">Logout</button>
+                </form>
             </div>
         </nav>
     </header>

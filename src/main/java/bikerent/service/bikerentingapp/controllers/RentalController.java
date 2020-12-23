@@ -1,5 +1,6 @@
 package bikerent.service.bikerentingapp.controllers;
 
+import bikerent.service.bikerentingapp.beans.LoginBean;
 import bikerent.service.bikerentingapp.domain.Complaints;
 import bikerent.service.bikerentingapp.domain.Rental;
 import bikerent.service.bikerentingapp.repositories.ComplaintsRepository;
@@ -20,11 +21,12 @@ import java.time.format.DateTimeFormatter;
 public class RentalController {
     private RentalRepository rentalRepository;
     private ComplaintsRepository complaintsRepository;
+    private LoginBean loginBean;
 
     @GetMapping(value = "/myRentals")
     public String bikeList(Model model) {
-        //model.addAttribute("bikes", bikeRepository.findByRentalId(id));
-        model.addAttribute("rentals", rentalRepository.findAll());
+        Long userId = loginBean.getUser().getId();
+        model.addAttribute("rentals", rentalRepository.findRentalsByUserId(userId));
         return "my-rentals";
     }
 
