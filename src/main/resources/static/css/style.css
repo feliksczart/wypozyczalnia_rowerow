@@ -36,6 +36,13 @@ a{
 	font-size: 22px;
 }
 
+.navigation__link-position{
+	justify-content: center;
+	display: flex;
+	flex-grow: 1;
+	align-items: flex-end
+}
+
 .navigation__login {
 	color: #FAFFFD;
 	display: inline-block;
