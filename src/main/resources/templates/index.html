@@ -29,8 +29,14 @@
             <div th:if="${user == null}">
                 <a class="navigation__link" th:href="@{/registration}">Rejestracja <br/> klienta</a>
             </div>
-            <a class="navigation__link" th:href="@{/your/rentalOffice}">Twoja <br/> Wypożyczalnia</a>
-            <a class="navigation__link" th:href="@{/rentalOffice/register}">Rejestracja <br/> wypożyczalni</a>
+            <div th:if="${user != null}">
+                <a class="navigation__link" th:href="@{/your/rentalOffice}">Twoja <br/> Wypożyczalnia</a>
+                <a class="navigation__link" th:href="@{/rentalOffice/register}">Rejestracja <br/> wypożyczalni</a>
+            </div>
+            <a class="navigation__link" th:href="@{/rentalOffice}">Lista <br/> wypożyczalni</a>
+            <div th:if="${user != null}">
+                <a class="navigation__link" th:href="@{/myRentals}">Twoje<br/>wypożyczenia</a>
+            </div>
             <div th:if="${user == null}">
                 <a class="navigation__login" th:href="@{/login}">Zaloguj się</a>
             </div>
@@ -43,16 +49,11 @@
     </header>
 
     <main>
-        <section class="oferts__block">
-            <a class="oferts__block-title" th:href="@{/myRentals}"><b>Twoje<br/>wypożyczenia</b></a>
-        </section>
-        <section class="oferts__block">
-            <a class="oferts__block-title" th:href="@{/rentalOffice}"><b>Lista <br/> wypożyczalni</b></a>
-            <!--            <h3 class="oferts__block-title">Wypożyczalnie</h3>-->
-        </section>
+        Opis aplikacji
     </main>
     <footer>
         <img class="footer__animation" th:src="@{/images/rowerzysta.png}">
+        <div class="footer__bottom"></div>
     </footer>
 </body>
 </html>

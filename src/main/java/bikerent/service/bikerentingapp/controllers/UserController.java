@@ -60,12 +60,14 @@ public class UserController {
         userService.save(userForm);
 
         securityService.autoLogin(userForm.getNick(), userForm.getPassword());
+        model.addAttribute("user", loginBean.getUser());
 
         return "redirect:/login";
     }
 
     @GetMapping("/login")
     public String login(Model model, String error, String logout) {
+        model.addAttribute("user", loginBean.getUser());
         if (error != null)
             model.addAttribute("error", "Your username and password is invalid.");
 

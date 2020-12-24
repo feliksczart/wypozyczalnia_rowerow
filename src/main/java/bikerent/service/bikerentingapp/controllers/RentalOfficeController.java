@@ -25,6 +25,7 @@ public class RentalOfficeController {
     @GetMapping(value = "/rentalOffice")
     public String bikeList(Model model) {
         model.addAttribute("rentalOffices", rentalOfficeRepository.findAll());
+        model.addAttribute("user", loginBean.getUser());
         return "rental-office-list";
     }
 
@@ -33,6 +34,7 @@ public class RentalOfficeController {
         //model.addAttribute("bikes", bikeRepository.findByRentalOfficeId(id));
         model.addAttribute("bikes", bikeRepository.findAll());
         model.addAttribute("id", id);
+        model.addAttribute("user", loginBean.getUser());
         return "rental-office";
     }
 
@@ -57,6 +59,7 @@ public class RentalOfficeController {
                 .orElseThrow(null));
         model.addAttribute("number", number);
         model.addAttribute("bike", rentalOfficeBean.bindingModelAndBike());
+        model.addAttribute("user", loginBean.getUser());
         return "bike-add-form";
     }
 
@@ -77,6 +80,7 @@ public class RentalOfficeController {
     @GetMapping(value = "/rentalOffice/register")
     public String rentalOfficeAdd(Model model) {
         model.addAttribute("RentalOffice", new RentalOffice());
+        model.addAttribute("user", loginBean.getUser());
         return "register-rental-office";
     }
 
@@ -104,6 +108,7 @@ public class RentalOfficeController {
     @GetMapping(value = "/rentalOffice/edit")
     public String editYourRentalOffice(Model model) {
         model.addAttribute("rentalOffice", new RentalOffice());
+        model.addAttribute("user", loginBean.getUser());
         return "edit-your-rental-office";
     }
 

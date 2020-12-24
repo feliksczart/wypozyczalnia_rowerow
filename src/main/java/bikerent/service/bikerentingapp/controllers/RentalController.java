@@ -27,6 +27,7 @@ public class RentalController {
     public String bikeList(Model model) {
         Long userId = loginBean.getUser().getId();
         model.addAttribute("rentals", rentalRepository.findRentalsByUserId(userId));
+        model.addAttribute("user", loginBean.getUser());
         return "my-rentals";
     }
 
@@ -54,6 +55,7 @@ public class RentalController {
         rental.setComplaints(complaint);
         rentalRepository.save(rental);
         model.addAttribute("rental", rental);
+        model.addAttribute("user", loginBean.getUser());
         return "complaint-form";
     }
 
@@ -71,6 +73,7 @@ public class RentalController {
     public String rentalComplaintDisplay(@PathVariable(name = "rental_id") Long id, Model model) {
         Rental rental = rentalRepository.findRentalById(id);
         model.addAttribute("rental", rental);
+        model.addAttribute("user", loginBean.getUser());
         return "rental-complaint";
     }
 }
