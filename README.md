@@ -7,8 +7,8 @@ Projekt ma być realizowany w grupach 2-osobowych. W uzasadnionych przypadkach l
 Tematykę (modelowaną rzeczywistość) projektu grupa wymyśla samodzielnie. Ma być ona na tyle pojemna, aby spełnić wymagania, zawarte w punktach dot. wymagań dotyczących schematu relacyjnego.
 
 ## Wymagania dotyczące modelowanej bazy danych
-  1.Rzeczywistość, wspierana przez aplikację, ma zostać zamodelowana przy zastosowaniu diagramu związków encji. Diagram ma składać się z min. 10 encji, połączonych związkami.
-  2.Diagram związków encji musi zostać przygotowany w narzędziu Oracle SQL Developer lub Oracle SQL Developer Data Modeler.
+  1.Rzeczywistość, wspierana przez aplikację, ma zostać zamodelowana przy zastosowaniu diagramu związków encji. Diagram ma składać się z min. 10 encji, połączonych związkami.  
+  2.Diagram związków encji musi zostać przygotowany w narzędziu Oracle SQL Developer lub Oracle SQL Developer Data Modeler.  
   3.Diagram związków encji ma zostać przekształcony w schemat relacyjny. Oprócz relacji, implementujących encje, schemat powinien wykorzystywać:
     -sekwencje w sytuacji, gdy kolumny, będące kluczami podstawowymi relacji, będą liczbami (lub alternatywne metody automatycznego generowania wartości dla sztucznych kluczy liczbowych, np. kolumny Identity),
     -indeksy wspomagające wyszukiwanie danych w relacjach oraz wykonywanie innych operacji (np. sortowania, grupowania, itd.),
