@@ -29,6 +29,6 @@ public interface RentalRepository extends CrudRepository<Rental, Long> {
     @Procedure(name = "Rental.update_price")
     void update_price(@Param("rental_id") Integer rental_id, @Param("total_price") Integer total_price);
 
-    @Procedure(name = "Rental.count_payment")
+    @Query(nativeQuery = true, value = "SELECT count_payment(:price, :time_calculated) FROM dual")
     Integer count_payment(@Param("price") Integer price, @Param("time_calculated") Integer time_calculated);
 }
