@@ -31,4 +31,7 @@ public interface RentalRepository extends CrudRepository<Rental, Long> {
 
     @Query(nativeQuery = true, value = "SELECT count_payment(:price, :time_calculated) FROM dual")
     Integer count_payment(@Param("price") Integer price, @Param("time_calculated") Integer time_calculated);
+
+    @Query(nativeQuery = true, value = "SELECT calculate_time(:start_time, :end_time) FROM dual")
+    Float calculate_time(@Param("start_time") String start_time, @Param("end_time") String end_time);
 }

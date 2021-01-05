@@ -40,7 +40,9 @@ public class RentalController {
         String formatDateTime = now.format(formatter);
         rental.setEndDate(formatDateTime);
         rentalRepository.save(rental);
-        rentalRepository.update_price(Math.toIntExact(id), 80);
+        Float rental_hours = rentalRepository.calculate_time(rental.getStartDate(),rental.getEndDate());
+        Integer rental_payment = rentalRepository.count_payment(rental.getBike().getPricePerHour(),rental_hours.intValue());
+        rentalRepository.update_price(Math.toIntExact(id), rental_payment);
         return "redirect:/myRentals";
     }
 
