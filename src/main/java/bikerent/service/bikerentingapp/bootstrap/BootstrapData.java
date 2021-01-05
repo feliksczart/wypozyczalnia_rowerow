@@ -33,10 +33,10 @@ public class BootstrapData implements CommandLineRunner {
     @Override
     public void run(String... args) throws Exception {
 
-//        Integer x = 20;
-//        Integer y = 20;
-//        Integer total = rentalRepository.count_payment(x, y);
-//        System.out.println(total);
+        Integer x = 20;
+        Integer y = 20;
+        Integer total = rentalRepository.count_payment(x, y);
+        System.out.println(total);
 
 //        Region region = new Region("Wielkopolskie", "Poznań");
 //        regionRepository.save(region);

@@ -19,16 +19,9 @@ import java.io.Serializable;
                 parameters = {
                         @StoredProcedureParameter(name = "rental_id", type = Integer.class, mode = ParameterMode.IN),
                         @StoredProcedureParameter(name = "total_price", type = Integer.class, mode = ParameterMode.IN)
-                }),
-        @NamedStoredProcedureQuery(
-                name = "count_payment",
-                procedureName = "Rental.count_payment",
-                parameters = {
-                        @StoredProcedureParameter(name = "price", type = Integer.class, mode = ParameterMode.IN),
-                        @StoredProcedureParameter(name = "time_calculated", type = Integer.class, mode = ParameterMode.IN),
-                        @StoredProcedureParameter(name = "total_price", type = Integer.class, mode = ParameterMode.OUT)
                 })
 })
+
 
 public class Rental implements Serializable {
     @Id
