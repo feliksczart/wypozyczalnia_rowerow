@@ -44,14 +44,13 @@
             </div>
             <div th:if="${user != null}">
                 <form method="post" th:action="@{/logout}">
-                    <button type="submit">Logout</button>
+                    <button class="navigation__logout" type="submit">Logout</button>
                 </form>
             </div>
         </nav>
     </header>
 
     <main>
-        Opis projektu
     </main>
     <footer class="footer__main">
         <img class="footer__animation" th:src="@{/images/rowerzysta.png}">

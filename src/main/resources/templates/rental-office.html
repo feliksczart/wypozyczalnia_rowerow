@@ -39,15 +39,22 @@
         </div>
         <div th:if="${user != null}">
             <form method="post" th:action="@{/logout}">
-                <button type="submit">Logout</button>
+                <button class="navigation__logout" type="submit">Logout</button>
             </form>
         </div>
     </nav>
 </header>
 <main>
-    <input id="search" name="keyword" placeholder="Szukaj..." type="text" autocomplete="off">
-<table id="bikeList">
-    <tr>
+<!--    <input id="search" name="keyword" placeholder="Szukaj..." type="text" autocomplete="off">-->
+    <div class="form">
+        <input id="search" name="keyword" type="text" autocomplete="off">
+        <label for="search" class="label-name">
+            <span class="content-name">Szukaj...</span>
+        </label>
+    </div>
+
+    <table id="bikeList" class="content-table">
+    <tr class="table__head">
         <th>Cena</th>
         <th>Model</th>
         <th>Marka</th>
@@ -58,7 +65,7 @@
     </tr>
     <tr th:each="bike : ${bikes}">
         <div th:if="${bike.bikeState != 'niedostępny'}">
-        <td th:text="${bike.pricePerHour}">Cena</td>
+        <td th:text="${bike.pricePerHour}+zł">Cena</td>
         <td th:text="${bike.bikeModel?.name}">Model</td>
         <td th:text="${bike.bikeModel?.brand}">Marka</td>
         <td th:text="${bike.bikeModel?.type}">Typ</td>

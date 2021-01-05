@@ -32,7 +32,7 @@
         </div>
         <div th:if="${user != null}">
             <form method="post" th:action="@{/logout}">
-                <button type="submit">Logout</button>
+                <button class="navigation__logout" type="submit">Logout</button>
             </form>
         </div>
     </nav>

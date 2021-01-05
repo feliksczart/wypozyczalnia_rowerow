@@ -35,14 +35,14 @@
         </div>
         <div th:if="${user != null}">
             <form method="post" th:action="@{/logout}">
-                <button type="submit">Logout</button>
+                <button class="navigation__logout" type="submit">Logout</button>
             </form>
         </div>
     </nav>
 </header>
 <main>
-<table>
-    <tr>
+<table class="content-table">
+    <tr class="table__head">
         <th>ID</th>
         <th>Miasto</th>
         <th>Kod Pocztowy</th>

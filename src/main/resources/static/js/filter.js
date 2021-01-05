@@ -24,7 +24,7 @@ function filterFunction(value, data) {
 
 function rebuildTable(data, id) {
     const table = document.getElementById('bikeList');
-    let rows = `<tr>
+    let rows = `<tr class="table__head">
                 <th>Cena</th>
                 <th>Model</th>
                 <th>Marka</th>
@@ -35,7 +35,7 @@ function rebuildTable(data, id) {
             </tr>`
     for (let i = 0; i < data.length; i++) {
         const row = `<tr>
-                <td>${data[i].pricePerHour}</td>
+                <td>${data[i].pricePerHour}zł</td>
                 <td>${data[i].bikeModel?.name}</td>
                 <td>${data[i].bikeModel?.brand}</td>
                 <td >${data[i].bikeModel?.type}</td>

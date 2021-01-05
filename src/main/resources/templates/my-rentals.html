@@ -32,15 +32,14 @@
         </div>
         <div th:if="${user != null}">
             <form method="post" th:action="@{/logout}">
-                <button type="submit">Logout</button>
+                <button class="navigation__logout" type="submit">Logout</button>
             </form>
         </div>
     </nav>
 </header>
 <main>
-    <table>
-        <tr>
-            <th>ID</th>
+    <table class="content-table">
+        <tr class="table__head">
             <th>Data Rozpoczęcia</th>
             <th>Data Zakończenia</th>
             <th>Cena</th>
@@ -48,10 +47,9 @@
             <th>Nazwisko Użytkownika</th>
             <th>Miasto</th>
             <th>Zakończ Wypożyczenie</th>
-            <th>reklamacja</th>
+            <th>Reklamacja</th>
         </tr>
         <tr th:each="rental : ${rentals}">
-            <td th:text="${rental.id}">ID</td>
             <td th:text="${rental.startDate}">Miasto</td>
             <td th:text="${rental?.endDate}">Kod pocztowy</td>
             <td th:text="${rental?.price}">Adres</td>
@@ -74,7 +72,7 @@
     <a th:href="@{/}"> Wróć</a>
 </main>
 <div style="height: 10px"></div>
-<footer class="footer__general">
+<footer>
     <div class="footer__bottom"></div>
 </footer>
 </body>
