@@ -103,7 +103,7 @@ main {
 	font-size: 35px;
 }
 
-footer{
+.footer__main{
 	position: absolute;
 	margin: 0 auto;
 	width: 100%;
@@ -122,13 +122,29 @@ footer{
 	animation-iteration-count: infinite;
 }
 
+.footer__anim{
+	background: #342E37;
+	width: 100%;
+	height: 20px;
+	/*left: 0;*/
+	/*bottom: 0;*/
+	/*right: 0;*/
+}
+
+.footer__general{
+}
+
 .footer__bottom{
 	background: #342E37;
 	width: 100%;
 	height: 20px;
 	left: 0;
-	bottom: 0;
-	right: 0;
+	/*bottom: 0;*/
+	/*right: 0;*/
+	position : fixed;
+	bottom : 0;
+	margin-top : 40px;
+	display: flex;
 }
 
 @keyframes ride {
