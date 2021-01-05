@@ -23,6 +23,7 @@ public class BootstrapData implements CommandLineRunner {
     private final RegionRepository regionRepository;
     private final BikeModelRepository bikeModelRepository;
 
+    private final RentalRepository rentalRepository;
     private final UserRepository userRepository;
     private final RoleRepository roleRepository;
     private final BCryptPasswordEncoder bCryptPasswordEncoder;
