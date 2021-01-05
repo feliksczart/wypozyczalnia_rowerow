@@ -316,6 +316,7 @@ main {
 	border: none;
 	color: #342E37;
 	outline: none;
+	background-color: #FAFFFD;
 }
 
 .form label{
@@ -335,7 +336,7 @@ main {
 	bottom: -1px;
 	height: 100%;
 	width: 100%;
-	border-bottom: 3px solid #342E37;
+	border-bottom: 2px solid #342E37;
 	transform: translateX(-100%);
 	transition: transform 0.3s ease;
 }
