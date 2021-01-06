@@ -31,7 +31,6 @@ public class RentalController {
         return "my-rentals";
     }
 
-    //trzeba poprawić te daty i liczyć czas wypożyczenia
     @GetMapping(value = "/myRentals/{rental_id}")
     public String rentalEnd(@PathVariable(name = "rental_id") Long id) {
         Rental rental = rentalRepository.findRentalById(id);

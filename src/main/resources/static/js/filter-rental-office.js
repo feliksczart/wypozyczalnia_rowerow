@@ -1,9 +1,9 @@
-function search(allItemList, id) {
+function search(allItemList) {
     $('#search').on('keyup', function () {
         var value = $(this).val();
         console.log('Value = ' + value);
         const data = filterFunction(value, allItemList);
-        rebuildTable(data, id)
+        rebuildTable(data)
     });
 }
 
@@ -24,7 +24,7 @@ function filterFunction(value, data) {
     return filteredData;
 }
 
-function rebuildTable(data, id) {
+function rebuildTable(data) {
     const table = document.getElementById('rentalOfficeList'); //id tabeli
     let rows = `<tr class="table__head">
         <th>Miasto</th>
@@ -41,7 +41,7 @@ function rebuildTable(data, id) {
         <td>${data[i].zip}</td>
         <td>${data[i].region?.voivodeship}</td>
         <td>${data[i].region?.district}</td>
-        <td><a href="@{/rentalOffice/${id}">Zobacz Rowery</a></td>
+        <td><a href="/rentalOffice/${data[i].id}">Zobacz Rowery</a></td>
     </tr>`
         rows += row
 

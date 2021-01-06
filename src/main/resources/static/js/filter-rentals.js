@@ -44,11 +44,11 @@ function rebuildTable(data) {
             <td>${data[i].rentalOffice.city}</td>
             <td>
                 <span if="${data[i]?.endDate != null}">Zakończono</span>
-                <span if="${data[i]?.endDate == null}"><a href="@{/myRentals/${data[i].id}">Zakończ Wypożyczenie</a></span>
+                <span if="${data[i]?.endDate == null}"><a href="/myRentals/${data[i].id}">Zakończ Wypożyczenie</a></span>
             </td>
             <td>
-            <span if="${data[i]?.complaints == null}"><a href="@{/myRentals/${data[i].id}/complaint">złóż</a></span>
-                <span if="${data[i]?.complaints != null}"><a href="@{/myRentals/${data[i].id}/show">zobacz</a></span>
+            <span if="${data[i]?.complaints == null}"><a href="/myRentals/${data[i].id}/complaint">złóż</a></span>
+                <span if="${data[i]?.complaints != null}"><a href="/myRentals/${data[i].id}/show">zobacz</a></span>
             </td>
         </tr>`
         rows += row

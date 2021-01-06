@@ -6,7 +6,7 @@
 -- return CEIL(vTime);
 -- end;
 --
--- create or replace function count_payment (price IN NUMBER, time_calculated IN NUMBER)
+-- create or replace function count_payment (price IN Integer, time_calculated IN Integer)
 --               return float is
 --               total_price float;
 -- begin
@@ -18,7 +18,7 @@
 -- -- SELECT calculate_time(to_date('2012-02-28 15:20', 'YYYY-MM-DD hh24:mi'),to_date('2012-02-28 16:21', 'YYYY-MM-DD hh24:mi')) from dual;
 --
 -- CREATE OR REPLACE PROCEDURE update_price
--- (rental_id IN NUMBER, total_price IN NUMBER)
+-- (rental_id IN Integer, total_price IN Integer)
 -- IS
 -- BEGIN
 -- UPDATE Rental
