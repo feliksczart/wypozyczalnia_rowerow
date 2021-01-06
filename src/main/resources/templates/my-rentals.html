@@ -69,13 +69,13 @@
             <td>
                 <span th:if="${rental?.endDate != null}">Zakończono</span>
                 <span th:if="${rental?.endDate == null}"><a th:href="@{/myRentals/{id}(id = ${rental.id})}">Zakończ Wypożyczenie</a></span>
-                Zakończ Wypożyczenie</td>
+            </td>
             <td>
             <span th:if="${rental?.complaints == null}"><a
                     th:href="@{/myRentals/{rental_id}/complaint (rental_id = ${rental.id})}">złóż</a></span>
                 <span th:if="${rental?.complaints != null}"><a
                         th:href="@{/myRentals/{rental_id}/show (rental_id = ${rental.id})}">zobacz</a></span>
-                Reklamacja</td>
+            </td>
 
         </tr>
     </table>
