@@ -39,13 +39,18 @@ public class BootstrapData implements CommandLineRunner {
 //        System.out.println(total);
 //
 //        System.out.println(rentalRepository.calculate_time("2012-02-28 15:20:11", "2012-02-28 18:22:11"));
-
+//
 //        Region region = new Region("Wielkopolskie", "Poznań");
 //        regionRepository.save(region);
-//
-//        RentalOffice rentalOffice = new RentalOffice("Poznan", "60-226", "Palacza 5");
+//        RentalOffice rentalOffice = new RentalOffice("Poznań", "60-226", "Palacza 5");
 //        rentalOffice.setRegion(region);
 //        rentalOfficeRepository.save(rentalOffice);
+//
+//        Region region2 = new Region("Abc", "Cba");
+//        regionRepository.save(region2);
+//        RentalOffice rentalOffice2 = new RentalOffice("Poznań", "60-226", "Błażeja 5");
+//        rentalOffice2.setRegion(region2);
+//        rentalOfficeRepository.save(rentalOffice2);
 //
 //
 //

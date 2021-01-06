@@ -6,6 +6,10 @@
     <title>Moje Wypożyczenia</title>
     <link rel="icon" th:href="@{/images/row-logo.png}">
     <link rel="stylesheet" th:href="@{/css/style.css}"/>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script type="text/javascript" th:src="@{/js/filter-rentals.js}"></script>
 </head>
 <body>
 <header>
@@ -38,37 +42,47 @@
     </nav>
 </header>
 <main>
-    <table class="content-table">
+    <div class="form">
+        <input id="search" name="keyword" type="text" autocomplete="off">
+        <label for="search" class="label-name">
+            <span class="content-name">Szukaj...</span>
+        </label>
+    </div>
+    <table id="rentalsList" class="content-table">
         <tr class="table__head">
             <th>Data Rozpoczęcia</th>
             <th>Data Zakończenia</th>
             <th>Cena</th>
             <th>Nazwa Roweru</th>
-            <th>Nazwisko Użytkownika</th>
+            <th>Nazwa Użytkownika</th>
             <th>Miasto</th>
             <th>Zakończ Wypożyczenie</th>
             <th>Reklamacja</th>
         </tr>
         <tr th:each="rental : ${rentals}">
-            <td th:text="${rental.startDate}">Miasto</td>
-            <td th:text="${rental?.endDate}">Kod pocztowy</td>
-            <td th:text="${rental?.price}">Adres</td>
-            <td th:text="${rental.bike.bikeModel.name}">Województwo</td>
-            <td th:text="${rental.user?.surname}">Adres</td>
-            <td th:text="${rental.rentalOffice.city}">Powiat</td>
+            <td th:text="${rental.startDate}">Data Rozpoczęcia</td>
+            <td th:text="${rental?.endDate}">Data Zakończenia</td>
+            <td th:text="${rental?.price}">Cena</td>
+            <td th:text="${rental.bike.bikeModel.name}">Nazwa Roweru</td>
+            <td th:text="${rental.user?.surname}">Nazwa Użytkownika</td>
+            <td th:text="${rental.rentalOffice.city}">Miasto</td>
             <td>
                 <span th:if="${rental?.endDate != null}">Zakończono</span>
                 <span th:if="${rental?.endDate == null}"><a th:href="@{/myRentals/{id}(id = ${rental.id})}">Zakończ Wypożyczenie</a></span>
-            </td>
+                Zakończ Wypożyczenie</td>
             <td>
             <span th:if="${rental?.complaints == null}"><a
                     th:href="@{/myRentals/{rental_id}/complaint (rental_id = ${rental.id})}">złóż</a></span>
                 <span th:if="${rental?.complaints != null}"><a
                         th:href="@{/myRentals/{rental_id}/show (rental_id = ${rental.id})}">zobacz</a></span>
-            </td>
+                Reklamacja</td>
 
         </tr>
     </table>
+    <script th:inline="javascript">
+        var rental = [[${rentals}]];
+        search(rental)
+    </script>
     <a th:href="@{/}"> Wróć</a>
 </main>
 <div style="height: 10px"></div>

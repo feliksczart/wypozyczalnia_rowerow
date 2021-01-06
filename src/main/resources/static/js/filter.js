@@ -47,7 +47,7 @@ function rebuildTable(data, id) {
                     <a href="@{/rentalOffice/${id}/remove/${data[i].id}">Usuń</a>
                 </td>
                 </tr>`
-        if(data[i].bikeState != 'niedostępny')
+        if(data[i].bikeState.toLowerCase() != 'niedostępny')
         {
             rows += row
         }
