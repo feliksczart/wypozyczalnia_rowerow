@@ -15,6 +15,9 @@
         </a>
         <a class="navigation__link navigation__link-homepage" th:href="@{/index}">Strona główna</a>
         <div class="navigation__link-position">
+            <div th:if="${user != null}">
+                <a class="navigation__link" th:href="@{/my-profile}">Twój<br/>profil</a>
+            </div>
             <div th:if="${user == null}">
                 <a class="navigation__link" th:href="@{/registration}">Rejestracja <br/> klienta</a>
             </div>
@@ -50,8 +53,13 @@
                    th:value="${edituser?.name}" type="text" autocomplete="off"/>
             <input class="registry__element-label" placeholder="nazwisko" th:name="surname"
                    th:value="${edituser?.surname}" type="text" autocomplete="off"/>
-            <input class="regitry__element-label" placeholder="płeć jako lista" th:name="gender"
-                   th:value="${edituser?.gender}" type="text" autocomplete="off"/>
+
+            <select class="registry__element" th:name="genders" th:id="genders">
+                <option th:value="Kobieta">Kobieta</option>
+                <option th:value="Mężczyzna">Mężczyzna</option>
+                <option th:value="Inne">Inne</option>
+            </select>
+
             <input class="registry__element-label" placeholder="wiek" th:name="user.age"
                    th:value="${edituser?.age}" type="number" autocomplete="off"/>
         </div>

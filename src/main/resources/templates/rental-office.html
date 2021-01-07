@@ -22,6 +22,9 @@
         </a>
         <a class="navigation__link navigation__link-homepage" th:href="@{/index}">Strona główna</a>
         <div class="navigation__link-position">
+            <div th:if="${user != null}">
+                <a class="navigation__link" th:href="@{/my-profile}">Twój<br/>profil</a>
+            </div>
             <div th:if="${user == null}">
                 <a class="navigation__link" th:href="@{/registration}">Rejestracja <br/> klienta</a>
             </div>

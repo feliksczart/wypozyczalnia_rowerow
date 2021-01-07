@@ -42,34 +42,6 @@ public class UserController {
         return "index";
     }
 
-    @GetMapping("/my-profile")
-    public String myProfile(Model model) {
-        model.addAttribute("user", loginBean.getUser());
-        return "my-profile";
-    }
-
-    @GetMapping("/my-profile/edit")
-    public String editMyProfile(Model model) {
-        model.addAttribute("user", loginBean.getUser());
-        model.addAttribute("edituser", new User());
-        return "edit-my-profile";
-    }
-
-    @PostMapping("/my-profile/edit")
-    public String processMyProfile(@ModelAttribute(name = "user") User user) {
-        User loggedUser = loginBean.getUser();
-        if (user.getName() != "")
-            loggedUser.setName(user.getName());
-        if (user.getSurname() != "")
-            loggedUser.setSurname(user.getSurname());
-        if (user.getGender() != "")
-            loggedUser.setGender(user.getGender());
-        if (user.getAge() != 0)
-            loggedUser.setAge(user.getAge());
-        userRepository.save(loggedUser);
-        return "redirect:/my-profile";
-    }
-
     @GetMapping("/registration")
     public String registration(Model model) {
         model.addAttribute("exist", 0);
