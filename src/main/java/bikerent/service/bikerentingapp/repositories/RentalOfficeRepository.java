@@ -8,4 +8,6 @@ import org.springframework.stereotype.Repository;
 public interface RentalOfficeRepository extends CrudRepository<RentalOffice, Long> {
 
     void deleteRentalOfficeById(Long rentalOfficeId);
+
+    RentalOffice findByAddress(String address);
 }

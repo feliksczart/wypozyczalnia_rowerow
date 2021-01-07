@@ -16,7 +16,6 @@ public class LoginBean {
 
     public User getUser() {
         String username = securityService.findLoggedInUsername();
-        //String username = "1";
         User user = userService.findByUsername(username);
         return user;
     }

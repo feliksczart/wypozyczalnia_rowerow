@@ -79,13 +79,20 @@ public class RentalOfficeController {
 
     @GetMapping(value = "/rentalOffice/register")
     public String rentalOfficeAdd(Model model) {
+        model.addAttribute("exist", 0);
         model.addAttribute("RentalOffice", new RentalOffice());
         model.addAttribute("user", loginBean.getUser());
         return "register-rental-office";
     }
 
     @PostMapping(value = "/rentalOffice/register")
-    public String rentalOfficeClaim(@ModelAttribute RentalOffice rentalOffice) {
+    public String rentalOfficeClaim(@ModelAttribute RentalOffice rentalOffice, Model model) {
+        if (rentalOfficeRepository.findByAddress(rentalOffice.getAddress()) != null) {
+            model.addAttribute("exist", 1);
+            model.addAttribute("RentalOffice", new RentalOffice());
+            model.addAttribute("user", loginBean.getUser());
+            return "register-rental-office";
+        }
         rentalOfficeRepository.save(rentalOffice);
         User user = loginBean.getUser();
         user.setRentalOffice(rentalOffice);

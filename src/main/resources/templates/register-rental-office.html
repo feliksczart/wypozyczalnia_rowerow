@@ -46,7 +46,9 @@
 </header>
 <main>
 <h1 class="registry__header">Formularz dodania wypożyczalni</h1>
-
+    <div th:if = "${exist}">
+        Podany adres już istnieje.
+    </div>
 <form action="#" method="post" th:action="@{/rentalOffice/register}">
     <div class="registry__element">
         <input required placeholder="Miasto" th:name="city" th:value="${RentalOffice.city}" type="text" class="registry__element-label" autocomplete="off"/>
