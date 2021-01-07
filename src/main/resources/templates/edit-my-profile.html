@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="https://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Edytuj</title>
+    <link rel="icon" th:href="@{/images/row-logo.png}">
+    <link rel="stylesheet" th:href="@{/css/style.css}"/>
+</head>
+<body>
+<header>
+    <nav class="navigation">
+        <a th:href="@{/index}">
+            <img class="navigation__logo" th:src="@{/images/czader.png}" alt="company logo">
+        </a>
+        <a class="navigation__link navigation__link-homepage" th:href="@{/index}">Strona główna</a>
+        <div class="navigation__link-position">
+            <div th:if="${user == null}">
+                <a class="navigation__link" th:href="@{/registration}">Rejestracja <br/> klienta</a>
+            </div>
+            <div th:if="${user != null}">
+                <div th:if="${user.rentalOffice == null}">
+                    <a class="navigation__link" th:href="@{/rentalOffice/register}">Rejestracja <br/> wypożyczalni</a>
+                </div>
+                <div th:if="${user.rentalOffice != null}">
+                    <a class="navigation__link" th:href="@{/your/rentalOffice}">Twoja <br/> Wypożyczalnia</a>
+                </div>
+            </div>
+            <a class="navigation__link" th:href="@{/rentalOffice}">Lista <br/> wypożyczalni</a>
+            <div th:if="${user != null}">
+                <a class="navigation__link" th:href="@{/myRentals}">Twoje<br/>wypożyczenia</a>
+            </div>
+        </div>
+        <div th:if="${user == null}">
+            <a class="navigation__login" th:href="@{/login}">Zaloguj się</a>
+        </div>
+        <div th:if="${user != null}">
+            <form method="post" th:action="@{/logout}">
+                <button class="navigation__logout" type="submit">Logout</button>
+            </form>
+        </div>
+    </nav>
+</header>
+<main>
+    <h1 class="registry__header">Edytuj dane swojejego profilu</h1>
+    <p>Jeżeli nie chcesz zmieniać danego elementu, zostaw puste miejsce</p>
+    <form action="#" method="post" th:action="@{/my-profile/edit}">
+        <div class="registry__element">
+            <input class="registry__element-label" placeholder="imię" th:name="name"
+                   th:value="${edituser?.name}" type="text" autocomplete="off"/>
+            <input class="registry__element-label" placeholder="nazwisko" th:name="surname"
+                   th:value="${edituser?.surname}" type="text" autocomplete="off"/>
+            <input class="regitry__element-label" placeholder="płeć jako lista" th:name="gender"
+                   th:value="${edituser?.gender}" type="text" autocomplete="off"/>
+            <input class="registry__element-label" placeholder="wiek" th:name="user.age"
+                   th:value="${edituser?.age}" type="number" autocomplete="off"/>
+        </div>
+        <div class="registry__element">
+            <input class="registry__element-submit" type="submit" value="Zapisz"/>
+            <input class="registry__element-reset" type="reset" value="Reset"/>
+        </div>
+    </form>
+</main>
+<footer>
+    <div class="footer__bottom"></div>
+</footer>
+</body>
+</html>
