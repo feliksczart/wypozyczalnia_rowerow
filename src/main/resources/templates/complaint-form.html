@@ -50,15 +50,14 @@
     <form action="#" method="post" modelAttribute="rental"
           th:action="@{/myRentals/{rental_id}/complaint(rental_id = ${rental.id})}">
         <div class="registry__element">
-            <input class="registry__element-label" placeholder="Tytuł" required th:name="complaints.title"
+            <input class="registry__element-label input-style" placeholder="Tytuł" required th:name="complaints.title"
                    th:value="${rental.complaints.title}" type="text" autocomplete="off"/>
-            <br>
-            <textarea cols="33" id="rental.complaints.description" placeholder="Treść Reklamacji" required rows="5"
-                      th:name="complaints.description"></textarea>
         </div>
+        <textarea cols="33" id="rental.complaints.description" placeholder="Treść Reklamacji" required rows="5"
+                  th:name="complaints.description"></textarea>
         <div class="registry__element">
-            <input class="registry__element-submit" type="submit" value="Dodaj"/>
-            <input class="registry__element-reset" type="reset" value="Reset"/>
+            <input class="registry__element-submit input-button-style" type="submit" value="Dodaj"/>
+            <input class="registry__element-reset input-button-style" type="reset" value="Reset"/>
         </div>
     </form>
 </main>

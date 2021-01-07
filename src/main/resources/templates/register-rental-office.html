@@ -51,13 +51,13 @@
     </div>
 <form action="#" method="post" th:action="@{/rentalOffice/register}">
     <div class="registry__element">
-        <input required placeholder="Miasto" th:name="city" th:value="${RentalOffice.city}" type="text" class="registry__element-label" autocomplete="off"/>
-        <input required placeholder="Kod pocztowy" th:name="zip" th:value="${RentalOffice.zip}" type="text" class="registry__element-label" autocomplete="off"/>
-        <input required placeholder="Adres" th:name="address" th:value="${RentalOffice.address}" type="text" class="registry__element-label" autocomplete="off"/>
+        <input class="registry__element-label input-style" required placeholder="Miasto" th:name="city" th:value="${RentalOffice.city}" type="text" class="registry__element-label" autocomplete="off"/>
+        <input class="registry__element-label input-style" required placeholder="Kod pocztowy" th:name="zip" th:value="${RentalOffice.zip}" type="text" class="registry__element-label" autocomplete="off"/>
+        <input class="registry__element-label input-style" required placeholder="Adres" th:name="address" th:value="${RentalOffice.address}" type="text" class="registry__element-label" autocomplete="off"/>
     </div>
     <div class="registry__element">
-        <input class="registry__element-submit" type="submit" value="Dodaj"/>
-        <input type="reset" value="Reset" class="registry__element-reset"/>
+        <input class="registry__element-submit input-button-style" type="submit" value="Dodaj"/>
+        <input type="reset" value="Reset" class="registry__element-reset input-button-style"/>
     </div>
 </form>
 </main>

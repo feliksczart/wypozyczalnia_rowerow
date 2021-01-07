@@ -47,30 +47,32 @@
     </nav>
 </header>
 <main>
-<div>
-    <p>Właściciel: </p>
-    <p th:text="${user.surname}">Nazwisko</p>
-</div>
-<div>
-    <p>Miasto: </p>
-    <p th:text="${user.rentalOffice.city}">miasto</p>
-</div>
-<div>
-    <p>Kod pocztowy: </p>
-    <p th:text="${user.rentalOffice.zip}">Kod pocztowy</p>
-</div>
-<div>
-    <p>Adres: </p>
-    <p th:text="${user.rentalOffice.address}">Adres</p>
-</div>
-<div>
-    <p>Województwo: </p>
-    <p th:text="${user.rentalOffice.region?.voivodeship}">Wojewodztwo</p>
-</div>
-<div>
-    <p>Powiat: </p>
-    <p th:text="${user.rentalOffice.region?.district}">Powiat</p>
-</div>
+    <table class="content-table">
+        <tr>
+            <td style="border-right: solid 2px #342E37;"><b>Nazwisko<br/>właściciela</b></td>
+            <td th:text="${user.surname}">Nazwisko</td>
+        </tr>
+        <tr>
+            <td style="border-right: solid 2px #342E37;"><b>Miasto</b></td>
+            <td th:text="${user.rentalOffice.city}">Miasto</td>
+        </tr>
+        <tr>
+            <td style="border-right: solid 2px #342E37;"><b>Adres</b></td>
+            <td th:text="${user.rentalOffice.address}">Adres</td>
+        </tr>
+        <tr>
+            <td style="border-right: solid 2px #342E37;"><b>Kod pocztowy</b></td>
+            <td th:text="${user.rentalOffice.zip}">Kod pocztowy</td>
+        </tr>
+        <tr>
+            <td style="border-right: solid 2px #342E37;"><b>Województwo</b></td>
+            <td th:text="${user.rentalOffice.region?.voivodeship}">Wojewodztwo</td>
+        </tr>
+        <tr>
+            <td style="border-right: solid 2px #342E37;"><b>Powiat</b></td>
+            <td th:text="${user.rentalOffice.region?.district}">Powiat</td>
+        </tr>
+    </table>
 <a class="page-button" th:href="@{/rentalOffice/edit}">Edytuj</a>
 </main>
 <footer>

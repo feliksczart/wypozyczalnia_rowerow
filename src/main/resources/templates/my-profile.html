@@ -47,26 +47,29 @@
     </nav>
 </header>
 <main>
-    <div>
-        <p>Nick: </p>
-        <p th:text="${user.nick}">Nick</p>
-    </div>
-    <div>
-        <p>Imię: </p>
-        <p th:text="${user.name}">Imię</p>
-    </div>
-    <div>
-        <p>Nazwisko: </p>
-        <p th:text="${user.surname}">Nazwisko</p>
-    </div>
-    <div>
-        <p>Płeć: </p>
-        <p th:text="${user?.gender}">Płeć</p>
-    </div>
-    <div>
-        <p>Wiek: </p>
-        <p th:text="${user?.age}">Wiek</p>
-    </div>
+    <table class="content-table">
+        <tr>
+            <td style="border-right: solid 2px #342E37;"><b>Nazwa użytkownika</b></td>
+            <td th:text="${user.nick}">Nick</td>
+        </tr>
+        <tr>
+            <td style="border-right: solid 2px #342E37;"><b>Imię</b></td>
+            <td th:text="${user.name}">Imię</td>
+        </tr>
+        <tr>
+            <td style="border-right: solid 2px #342E37;"><b>Nazwisko</b></td>
+            <td th:text="${user.surname}">Nazwisko</td>
+        </tr>
+        <tr>
+            <td style="border-right: solid 2px #342E37;"><b>Płeć</b></td>
+            <td th:text="${user?.gender}">Płeć</td>
+        </tr>
+        <tr>
+            <td style="border-right: solid 2px #342E37;"><b>Wiek</b></td>
+            <td th:text="${user?.age}">Wiek</td>
+        </tr>
+    </table>
+
     <a class="page-button" th:href="@{/my-profile/edit}">Edytuj</a>
 </main>
 <footer>

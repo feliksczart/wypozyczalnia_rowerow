@@ -44,27 +44,27 @@
 </header>
 <main>
     <h1 class="registry__header">Utwórz konto w wypożyczalni</h1>
-    <div th:if="${exist}">
-        Nazwa użytkownika już istnieje.
-    </div>
     <form role="form" th:action="@{/registration}" th:method="post" th:object="${user}">
         <div class="registry__element">
             <input id="name" name="name" th:field="*{name}" type="text" placeholder="Imię" title="Podaj swoje imię"
-                   class="registry__element-label" autocomplete="off">
+                   class="registry__element-label input-style" autocomplete="off">
             <input id="surname" name="surname" th:field="*{surname}" type="text" placeholder="Nazwisko"
-                   title="Podaj swoje nazwisko" class="registry__element-label" autocomplete="off">
+                   title="Podaj swoje nazwisko" class="registry__element-label input-style" autocomplete="off">
         </div>
 
         <div class="registry__element">
-            <input class="registry__element-label" id="nick" name="user.nick" placeholder="Nick" th:field="*{nick}"
+            <input class="registry__element-label input-style" id="nick" name="user.nick" placeholder="Nick" th:field="*{nick}"
                    title="Podaj nazwę użytkownika" type="text" autocomplete="off">
-            <input class="registry__element-label" id="password" name="user.password" placeholder="Hasło"
+            <input class="registry__element-label input-style" id="password" name="user.password" placeholder="Hasło"
                th:field="*{password}" title="Podaj hasło" type="password" autocomplete="off">
     </div>
     <div class="registry__element">
-        <input name="Zarejestruj się" type="Submit" class="registry__element-submit">
+        <input name="Zarejestruj się" type="Submit" class="registry__element-submit input-button-style">
     </div>
 </form>
+    <div class="error" th:if="${exist}">
+        Konto o takiej nazwie już istnieje!
+    </div>
 </main>
 <footer class="footer__general">
     <div class="footer__bottom"></div>

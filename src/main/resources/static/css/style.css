@@ -191,18 +191,33 @@ main {
 
 .registry__element-label{
 	background-color: #342E37;
-	border-radius: 8px;
-	width: 250px;
+	width: 235px;
 	height: 50px;
 	margin-top: 20px;
-	margin-left: 10px;
+	margin-left: 15px;
 	font-size: 28px;
 	color: #FAFFFD;
 }
 
+.input-style {
+	border-top-style: hidden;
+	border-right-style: hidden;
+	border-left-style: hidden;
+	border-bottom-style: hidden;
+	outline: none;
+	padding-left: 15px;
+}
+
+.input-button-style{
+	border-top-style: hidden;
+	border-right-style: hidden;
+	border-left-style: hidden;
+	border-bottom-style: hidden;
+	outline: none;
+}
+
 .registry__element-submit{
 	background-color: #90BE6D;
-	border-radius: 8px;
 	width: 250px;
 	height: 50px;
 	margin-left: 10px;
@@ -222,9 +237,32 @@ main {
 	margin-top: 20px;
 }
 
+.error{
+	color: orangered;
+	text-align: center;
+	margin-top: 20px;
+}
+.info{
+	text-align: center;
+}
+
+textarea{
+	outline: none;
+	resize: none;
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: 25px;
+	background-color: #342E37;
+	color: #FAFFFD;
+	width: 50%;
+	height: 150px;
+	justify-content: center;
+	padding: 10px;
+}
+
 .registry__element-reset{
 	background-color: #FB3640;
-	border-radius: 8px;
 	width: 250px;
 	height: 50px;
 	margin-left: 10px;

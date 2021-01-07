@@ -47,15 +47,19 @@
     </nav>
 </header>
 <main>
+    <table class="content-table">
+        <tr>
+            <td style="border-right: solid 2px #342E37;"><b>Nazwa użytkownika</b></td>
+            <td th:text="${user.nick}">Nick</td>
+        </tr>
+        <tr>
+            <td style="border-right: solid 2px #342E37;"><b>Tytuł</b></td>
+            <td th:text="${rental.complaints.title}">Tytuł</td>
+        </tr>
+    </table>
     <div>
-        <p th:text="${rental.complaints.title}">tytul</p>
-    </div>
-    <div>
-        <p>Użytkownik: </p>
-        <p th:text="${rental.user.surname}">Nazwisko</p>
-    </div>
-    <div>
-        <p th:text="${rental.complaints.description}">opis</p>
+        <p style="font-size: 40px; height: 40px; margin-bottom: 10px"><b>Treść reklamacji</b></p></br>
+        <p th:text="${rental.complaints.description}" style="font-size: 25px">Opis</p>
     </div>
 </main>
 <footer>

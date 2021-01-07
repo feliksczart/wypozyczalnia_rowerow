@@ -46,14 +46,14 @@
 </header>
 <main>
     <h1 class="registry__header">Edytuj dane swojejego profilu</h1>
-    <p>Jeżeli nie chcesz zmieniać danego elementu, zostaw puste miejsce</p>
+    <p class="info">Jeżeli nie chcesz zmieniać danej informacji, pozostaw pole puste.</p>
     <form action="#" method="post" th:action="@{/my-profile/edit}">
         <div class="registry__element">
-            <input class="registry__element-label" placeholder="imię" th:name="name"
+            <input class="registry__element-label input-style" placeholder="imię" th:name="name"
                    th:value="${edituser?.name}" type="text" autocomplete="off"/>
-            <input class="registry__element-label" placeholder="nazwisko" th:name="surname"
+            <input class="registry__element-label input-style" placeholder="nazwisko" th:name="surname"
                    th:value="${edituser?.surname}" type="text" autocomplete="off"/>
-            <div class="registry__element-label" style="width:200px;">
+            <div class="registry__element-label input-style" style="width:200px;">
                 <select th:name="gender" th:value="${edituser?.gender}">
                     <option></option>
                     <option>Kobieta</option>
@@ -61,12 +61,12 @@
                     <option>Inne</option>
                 </select>
             </div>
-            <input class="registry__element-label" placeholder="wiek" th:name="age"
+            <input class="registry__element-label input-style" placeholder="wiek" th:name="age"
                    th:value="${edituser?.age}" type="number" autocomplete="off"/>
         </div>
         <div class="registry__element">
-            <input class="registry__element-submit" type="submit" value="Zapisz"/>
-            <input class="registry__element-reset" type="reset" value="Reset"/>
+            <input class="registry__element-submit input-button-style" type="submit" value="Zapisz"/>
+            <input class="registry__element-reset input-button-style" type="reset" value="Reset"/>
         </div>
     </form>
 </main>
