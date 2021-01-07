@@ -365,10 +365,34 @@ main {
 	display: inline-block;
 	position: absolute;
 	font-size: 20px;
-	border-radius: 20%;
+	padding: 5px;
 }
 
 .page-button:hover {
 	background-color: #120C15;
 	cursor: pointer;
+}
+
+.container {
+	position: fixed;
+	top: 45%;
+	left: 53%;
+	/* bring your own prefixes */
+	transform: translate(-50%, -50%);
+}
+.shadows {
+	position: relative;
+	text-transform: uppercase;
+	text-shadow: -15px 5px 20px #ced0d3;
+	color: #342E37;
+	letter-spacing: -0.05em;
+	font-family: 'Anton', Arial, sans-serif;
+	user-select: none;
+	text-transform: uppercase;
+	font-size: 220px;
+	transition: all 0.25s ease-out;
+	font-weight: bold;
+}
+.shadows:hover {
+	text-shadow: -16px 6px 15px #ced0d3;
 }

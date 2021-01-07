@@ -53,14 +53,15 @@
                    th:value="${edituser?.name}" type="text" autocomplete="off"/>
             <input class="registry__element-label" placeholder="nazwisko" th:name="surname"
                    th:value="${edituser?.surname}" type="text" autocomplete="off"/>
-
-            <select class="registry__element" th:name="genders" th:id="genders">
-                <option th:value="Kobieta">Kobieta</option>
-                <option th:value="Mężczyzna">Mężczyzna</option>
-                <option th:value="Inne">Inne</option>
-            </select>
-
-            <input class="registry__element-label" placeholder="wiek" th:name="user.age"
+            <div class="registry__element-label" style="width:200px;">
+                <select th:name="gender" th:value="${edituser?.gender}">
+                    <option></option>
+                    <option>Kobieta</option>
+                    <option>Mężczyzna</option>
+                    <option>Inne</option>
+                </select>
+            </div>
+            <input class="registry__element-label" placeholder="wiek" th:name="age"
                    th:value="${edituser?.age}" type="number" autocomplete="off"/>
         </div>
         <div class="registry__element">

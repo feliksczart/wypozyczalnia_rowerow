@@ -92,9 +92,7 @@
     </script>
 
     <div th:if="${user?.rentalOffice?.id == id}">
-        <a th:href="@{/rentalOffice/{id}/bikes(id=${id})}">
-            <button class="page-button" type="submit">Dodaj Rower</button>
-        </a>
+        <a class="page-button" th:href="@{/rentalOffice/{id}/bikes(id=${id})}">Dodaj Rower</a>
     </div>
 </main>
 <footer class="footer__general">
