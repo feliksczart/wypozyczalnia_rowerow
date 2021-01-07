@@ -54,7 +54,12 @@
     <p>Marka: <input required th:name="bikeModel.brand" th:value="${bike.bikeModel.brand}" type="text" autocomplete="off"/></p>
     <p>Typ roweru: <input required th:name="bikeModel.type" th:value="${bike.bikeModel.type}" type="text" autocomplete="off"/></p>
     <p>Liczba: <input required th:name="number" th:value="${number}" type="number" min="1" autocomplete="off"/></p>
-    <p><input type="submit" value="Zapisz"/> <input type="reset" value="Reset"/></p>
+
+    <div class="registry__element">
+        <input class="registry__element-submit input-button-style" type="submit" value="Zapisz"/>
+        <input class="registry__element-reset input-button-style" type="reset" value="Reset"/>
+    </div>
+
 </form>
 </main>
 <footer>
