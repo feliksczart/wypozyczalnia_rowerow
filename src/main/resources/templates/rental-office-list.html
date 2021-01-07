@@ -25,10 +25,14 @@
                 <a class="navigation__link" th:href="@{/registration}">Rejestracja <br/> klienta</a>
             </div>
             <div th:if="${user != null}">
-                <a class="navigation__link" th:href="@{/rentalOffice/register}">Rejestracja <br/> wypożyczalni</a>
-                <a class="navigation__link" th:href="@{/your/rentalOffice}">Twoja <br/> Wypożyczalnia</a>
+                <div th:if="${user.rentalOffice == null}">
+                    <a class="navigation__link" th:href="@{/rentalOffice/register}">Rejestracja <br/> wypożyczalni</a>
+                </div>
+                <div th:if="${user.rentalOffice != null}">
+                    <a class="navigation__link" th:href="@{/your/rentalOffice}">Twoja <br/> Wypożyczalnia</a>
+                </div>
             </div>
-            <a class="navigation__link" th:href="@{/rentalOffice}">Lista <br/> wypożyczalni</a>
+            <a class="navigation__link" th:href="@{/rentalOffice}">Nasze <br/> wypożyczalnie</a>
             <div th:if="${user != null}">
                 <a class="navigation__link" th:href="@{/myRentals}">Twoje<br/>wypożyczenia</a>
             </div>

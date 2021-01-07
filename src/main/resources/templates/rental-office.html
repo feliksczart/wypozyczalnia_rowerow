@@ -26,10 +26,14 @@
                 <a class="navigation__link" th:href="@{/registration}">Rejestracja <br/> klienta</a>
             </div>
             <div th:if="${user != null}">
-                <a class="navigation__link" th:href="@{/rentalOffice/register}">Rejestracja <br/> wypożyczalni</a>
-                <a class="navigation__link" th:href="@{/your/rentalOffice}">Twoja <br/> Wypożyczalnia</a>
+                <div th:if="${user.rentalOffice == null}">
+                    <a class="navigation__link" th:href="@{/rentalOffice/register}">Rejestracja <br/> wypożyczalni</a>
+                </div>
+                <div th:if="${user.rentalOffice != null}">
+                    <a class="navigation__link" th:href="@{/your/rentalOffice}">Twoja <br/> Wypożyczalnia</a>
+                </div>
             </div>
-            <a class="navigation__link" th:href="@{/rentalOffice}">Lista <br/> wypożyczalni</a>
+            <a class="navigation__link" th:href="@{/rentalOffice}">Nasze <br/> wypożyczalnie</a>
             <div th:if="${user != null}">
                 <a class="navigation__link" th:href="@{/myRentals}">Twoje<br/>wypożyczenia</a>
             </div>
@@ -60,8 +64,8 @@
         <th>Marka</th>
         <th>Typ</th>
         <th>Stan</th>
-        <th></th>
-        <th></th>
+        <th th:if="${user?.rentalOffice?.id == id}"></th>
+        <th th:if="${user?.rentalOffice?.id == id}"></th>
     </tr>
     <tr th:each="bike : ${bikes}">
         <div th:if="${bike.bikeState != 'niedostępny'}">
@@ -70,10 +74,10 @@
         <td th:text="${bike.bikeModel?.brand}">Marka</td>
         <td th:text="${bike.bikeModel?.type}">Typ</td>
         <td th:text="${bike.bikeState}">Stan</td>
-        <td>
+        <td th:if="${user?.rentalOffice?.id == id}">
             <a th:href="@{/rentalOffice/{rental_id}/bike/{bike_id} (rental_id = ${id}, bike_id = ${bike.id})}">Wypożycz</a>
         </td>
-        <td>
+        <td th:if="${user?.rentalOffice?.id == id}">
             <a th:href="@{/rentalOffice/{rental_id}/remove/{bike_id}(rental_id = ${id}, bike_id = ${bike.id})}">Usuń</a>
         </td>
         </div>
@@ -81,11 +85,14 @@
 </table>
     <script th:inline="javascript">
         var bikes = [[${bikes}]];
-        search(bikes, [[${id}]])
+        search(bikes, [[${id}]],[[${user?.rentalOffice?.id}]])
     </script>
 
-<a th:href="@{/}"> Wróć</a>
-<a th:href="@{/rentalOffice/{id}/bikes(id=${id})}"> Dodaj Rower</a>
+    <div th:if="${user?.rentalOffice?.id == id}">
+        <a th:href="@{/rentalOffice/{id}/bikes(id=${id})}">
+            <button class="page-button" type="submit">Dodaj Rower</button>
+        </a>
+    </div>
 </main>
 <footer class="footer__general">
     <div class="footer__bottom"></div>

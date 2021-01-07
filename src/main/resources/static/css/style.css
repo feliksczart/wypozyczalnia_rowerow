@@ -358,3 +358,17 @@ main {
 .form input:placeholder-shown + .label-name::after {
 	transform: translateX(0%);
 }
+
+.page-button{
+	color: #FAFFFD;
+	background-color: #342E37;
+	display: inline-block;
+	position: absolute;
+	font-size: 20px;
+	border-radius: 20%;
+}
+
+.page-button:hover {
+	background-color: #120C15;
+	cursor: pointer;
+}

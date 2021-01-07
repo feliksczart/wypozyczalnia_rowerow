@@ -1,9 +1,9 @@
-function search(allItemList, id) {
+function search(allItemList, id, user_id) {
     $('#search').on('keyup', function () {
         var value = $(this).val();
         console.log('Value = ' + value);
         const data = filterFunction(value, allItemList);
-        rebuildTable(data, id)
+        rebuildTable(data, id, user_id)
     });
 }
 
@@ -22,35 +22,63 @@ function filterFunction(value, data) {
     return filteredData;
 }
 
-function rebuildTable(data, id) {
+function rebuildTable(data, id, user_id) {
     const table = document.getElementById('bikeList');
-    let rows = `<tr class="table__head">
-                <th>Cena</th>
-                <th>Model</th>
-                <th>Marka</th>
-                <th>Typ</th>
-                <th>Stan</th>
-                <th></th>
-                <th></th>
-            </tr>`
-    for (let i = 0; i < data.length; i++) {
-        const row = `<tr>
-                <td>${data[i].pricePerHour}zł</td>
-                <td>${data[i].bikeModel?.name}</td>
-                <td>${data[i].bikeModel?.brand}</td>
-                <td >${data[i].bikeModel?.type}</td>
-                <td>${data[i].bikeState}</td>
-                <td>
-                    <a href="/rentalOffice/${id}/bike/${data[i].id}">Wypożycz</a>
-                </td>
-                <td>
-                    <a href="/rentalOffice/${id}/remove/${data[i].id}">Usuń</a>
-                </td>
+
+    if(user_id == id) {
+
+        let rows = `<tr class="table__head">
+                    <th>Cena</th>
+                    <th>Model</th>
+                    <th>Marka</th>
+                    <th>Typ</th>
+                    <th>Stan</th>
+                    <th></th>
+                    <th></th>
                 </tr>`
-        if(data[i].bikeState.toLowerCase() != 'niedostępny')
-        {
-            rows += row
+        for (let i = 0; i < data.length; i++) {
+            const row = `<tr>
+                    <td>${data[i].pricePerHour}zł</td>
+                    <td>${data[i].bikeModel?.name}</td>
+                    <td>${data[i].bikeModel?.brand}</td>
+                    <td >${data[i].bikeModel?.type}</td>
+                    <td>${data[i].bikeState}</td>
+                    <td>
+                        <a href="/rentalOffice/${id}/bike/${data[i].id}">Wypożycz</a>
+                    </td>
+                    <td if="${user_id == id}">
+                        <a href="/rentalOffice/${id}/remove/${data[i].id}">Usuń</a>
+                    </td>
+                    </tr>`
+            if(data[i].bikeState.toLowerCase() != 'niedostępny')
+            {
+                rows += row
+            }
         }
+        table.innerHTML = rows;
     }
-    table.innerHTML = rows;
+    else {
+        let rows = `<tr class="table__head">
+                    <th>Cena</th>
+                    <th>Model</th>
+                    <th>Marka</th>
+                    <th>Typ</th>
+                    <th>Stan</th>
+                </tr>`
+        for (let i = 0; i < data.length; i++) {
+            const row = `<tr>
+                    <td>${data[i].pricePerHour}zł</td>
+                    <td>${data[i].bikeModel?.name}</td>
+                    <td>${data[i].bikeModel?.brand}</td>
+                    <td >${data[i].bikeModel?.type}</td>
+                    <td>${data[i].bikeState}</td>
+                    </tr>`
+
+            if(data[i].bikeState.toLowerCase() != 'niedostępny')
+            {
+                rows += row
+            }
+        }
+        table.innerHTML = rows;
+    }
 }
