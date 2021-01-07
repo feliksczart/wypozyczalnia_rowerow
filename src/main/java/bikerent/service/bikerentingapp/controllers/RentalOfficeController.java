@@ -31,8 +31,8 @@ public class RentalOfficeController {
 
     @GetMapping(value = "/rentalOffice/{id}")
     public String bikeList(@PathVariable(value = "id") Long id, Model model) {
-        //model.addAttribute("bikes", bikeRepository.findByRentalOfficeId(id));
-        model.addAttribute("bikes", bikeRepository.findAll());
+        model.addAttribute("bikes", bikeRepository.findByRentalOfficeId(id));
+        //model.addAttribute("bikes", bikeRepository.findAll());
         model.addAttribute("id", id);
         model.addAttribute("user", loginBean.getUser());
         return "rental-office";

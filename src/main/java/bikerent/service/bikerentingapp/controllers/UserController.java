@@ -42,6 +42,25 @@ public class UserController {
         return "index";
     }
 
+    @GetMapping("/my-profile")
+    public String myProfile(Model model) {
+        model.addAttribute("user", loginBean.getUser());
+        return "my-profile";
+    }
+
+    @GetMapping("/my-profile/edit")
+    public String editMyProfile(Model model) {
+        model.addAttribute("user", loginBean.getUser());
+        model.addAttribute("edituser", new User());
+        return "edit-my-profile";
+    }
+
+    @PostMapping("/my-profile/edit")
+    public String processMyProfile(@ModelAttribute(name = "user") User user) {
+        loginBean.editUser(user);
+        return "redirect:/my-profile";
+    }
+
     @GetMapping("/registration")
     public String registration(Model model) {
         model.addAttribute("exist", 0);
