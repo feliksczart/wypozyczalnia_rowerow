@@ -34,11 +34,13 @@ public class RentalOfficeBean {
         return bike;
     }
 
-    public void bikeRental(Long rentalId, Long bikeId) {
-        Rental rental = new Rental();
+    public void bikeRental(Long rentalId, Long bikeId, Rental rental) {
+        Bike bike = bikeRepository.findById(bikeId)
+                .orElseThrow(null);
+        bike.setBikeState("niedostępny");
+        bikeRepository.save(bike);
         rental.setUser(loginBean.getUser());
-        rental.setBike(bikeRepository.findById(bikeId)
-                .orElseThrow(null));
+        rental.setBike(bike);
         rental.setRentalOffice(rentalOfficeRepository.findById(rentalId)
                 .orElseThrow(null));
         LocalDateTime now = LocalDateTime.now();
@@ -46,6 +48,7 @@ public class RentalOfficeBean {
         String formatDateTime = now.format(formatter);
         rental.setStartDate(formatDateTime);
         rentalRepository.save(rental);
+
     }
 
     public void editRentalOffice(RentalOffice rentalOffice) {

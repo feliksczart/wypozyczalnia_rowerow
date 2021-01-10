@@ -3,7 +3,6 @@ package bikerent.service.bikerentingapp.domain;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import oracle.sql.NUMBER;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -34,6 +33,10 @@ public class Rental implements Serializable {
     private String endDate;
 
     private int price;
+
+    private String fullName;
+
+    private int phoneNumber;
 
     @ManyToOne
     private Bike bike;

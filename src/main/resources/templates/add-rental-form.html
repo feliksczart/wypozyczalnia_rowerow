@@ -3,7 +3,7 @@
       xmlns:th="https://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Moje Wypożyczenia</title>
+    <title>Wypożycz</title>
     <link rel="icon" th:href="@{/images/row-logo.png}">
     <link rel="stylesheet" th:href="@{/css/style.css}"/>
 </head>
@@ -11,7 +11,7 @@
 <header>
     <nav class="navigation">
         <a th:href="@{/index}">
-            <img class="navigation__logo" th:src="@{/images/czader.png}" alt="company logo">
+            <img alt="company logo" class="navigation__logo" th:src="@{/images/czader.png}">
         </a>
         <a class="navigation__link navigation__link-homepage" th:href="@{/index}">Strona główna</a>
         <div class="navigation__link-position">
@@ -45,40 +45,24 @@
     </nav>
 </header>
 <main>
-    <table id="rentalsList" class="content-table">
-        <tr class="table__head">
-            <th>Data Rozpoczęcia</th>
-            <th>Data Zakończenia</th>
-            <th>Cena</th>
-            <th>Nazwa Roweru</th>
-            <th>Wypożyczający</th>
-            <th>Numer telefonu</th>
-            <th>Miasto</th>
-            <th>Zakończ Wypożyczenie</th>
-            <th>Reklamacja</th>
-        </tr>
-        <tr th:each="rental : ${rentals}">
-            <td th:text="${rental.startDate}">Data Rozpoczęcia</td>
-            <td th:text="${rental?.endDate}">Data Zakończenia</td>
-            <td th:text="${rental?.price}">Cena</td>
-            <td th:text="${rental.bike.bikeModel.name}">Nazwa Roweru</td>
-            <td th:text="${rental.fullName}">Imię i nazwisko</td>
-            <td th:text="${rental.phoneNumber}">Numer telefonu</td>
-            <td th:text="${rental.rentalOffice.city}">Miasto</td>
-            <td>
-                <span th:if="${rental?.endDate != null}">Zakończono</span>
-                <span th:if="${rental?.endDate == null}"><a th:href="@{/myRentals/{id}(id = ${rental.id})}">Zakończ Wypożyczenie</a></span>
-            </td>
-            <td>
-            <span th:if="${rental?.complaints == null}"><a
-                    th:href="@{/myRentals/{rental_id}/complaint (rental_id = ${rental.id})}">złóż</a></span>
-                <span th:if="${rental?.complaints != null}"><a
-                        th:href="@{/myRentals/{rental_id}/show (rental_id = ${rental.id})}">zobacz</a></span>
-            </td>
-        </tr>
-    </table>
+    <h1>Formularz wypożyczenia</h1>
+    <div th:if="${blocked == 1}">
+        Użytkownik został zablokowany i nie może wypożyczać rowerów z naszej wypożyczalni
+    </div>
+    <form action="#" method="post"
+          th:action="@{/rentalOffice/{rental_id}/bike/{bike_id} (rental_id = ${rentalId}, bike_id = ${bikeId})}">
+        <p>Imię i nazwisko: <input autocomplete="off" required th:name="fullName" th:value="${rental.fullName}"
+                                   type="text"/></p>
+        <p>numer telefonu: <input autocomplete="off" min="0" required th:name="phoneNumber"
+                                  th:value="${rental.phoneNumber}" type="number"/></p>
+
+        <div class="registry__element">
+            <input class="registry__element-submit input-button-style" type="submit" value="Wypożycz"/>
+            <input class="registry__element-reset input-button-style" type="reset" value="Reset"/>
+        </div>
+
+    </form>
 </main>
-<div style="height: 10px"></div>
 <footer>
     <div class="footer__bottom"></div>
 </footer>

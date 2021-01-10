@@ -3,6 +3,7 @@ package bikerent.service.bikerentingapp.controllers;
 import bikerent.service.bikerentingapp.beans.LoginBean;
 import bikerent.service.bikerentingapp.domain.Complaints;
 import bikerent.service.bikerentingapp.domain.Rental;
+import bikerent.service.bikerentingapp.repositories.BikeRepository;
 import bikerent.service.bikerentingapp.repositories.ComplaintsRepository;
 import bikerent.service.bikerentingapp.repositories.RentalRepository;
 import lombok.AllArgsConstructor;
@@ -22,6 +23,7 @@ public class RentalController {
     private RentalRepository rentalRepository;
     private ComplaintsRepository complaintsRepository;
     private LoginBean loginBean;
+    private BikeRepository bikeRepository;
 
     @GetMapping(value = "/myRentals")
     public String bikeList(Model model) {
@@ -34,13 +36,15 @@ public class RentalController {
     @GetMapping(value = "/myRentals/{rental_id}")
     public String rentalEnd(@PathVariable(name = "rental_id") Long id) {
         Rental rental = rentalRepository.findRentalById(id);
+        rental.getBike().setBikeState("dostępny");
+        bikeRepository.save(rental.getBike());
         LocalDateTime now = LocalDateTime.now();
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
         String formatDateTime = now.format(formatter);
         rental.setEndDate(formatDateTime);
         rentalRepository.save(rental);
-        Float rental_hours = rentalRepository.calculate_time(rental.getStartDate(),rental.getEndDate());
-        Integer rental_payment = rentalRepository.count_payment(rental.getBike().getPricePerHour(),rental_hours.intValue());
+        Float rental_hours = rentalRepository.calculate_time(rental.getStartDate(), rental.getEndDate());
+        Integer rental_payment = rentalRepository.count_payment(rental.getBike().getPricePerHour(), rental_hours.intValue());
         rentalRepository.update_price(Math.toIntExact(id), rental_payment);
         return "redirect:/myRentals";
     }

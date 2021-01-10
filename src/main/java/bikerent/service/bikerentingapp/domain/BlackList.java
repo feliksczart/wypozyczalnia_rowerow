@@ -6,8 +6,6 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.io.Serializable;
-import java.util.HashSet;
-import java.util.Set;
 
 @Data
 @NoArgsConstructor
@@ -19,6 +17,5 @@ public class BlackList implements Serializable {
     @SequenceGenerator(name = "blacklist_sequence", sequenceName = "BLACKLIST_SEQ")
     private Long id;
 
-    @OneToOne
-    private User user;
+    private int phoneNumber;
 }

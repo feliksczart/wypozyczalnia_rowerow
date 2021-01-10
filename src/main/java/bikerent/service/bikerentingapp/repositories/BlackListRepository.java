@@ -4,4 +4,6 @@ import bikerent.service.bikerentingapp.domain.BlackList;
 import org.springframework.data.repository.CrudRepository;
 
 public interface BlackListRepository extends CrudRepository<BlackList, Long> {
+
+    BlackList findBlackListByPhoneNumber(int phoneNumber);
 }

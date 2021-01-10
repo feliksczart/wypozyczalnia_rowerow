@@ -2,10 +2,9 @@ package bikerent.service.bikerentingapp.controllers;
 
 import bikerent.service.bikerentingapp.beans.LoginBean;
 import bikerent.service.bikerentingapp.beans.RentalOfficeBean;
-import bikerent.service.bikerentingapp.domain.Bike;
-import bikerent.service.bikerentingapp.domain.RentalOffice;
-import bikerent.service.bikerentingapp.domain.User;
+import bikerent.service.bikerentingapp.domain.*;
 import bikerent.service.bikerentingapp.repositories.BikeRepository;
+import bikerent.service.bikerentingapp.repositories.BlackListRepository;
 import bikerent.service.bikerentingapp.repositories.RentalOfficeRepository;
 import bikerent.service.bikerentingapp.repositories.UserRepository;
 import lombok.AllArgsConstructor;
@@ -21,6 +20,7 @@ public class RentalOfficeController {
     private final RentalOfficeBean rentalOfficeBean;
     private final LoginBean loginBean;
     private final UserRepository userRepository;
+    private final BlackListRepository blackListRepository;
 
     @GetMapping(value = "/rentalOffice")
     public String bikeList(Model model) {
@@ -32,7 +32,6 @@ public class RentalOfficeController {
     @GetMapping(value = "/rentalOffice/{id}")
     public String bikeList(@PathVariable(value = "id") Long id, Model model) {
         model.addAttribute("bikes", bikeRepository.findByRentalOfficeId(id));
-        //model.addAttribute("bikes", bikeRepository.findAll());
         model.addAttribute("id", id);
         model.addAttribute("user", loginBean.getUser());
         return "rental-office";
@@ -67,14 +66,47 @@ public class RentalOfficeController {
     public String bikeAddForm(@PathVariable(value = "rental_id") Long id, @ModelAttribute Bike bike, @RequestParam(value = "number", defaultValue = "1") Integer number) {
         bike.setRentalOffice(rentalOfficeRepository.findById(id).
                 orElseThrow(null));
+        bike.setBikeState("dostępny");
         rentalOfficeBean.insertBikes(bike, number);
         return "redirect:/rentalOffice/" + id;
     }
 
     @GetMapping(value = "/rentalOffice/{rental_id}/bike/{bike_id}")
-    public String bikeList(@PathVariable(value = "rental_id") Long rentalId, @PathVariable(value = "bike_id") Long bikeId) {
-        rentalOfficeBean.bikeRental(rentalId, bikeId);
+    public String rentBikeForm(@PathVariable(value = "rental_id") Long rentalId, @PathVariable(value = "bike_id") Long bikeId, Model model) {
+        model.addAttribute("user", loginBean.getUser());
+        model.addAttribute("rentalId", rentalId);
+        model.addAttribute("bikeId", bikeId);
+        model.addAttribute("rental", new Rental());
+        model.addAttribute("blocked", 0);
+        return "add-rental-form";
+    }
+
+    @PostMapping(value = "/rentalOffice/{rental_id}/bike/{bike_id}")
+    public String rentBikeProcess(Model model, @PathVariable(value = "rental_id") Long rentalId, @PathVariable(value = "bike_id") Long bikeId, @ModelAttribute("rental") Rental rental) {
+        if (blackListRepository.findBlackListByPhoneNumber(rental.getPhoneNumber()) != null) {
+            model.addAttribute("user", loginBean.getUser());
+            model.addAttribute("rentalId", rentalId);
+            model.addAttribute("bikeId", bikeId);
+            model.addAttribute("rental", new Rental());
+            model.addAttribute("blocked", 1);
+            return "add-rental-form";
+        }
+        rentalOfficeBean.bikeRental(rentalId, bikeId, rental);
         return "redirect:/myRentals";
+    }
+
+    @GetMapping(value = "/rentalOffice/{rental_id}/block")
+    public String clientBlock(@PathVariable(value = "rental_id") Long rentalId, Model model) {
+        model.addAttribute("user", loginBean.getUser());
+        model.addAttribute("rentalId", rentalId);
+        model.addAttribute("blackList", new BlackList());
+        return "block-client-form";
+    }
+
+    @PostMapping(value = "/rentalOffice/{rental_id}/block")
+    public String clientBlockProcess(@PathVariable(value = "rental_id") Long rentalId, @ModelAttribute BlackList blackList) {
+        blackListRepository.save(blackList);
+        return "redirect:/rentalOffice/" + rentalId;
     }
 
     @GetMapping(value = "/rentalOffice/register")
