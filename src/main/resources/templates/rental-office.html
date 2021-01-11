@@ -91,9 +91,15 @@
         search(bikes, [[${id}]],[[${user?.rentalOffice?.id}]])
     </script>
 
-    <div th:if="${user?.rentalOffice?.id == id}">
-        <a class="page-button" th:href="@{/rentalOffice/{id}/bikes(id=${id})}">Dodaj Rower</a>
+    <div th:if="${user?.rentalOffice?.id == id}" class="inline-buttons">
+        <div>
+            <a class="page-button" style="display: inline-flex; position: unset; margin-right: 15px;" th:href="@{/rentalOffice/{id}/bikes(id=${id})}">Dodaj Rower</a>
+        </div>
+        <div>
+            <a class="page-button" style="display: inline-flex; position: unset;" th:href="@{/rentalOffice/{rental_id}/block (rental_id = ${user?.rentalOffice?.id})}">Zablokuj użytkownika</a>
+        </div>
     </div>
+
 </main>
 <footer class="footer__general">
     <div class="footer__bottom"></div>

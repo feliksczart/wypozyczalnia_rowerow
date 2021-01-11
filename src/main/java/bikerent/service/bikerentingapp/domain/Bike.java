@@ -24,6 +24,7 @@ public class Bike implements Serializable {
 
     // do edycji, bo nie wiem za bardzo jakie to relacje
     // a po drugie trzeba zaimplementować jak mają (jeśli mają) się łączyć ich tabelki joinem
+
     @ManyToOne
     private BikeModel bikeModel;
 

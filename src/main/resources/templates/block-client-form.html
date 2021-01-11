@@ -45,13 +45,15 @@
     </nav>
 </header>
 <main>
-    <h1>Zablokuj użytkownika po numerze telefonu</h1>
+    <h1 class="registry__header">Zablokuj użytkownika po numerze telefonu</h1>
     <form action="#" method="post" th:action="@{/rentalOffice/{rental_id}/block (rental_id = ${rentalId})}">
-        <p>numer telefonu: <input autocomplete="off" min="0" required th:name="phoneNumber"
-                                  th:value="${blackList.phoneNumber}" type="number"/></p>
+        <div class="registry__element">
+        <input class="registry__element-label input-style" autocomplete="off" min="0" required th:name="phoneNumber"
+               placeholder="Numer telefonu" th:value="${blackList.phoneNumber}" type="number"/>
+        </div>
 
         <div class="registry__element">
-            <input class="registry__element-submit input-button-style" type="submit" value="Wypożycz"/>
+            <input class="registry__element-submit input-button-style" type="submit" value="Zablokuj"/>
             <input class="registry__element-reset input-button-style" type="reset" value="Reset"/>
         </div>
 
