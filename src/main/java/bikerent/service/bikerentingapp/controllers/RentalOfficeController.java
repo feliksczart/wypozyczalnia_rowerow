@@ -42,13 +42,27 @@ public class RentalOfficeController {
     public String removeBike(@PathVariable(value = "rental_id") Long rentalOfficeId, @PathVariable(value = "bike_id") Long bikeId) {
         try {
             bikeRepository.deleteBikeById(bikeId);
-        }catch(Throwable e){
+        } catch (Throwable e) {
             Bike bike = bikeRepository.findById(bikeId)
                     .orElseThrow(null);
             bike.setBikeState("niedostępny");
             bikeRepository.save(bike);
         }
         return "redirect:/rentalOffice/" + rentalOfficeId;
+    }
+
+    @GetMapping(value = "/rentalOffice/{rental_id}/blackList")
+    public String showBlackList(@PathVariable(value = "rental_id") Long rentalOfficeId, Model model) {
+        model.addAttribute("blocked", blackListRepository.findAll());
+        model.addAttribute("user", loginBean.getUser());
+        model.addAttribute("rentalOfficeId", rentalOfficeId);
+        return "blocked-users";
+    }
+
+    @GetMapping(value = "/rentalOffice/{rental_id}/blackList/{blocked_id}")
+    public String removeFromBlackList(@PathVariable(value = "rental_id") Long rentalOfficeId, @PathVariable(value = "blocked_id") Long blocked_id) {
+        blackListRepository.deleteById(blocked_id);
+        return "redirect:/rentalOffice/" + rentalOfficeId + "/blackList";
     }
 
     @GetMapping(value = "/rentalOffice/{id}/bikes")

@@ -2,10 +2,7 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Lista Wypożyczalni</title>
-    <style> p {
-        display: inline-flex;
-    }</style>
+    <title>Lista Zablokowanych</title>
     <link rel="icon" th:href="@{/images/row-logo.png}">
     <link rel="stylesheet" th:href="@{/css/style.css}"/>
 </head>
@@ -13,7 +10,7 @@
 <header>
     <nav class="navigation">
         <a th:href="@{/index}">
-            <img class="navigation__logo" th:src="@{/images/czader.png}" alt="company logo">
+            <img alt="company logo" class="navigation__logo" th:src="@{/images/czader.png}">
         </a>
         <a class="navigation__link navigation__link-homepage" th:href="@{/index}">Strona główna</a>
         <div class="navigation__link-position">
@@ -47,44 +44,18 @@
     </nav>
 </header>
 <main>
-    <table class="content-table">
-        <tr>
-            <td style="border-right: solid 2px #342E37;"><b>Nazwisko<br/>właściciela</b></td>
-            <td th:text="${user.surname}">Nazwisko</td>
+    <table class="content-table" id="rentalOfficeList">
+        <tr class="table__head">
+            <th>Numer Telefonu</th>
+            <th></th>
         </tr>
-        <tr>
-            <td style="border-right: solid 2px #342E37;"><b>Miasto</b></td>
-            <td th:text="${user.rentalOffice.city}">Miasto</td>
-        </tr>
-        <tr>
-            <td style="border-right: solid 2px #342E37;"><b>Adres</b></td>
-            <td th:text="${user.rentalOffice.address}">Adres</td>
-        </tr>
-        <tr>
-            <td style="border-right: solid 2px #342E37;"><b>Kod pocztowy</b></td>
-            <td th:text="${user.rentalOffice.zip}">Kod pocztowy</td>
-        </tr>
-        <tr>
-            <td style="border-right: solid 2px #342E37;"><b>Województwo</b></td>
-            <td th:text="${user.rentalOffice.region?.voivodeship}">Wojewodztwo</td>
-        </tr>
-        <tr>
-            <td style="border-right: solid 2px #342E37;"><b>Powiat</b></td>
-            <td th:text="${user.rentalOffice.region?.district}">Powiat</td>
+        <tr th:each="user : ${blocked}">
+            <td th:text="${user.phoneNumber}">Numer telefonu</td>
+            <td>
+                <a th:href="@{/rentalOffice/{rental_id}/blackList/{blocked_id} (rental_id = ${rentalOfficeId}, blocked_id = ${user.id})}">Usuń</a>
+            </td>
         </tr>
     </table>
-    <div>
-        <a class="page-button" style="display: inline-flex; position: unset; margin-right: 15px;"
-           th:href="@{/rentalOffice/edit}">Edytuj</a>
-    </div>
-    <div>
-        <a class="page-button" style="display: inline-flex; position: unset;"
-           th:href="@{/rentalOffice/{id} (id = ${user.rentalOffice.id})}">Zarządzaj rowerami</a>
-    </div>
-    <div>
-        <a class="page-button" style="display: inline-flex; position: unset; margin-right: 30px;"
-           th:href="@{/rentalOffice/{id}/blackList (id = ${user.rentalOffice.id})}">Wyświetl zablokowanych</a>
-    </div>
 </main>
 <footer>
     <div class="footer__bottom"></div>
