@@ -2,6 +2,7 @@ package bikerent.service.bikerentingapp.bootstrap;
 
 import bikerent.service.bikerentingapp.Services.UserDetailsServiceImpl;
 import bikerent.service.bikerentingapp.Services.UserServiceImpl;
+import bikerent.service.bikerentingapp.domain.*;
 import bikerent.service.bikerentingapp.repositories.*;
 import lombok.AllArgsConstructor;
 import org.springframework.boot.CommandLineRunner;
@@ -30,14 +31,7 @@ public class BootstrapData implements CommandLineRunner {
 
     @Override
     public void run(String... args) throws Exception {
-//
-//        Integer x = 20;
-//        Integer y = 20;
-//        Integer total = rentalRepository.count_payment(x, y);
-//        System.out.println(total);
-//
-//        System.out.println(rentalRepository.calculate_time("2012-02-28 15:20:11", "2012-02-28 18:22:11"));
-//
+
 //        Region region = new Region("Wielkopolskie", "Poznań");
 //        regionRepository.save(region);
 //        RentalOffice rentalOffice = new RentalOffice("Poznań", "60-226", "Palacza 5");

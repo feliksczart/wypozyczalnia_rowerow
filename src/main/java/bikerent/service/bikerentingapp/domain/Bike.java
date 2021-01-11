@@ -13,6 +13,7 @@ import java.io.Serializable;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
+@Table(name = "Bike")
 public class Bike implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "bike_sequence")
@@ -21,9 +22,6 @@ public class Bike implements Serializable {
 
     private int pricePerHour;
     private String bikeState;
-
-    // do edycji, bo nie wiem za bardzo jakie to relacje
-    // a po drugie trzeba zaimplementować jak mają (jeśli mają) się łączyć ich tabelki joinem
 
     @ManyToOne
     private BikeModel bikeModel;

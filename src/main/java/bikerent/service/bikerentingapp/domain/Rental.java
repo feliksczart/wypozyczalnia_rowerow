@@ -21,7 +21,6 @@ import java.io.Serializable;
                 })
 })
 
-
 public class Rental implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "rental_sequence")
