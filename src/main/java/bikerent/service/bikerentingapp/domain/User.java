@@ -15,7 +15,7 @@ import java.util.Set;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table(name = "client", indexes = @Index(name = "nick_index", columnList = "nick"))
+@Table(name = "client", indexes = @Index(name = "nick_index", columnList = "nick    "))
 public class User implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "user_sequence")
