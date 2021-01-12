@@ -74,15 +74,15 @@
         </tr>
     </table>
     <div>
-        <a class="page-button" style="display: inline-flex; position: unset; margin-right: 15px;"
+        <a class="page-button" style="display: inline-flex; position: unset; margin-right: 15px;  width: 25%;"
            th:href="@{/rentalOffice/edit}">Edytuj</a>
     </div>
     <div>
-        <a class="page-button" style="display: inline-flex; position: unset;"
+        <a class="page-button" style="display: inline-flex; position: unset; margin-right: 15px;  width: 25%;"
            th:href="@{/rentalOffice/{id} (id = ${user.rentalOffice.id})}">Zarządzaj rowerami</a>
     </div>
     <div>
-        <a class="page-button" style="display: inline-flex; position: unset; margin-right: 30px;"
+        <a class="page-button" style="display: inline-flex; position: unset; margin-right: 15px; width: 25%;"
            th:href="@{/rentalOffice/{id}/blackList (id = ${user.rentalOffice.id})}">Wyświetl zablokowanych</a>
     </div>
 </main>
