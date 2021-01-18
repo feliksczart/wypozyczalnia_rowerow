@@ -15,15 +15,15 @@ import java.util.Set;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table(name = "client", indexes = @Index(name = "nick_index", columnList = "nick    "))
+@Table(name = "client", indexes = @Index(name = "nick_index", columnList = "nick"))
 public class User implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "user_sequence")
     @SequenceGenerator(name = "user_sequence", sequenceName = "USER_SEQ")
     private Long id;
-    @Column(unique = true)
     private String name;
     private String surname;
+    @Column(name = "nick", nullable = false)
     private String nick;
     private String password;
     private int age;

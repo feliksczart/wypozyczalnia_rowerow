@@ -32,51 +32,50 @@ public class BootstrapData implements CommandLineRunner {
     @Override
     public void run(String... args) throws Exception {
 
-//        Region region = new Region("Wielkopolskie", "Poznań");
-//        regionRepository.save(region);
-//        RentalOffice rentalOffice = new RentalOffice("Poznań", "60-226", "Palacza 5");
-//        rentalOffice.setRegion(region);
-//        rentalOfficeRepository.save(rentalOffice);
-//
-//        Region region2 = new Region("Abc", "Cba");
-//        regionRepository.save(region2);
-//        RentalOffice rentalOffice2 = new RentalOffice("Poznań", "60-226", "Błażeja 5");
-//        rentalOffice2.setRegion(region2);
-//        rentalOfficeRepository.save(rentalOffice2);
-//
-//
-//
-//        User feliks = new User("Feliks", "Czart", "fff", "123", grantedAuthority);
-//        userService.handleUser(feliks, userRepository, roleRepository, bCryptPasswordEncoder);
-//        userService.save(feliks);
-//
-//        User piotr = new User("Piotr", "Derenowski", "ppp", "123", grantedAuthority);
-//        userService.handleUser(piotr, userRepository, roleRepository, bCryptPasswordEncoder);
-//        userService.save(piotr);
-//
-//        User one = new User("1", "1", "1", "1", grantedAuthority);
-//        userService.handleUser(one, userRepository, roleRepository, bCryptPasswordEncoder);
-//        one.setRentalOffice(rentalOffice);
-//        rentalOfficeRepository.save(rentalOffice);
-//        userService.save(one);
-//
-//
-//        BikeModel bikeModel = new BikeModel("Destruktor", "Trek", "górski");
-//        bikeModelRepository.save(bikeModel);
-//        Bike bike = new Bike(15, "gotowy");
-//        bike.setBikeModel(bikeModel);
-//        bikeRepository.save(bike);
-//
-//        bikeModel = new BikeModel("Fire", "Norco", "miejski");
-//        bikeModelRepository.save(bikeModel);
-//        bike = new Bike(20, "gotowy");
-//        bike.setBikeModel(bikeModel);
-//        bikeRepository.save(bike);
-//
-//        bikeModel = new BikeModel("Water", "Schwinn", "miejski");
-//        bikeModelRepository.save(bikeModel);
-//        bike = new Bike(20, "w trakcie przygotowania");
-//        bike.setBikeModel(bikeModel);
-//        bikeRepository.save(bike);
+        Region region = new Region("Wielkopolskie", "Poznań");
+        regionRepository.save(region);
+        RentalOffice rentalOffice = new RentalOffice("Poznań", "60-226", "Palacza 5");
+        rentalOffice.setRegion(region);
+        rentalOfficeRepository.save(rentalOffice);
+
+        Region region2 = new Region("Abc", "Cba");
+        regionRepository.save(region2);
+        RentalOffice rentalOffice2 = new RentalOffice("Poznań", "60-226", "Błażeja 5");
+        rentalOffice2.setRegion(region2);
+        rentalOfficeRepository.save(rentalOffice2);
+
+
+        User feliks = new User("Feliks", "Czart", "fff", "123", grantedAuthority);
+        userService.handleUser(feliks, userRepository, roleRepository, bCryptPasswordEncoder);
+        userService.save(feliks);
+
+        User piotr = new User("Piotr", "Derenowski", "ppp", "123", grantedAuthority);
+        userService.handleUser(piotr, userRepository, roleRepository, bCryptPasswordEncoder);
+        userService.save(piotr);
+
+        User one = new User("1", "1", "1", "1", grantedAuthority);
+        userService.handleUser(one, userRepository, roleRepository, bCryptPasswordEncoder);
+        one.setRentalOffice(rentalOffice);
+        rentalOfficeRepository.save(rentalOffice);
+        userService.save(one);
+
+
+        BikeModel bikeModel = new BikeModel("Destruktor", "Trek", "górski");
+        bikeModelRepository.save(bikeModel);
+        Bike bike = new Bike(15, "gotowy");
+        bike.setBikeModel(bikeModel);
+        bikeRepository.save(bike);
+
+        bikeModel = new BikeModel("Fire", "Norco", "miejski");
+        bikeModelRepository.save(bikeModel);
+        bike = new Bike(20, "gotowy");
+        bike.setBikeModel(bikeModel);
+        bikeRepository.save(bike);
+
+        bikeModel = new BikeModel("Water", "Schwinn", "miejski");
+        bikeModelRepository.save(bikeModel);
+        bike = new Bike(20, "w trakcie przygotowania");
+        bike.setBikeModel(bikeModel);
+        bikeRepository.save(bike);
     }
 }

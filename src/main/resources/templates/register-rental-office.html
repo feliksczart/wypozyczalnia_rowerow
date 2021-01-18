@@ -45,27 +45,31 @@
     </nav>
 </header>
 <main>
-<h1 class="registry__header">Formularz dodania wypożyczalni</h1>
-    <div th:if = "${exist}">
+    <h1 class="registry__header">Formularz dodania wypożyczalni</h1>
+    <div th:if="${exist}">
         Podany adres już istnieje.
     </div>
-<form action="#" method="post" th:action="@{/rentalOffice/register}">
-    <div class="registry__element">
-        <input class="registry__element-label input-style" required placeholder="Miasto" th:name="city" th:value="${RentalOffice.city}" type="text" autocomplete="off"/>
-        <input class="registry__element-label input-style" required placeholder="Kod pocztowy" th:name="zip" th:value="${RentalOffice.zip}" type="text" autocomplete="off"/>
-        <input class="registry__element-label input-style" required placeholder="Adres" th:name="address" th:value="${RentalOffice.address}" type="text" autocomplete="off"/>
-    </div>
-    <div class="registry__element">
-        <input class="registry__element-label input-style" placeholder="Województwo" th:name="region.voivodeship" th:value="${RentalOffice.region?.voivodeship}"
-               type="text" autocomplete="off"/>
-        <input class="registry__element-label input-style" placeholder="Powiat" th:name="region.district"
-               th:value="${RentalOffice.region?.district}" type="text" autocomplete="off"/>
-    </div>
-    <div class="registry__element">
-        <input class="registry__element-submit input-button-style" type="submit" value="Dodaj"/>
-        <input type="reset" value="Reset" class="registry__element-reset input-button-style"/>
-    </div>
-</form>
+    <form action="#" method="post" th:action="@{/rentalOffice/register}">
+        <div class="registry__element">
+            <input autocomplete="off" class="registry__element-label input-style" placeholder="Miasto" required
+                   th:name="city" th:value="${RentalOffice.city}" type="text"/>
+            <input autocomplete="off" class="registry__element-label input-style" placeholder="Kod pocztowy" required
+                   th:name="zip" th:value="${RentalOffice.zip}" type="text"/>
+            <input autocomplete="off" class="registry__element-label input-style" placeholder="Adres" required
+                   th:name="address" th:value="${RentalOffice.address}" type="text"/>
+        </div>
+        <div class="registry__element">
+            <input autocomplete="off" class="registry__element-label input-style" placeholder="Województwo"
+                   required th:name="region.voivodeship"
+                   th:value="${RentalOffice.region?.voivodeship}" type="text"/>
+            <input autocomplete="off" class="registry__element-label input-style" placeholder="Powiat" required
+                   th:name="region.district" th:value="${RentalOffice.region?.district}" type="text"/>
+        </div>
+        <div class="registry__element">
+            <input class="registry__element-submit input-button-style" type="submit" value="Dodaj"/>
+            <input class="registry__element-reset input-button-style" type="reset" value="Reset"/>
+        </div>
+    </form>
 </main>
 <footer>
     <div class="footer__bottom"></div>

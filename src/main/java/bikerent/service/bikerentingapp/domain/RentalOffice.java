@@ -11,7 +11,7 @@ import java.io.Serializable;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table(name = "rental_office", indexes = @Index(name = "address_index", columnList = "address"))
+@Table(name = "RentalOffice", indexes = @Index(name = "address_index", columnList = "address"))
 public class RentalOffice implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "rental_office_sequence")
@@ -20,6 +20,8 @@ public class RentalOffice implements Serializable {
 
     private String city;
     private String zip;
+
+    @Column(name = "address", nullable = false)
     private String address;
 
     @ManyToOne

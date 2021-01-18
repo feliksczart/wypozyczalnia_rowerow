@@ -32,7 +32,7 @@ public class RentalOfficeBean {
     }
 
     public RentalOffice bindingRentalAndRegion() {
-        Region region = new Region();
+        Region region = new Region("temp", "temp");
         regionRepository.save(region);
         RentalOffice rentalOffice = new RentalOffice(region);
         return rentalOffice;

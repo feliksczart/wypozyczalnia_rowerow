@@ -11,14 +11,18 @@ import java.io.Serializable;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table(name = "region", indexes = @Index(name = "vivode_index", columnList = "voivodeship"))
+@Table(name = "region", indexes = {@Index(name = "voivodeship_index", columnList = "voivodeship"),
+        @Index(name = "district_index", columnList = "district")})
 public class Region implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "region_sequence")
     @SequenceGenerator(name = "region_sequence", sequenceName = "REGION_SEQ")
     private Long id;
 
+    @Column(name = "voivodeship", nullable = false)
     private String voivodeship;
+
+    @Column(name = "district", nullable = false)
     private String district;
 
     public Region(String voivodeship, String district) {
