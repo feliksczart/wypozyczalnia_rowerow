@@ -18,13 +18,9 @@ public class RentalOfficeBean {
     private UserRepository userRepository;
     private LoginBean loginBean;
 
-    public void insertBikes(Bike bike, int number) {
+    public void insertBikes(Bike bike) {
         bikeModelRepository.save(bike.getBikeModel());
         bikeRepository.save(bike);
-        for (int i = 1; i < number; i++) {
-            Bike tempBike = new Bike(bike.getPricePerHour(), bike.getBikeState(), bike.getBikeModel(), bike.getRentalOffice());
-            bikeRepository.save(tempBike);
-        }
     }
 
     public Bike bindingModelAndBike() {

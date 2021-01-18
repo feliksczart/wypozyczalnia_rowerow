@@ -67,21 +67,19 @@ public class RentalOfficeController {
 
     @GetMapping(value = "/rentalOffice/{id}/bikes")
     public String bikeAddForm(@PathVariable(value = "id") Long id, Model model) {
-        Integer number = 0;
         model.addAttribute("rentalOffice", rentalOfficeRepository.findById(id)
                 .orElseThrow(null));
-        model.addAttribute("number", number);
         model.addAttribute("bike", rentalOfficeBean.bindingModelAndBike());
         model.addAttribute("user", loginBean.getUser());
         return "bike-add-form";
     }
 
     @PostMapping(value = "/rentalOffice/{rental_id}/bikes")
-    public String bikeAddForm(@PathVariable(value = "rental_id") Long id, @ModelAttribute Bike bike, @RequestParam(value = "number", defaultValue = "1") Integer number) {
+    public String bikeAddForm(@PathVariable(value = "rental_id") Long id, @ModelAttribute Bike bike) {
         bike.setRentalOffice(rentalOfficeRepository.findById(id).
                 orElseThrow(null));
         bike.setBikeState("dostępny");
-        rentalOfficeBean.insertBikes(bike, number);
+        rentalOfficeBean.insertBikes(bike);
         return "redirect:/rentalOffice/" + id;
     }
 
