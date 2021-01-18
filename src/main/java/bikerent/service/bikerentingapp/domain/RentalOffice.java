@@ -30,4 +30,8 @@ public class RentalOffice implements Serializable {
         this.zip = zip;
         this.address = address;
     }
+
+    public RentalOffice(Region region) {
+
+    }
 }

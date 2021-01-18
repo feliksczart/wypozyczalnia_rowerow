@@ -16,6 +16,7 @@ public class RentalOfficeBean {
     private final RentalRepository rentalRepository;
     private RentalOfficeRepository rentalOfficeRepository;
     private UserRepository userRepository;
+    private RegionRepository regionRepository;
     private LoginBean loginBean;
 
     public void insertBikes(Bike bike) {
@@ -28,6 +29,13 @@ public class RentalOfficeBean {
         bikeModelRepository.save(bikemodel);
         Bike bike = new Bike(bikemodel);
         return bike;
+    }
+
+    public RentalOffice bindingRentalAndRegion() {
+        Region region = new Region();
+        regionRepository.save(region);
+        RentalOffice rentalOffice = new RentalOffice(region);
+        return rentalOffice;
     }
 
     public void bikeRental(Long rentalId, Long bikeId, Rental rental) {
@@ -49,12 +57,17 @@ public class RentalOfficeBean {
 
     public void editRentalOffice(RentalOffice rentalOffice) {
         User user = loginBean.getUser();
+        regionRepository.save(rentalOffice.getRegion());
         if (rentalOffice.getAddress() != "")
             user.getRentalOffice().setAddress(rentalOffice.getAddress());
         if (rentalOffice.getZip() != "")
             user.getRentalOffice().setZip(rentalOffice.getZip());
         if (rentalOffice.getCity() != "")
             user.getRentalOffice().setCity(rentalOffice.getCity());
+        if (rentalOffice.getRegion().getVoivodeship() != "")
+            user.getRentalOffice().getRegion().setVoivodeship(rentalOffice.getRegion().getVoivodeship());
+        if (rentalOffice.getRegion().getDistrict() != "")
+            user.getRentalOffice().getRegion().setDistrict(rentalOffice.getRegion().getDistrict());
         rentalOfficeRepository.save(user.getRentalOffice());
         userRepository.save(user);
     }

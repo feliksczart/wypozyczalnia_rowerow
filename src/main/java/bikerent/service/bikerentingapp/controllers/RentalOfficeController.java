@@ -3,10 +3,7 @@ package bikerent.service.bikerentingapp.controllers;
 import bikerent.service.bikerentingapp.beans.LoginBean;
 import bikerent.service.bikerentingapp.beans.RentalOfficeBean;
 import bikerent.service.bikerentingapp.domain.*;
-import bikerent.service.bikerentingapp.repositories.BikeRepository;
-import bikerent.service.bikerentingapp.repositories.BlackListRepository;
-import bikerent.service.bikerentingapp.repositories.RentalOfficeRepository;
-import bikerent.service.bikerentingapp.repositories.UserRepository;
+import bikerent.service.bikerentingapp.repositories.*;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -21,6 +18,7 @@ public class RentalOfficeController {
     private final LoginBean loginBean;
     private final UserRepository userRepository;
     private final BlackListRepository blackListRepository;
+    private final RegionRepository regionRepository;
 
     @GetMapping(value = "/rentalOffice")
     public String bikeList(Model model) {
@@ -124,7 +122,7 @@ public class RentalOfficeController {
     @GetMapping(value = "/rentalOffice/register")
     public String rentalOfficeAdd(Model model) {
         model.addAttribute("exist", 0);
-        model.addAttribute("RentalOffice", new RentalOffice());
+        model.addAttribute("RentalOffice", rentalOfficeBean.bindingRentalAndRegion());
         model.addAttribute("user", loginBean.getUser());
         return "register-rental-office";
     }
@@ -133,10 +131,11 @@ public class RentalOfficeController {
     public String rentalOfficeClaim(@ModelAttribute RentalOffice rentalOffice, Model model) {
         if (rentalOfficeRepository.findByAddress(rentalOffice.getAddress()) != null) {
             model.addAttribute("exist", 1);
-            model.addAttribute("RentalOffice", new RentalOffice());
+            model.addAttribute("RentalOffice", rentalOfficeBean.bindingRentalAndRegion());
             model.addAttribute("user", loginBean.getUser());
             return "register-rental-office";
         }
+        regionRepository.save(rentalOffice.getRegion());
         rentalOfficeRepository.save(rentalOffice);
         User user = loginBean.getUser();
         user.setRentalOffice(rentalOffice);
@@ -158,7 +157,7 @@ public class RentalOfficeController {
 
     @GetMapping(value = "/rentalOffice/edit")
     public String editYourRentalOffice(Model model) {
-        model.addAttribute("rentalOffice", new RentalOffice());
+        model.addAttribute("rentalOffice", rentalOfficeBean.bindingRentalAndRegion());
         model.addAttribute("user", loginBean.getUser());
         return "edit-your-rental-office";
     }
