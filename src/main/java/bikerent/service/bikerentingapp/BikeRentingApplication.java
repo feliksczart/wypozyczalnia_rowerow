@@ -13,5 +13,4 @@ public class BikeRentingApplication {
 
         SpringApplication.run(BikeRentingApplication.class, args);
     }
-
 }

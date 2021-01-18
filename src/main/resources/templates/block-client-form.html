@@ -49,7 +49,7 @@
     <form action="#" method="post" th:action="@{/rentalOffice/{rental_id}/block (rental_id = ${rentalId})}">
         <div class="registry__element">
         <input class="registry__element-label input-style" autocomplete="off" min="0" required th:name="phoneNumber"
-               placeholder="Numer telefonu" th:value="${blackList.phoneNumber}" type="number"/>
+               placeholder="Numer telefonu" th:value="${blackList.phoneNumber}" type="tel"/>
         </div>
 
         <div class="registry__element">

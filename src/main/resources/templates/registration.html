@@ -46,16 +46,16 @@
     <h1 class="registry__header">Utwórz konto w wypożyczalni</h1>
     <form role="form" th:action="@{/registration}" th:method="post" th:object="${user}">
         <div class="registry__element">
-            <input id="name" name="name" th:field="*{name}" type="text" placeholder="Imię" title="Podaj swoje imię"
+            <input required id="name" name="name" th:field="*{name}" type="text" placeholder="Imię" title="Podaj swoje imię"
                    class="registry__element-label input-style" autocomplete="off">
-            <input id="surname" name="surname" th:field="*{surname}" type="text" placeholder="Nazwisko"
+            <input required id="surname" name="surname" th:field="*{surname}" type="text" placeholder="Nazwisko"
                    title="Podaj swoje nazwisko" class="registry__element-label input-style" autocomplete="off">
         </div>
 
         <div class="registry__element">
-            <input class="registry__element-label input-style" id="nick" name="user.nick" placeholder="Nick" th:field="*{nick}"
+            <input required class="registry__element-label input-style" id="nick" name="user.nick" placeholder="Nick" th:field="*{nick}"
                    title="Podaj nazwę użytkownika" type="text" autocomplete="off">
-            <input class="registry__element-label input-style" id="password" name="user.password" placeholder="Hasło"
+            <input required class="registry__element-label input-style" id="password" name="user.password" placeholder="Hasło"
                th:field="*{password}" title="Podaj hasło" type="password" autocomplete="off">
     </div>
     <div class="registry__element">

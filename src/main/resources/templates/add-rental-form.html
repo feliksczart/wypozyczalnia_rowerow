@@ -45,16 +45,19 @@
     </nav>
 </header>
 <main>
-    <h1>Formularz wypożyczenia</h1>
+    <h1 class="registry__header">Formularz wypożyczenia</h1>
     <div th:if="${blocked == 1}">
         Użytkownik został zablokowany i nie może wypożyczać rowerów z naszej wypożyczalni
     </div>
     <form action="#" method="post"
           th:action="@{/rentalOffice/{rental_id}/bike/{bike_id} (rental_id = ${rentalId}, bike_id = ${bikeId})}">
-        <p>Imię i nazwisko: <input autocomplete="off" required th:name="fullName" th:value="${rental.fullName}"
-                                   type="text"/></p>
-        <p>numer telefonu: <input autocomplete="off" min="0" required th:name="phoneNumber"
-                                  th:value="${rental.phoneNumber}" type="number"/></p>
+
+        <div class="registry__element">
+            <input class="registry__element-label input-style" placeholder="Imię i nazwisko" autocomplete="off" required th:name="fullName" th:value="${rental.fullName}"
+                                   type="text"/>
+            <input class="registry__element-label input-style" placeholder="Nr telefonu" autocomplete="off" min="0" required th:name="phoneNumber"
+                                  th:value="${rental.phoneNumber}" type="tel" title="Nr telefonu"/>
+        </div>
 
         <div class="registry__element">
             <input class="registry__element-submit input-button-style" type="submit" value="Wypożycz"/>

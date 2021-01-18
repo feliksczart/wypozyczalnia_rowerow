@@ -118,9 +118,9 @@ public class RentalOfficeController {
     }
 
     @PostMapping(value = "/rentalOffice/{rental_id}/block")
-    public String clientBlockProcess(@PathVariable(value = "rental_id") Long rentalId, @ModelAttribute BlackList blackList) {
+    public String clientBlockProcess(@ModelAttribute BlackList blackList) {
         blackListRepository.save(blackList);
-        return "redirect:/rentalOffice/" + rentalId;
+        return "redirect:/your/rentalOffice";
     }
 
     @GetMapping(value = "/rentalOffice/register")

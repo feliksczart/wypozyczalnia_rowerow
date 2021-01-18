@@ -45,15 +45,16 @@
     </nav>
 </header>
 <main>
-<h1>Formularz Dodania Wypożyczalni</h1>
+<h1 class="registry__header">Formularz Dodania Wypożyczalni</h1>
 <form action="#" method="post" th:action="@{/rentalOffice/{rental_id}/bikes(rental_id=${rentalOffice.id})}">
-    <p>Cena: <input min="0" required step="0.01" th:name="pricePerHour" th:value="${bike.pricePerHour}" type="number" autocomplete="off"/>
-    </p>
-    <p>Nazwa Modelu: <input required th:name="bikeModel.name" th:value="${bike.bikeModel.name}" type="text" autocomplete="off"/></p>
-    <p>Marka: <input required th:name="bikeModel.brand" th:value="${bike.bikeModel.brand}" type="text" autocomplete="off"/></p>
-    <p>Typ roweru: <input required th:name="bikeModel.type" th:value="${bike.bikeModel.type}" type="text" autocomplete="off"/></p>
-    <p>Liczba: <input required th:name="number" th:value="${number}" type="number" min="1" autocomplete="off"/></p>
-
+    <div class="registry__element">
+        <input placeholder="Cena" title="Cena" class="registry__element-label input-style" min="0" required step="0.01" th:name="pricePerHour" th:value="${bike.pricePerHour}" type="number" autocomplete="off"/>
+        <input placeholder="Nazwa" class="registry__element-label input-style" required th:name="bikeModel.name" th:value="${bike.bikeModel.name}" type="text" autocomplete="off"/></p>
+    </div>
+    <div class="registry__element">
+        <input placeholder="Marka" class="registry__element-label input-style" required th:name="bikeModel.brand" th:value="${bike.bikeModel.brand}" type="text" autocomplete="off"/></p>
+        <input placeholder="Typ" class="registry__element-label input-style" required th:name="bikeModel.type" th:value="${bike.bikeModel.type}" type="text" autocomplete="off"/></p>
+    </div>
     <div class="registry__element">
         <input class="registry__element-submit input-button-style" type="submit" value="Zapisz"/>
         <input class="registry__element-reset input-button-style" type="reset" value="Reset"/>

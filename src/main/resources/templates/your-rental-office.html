@@ -85,6 +85,9 @@
         <a class="page-button" style="display: inline-flex; position: unset; margin-right: 15px; width: 25%;"
            th:href="@{/rentalOffice/{id}/blackList (id = ${user.rentalOffice.id})}">Wyświetl zablokowanych</a>
     </div>
+    <div>
+        <a class="page-button" style="display: inline-flex; position: unset; margin-right: 15px; width: 25%;" th:href="@{/rentalOffice/{rental_id}/block (rental_id = ${user?.rentalOffice?.id})}">Zablokuj użytkownika</a>
+    </div>
 </main>
 <footer>
     <div class="footer__bottom"></div>

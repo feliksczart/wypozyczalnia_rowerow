@@ -440,3 +440,13 @@ textarea{
 .shadows:hover {
 	text-shadow: -16px 6px 15px #ced0d3;
 }
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+	-webkit-appearance: none;
+	margin: 0;
+}
+
+input[type=number] {
+	-moz-appearance:textfield;
+}
