@@ -56,6 +56,12 @@
         <input class="registry__element-label input-style" required placeholder="Adres" th:name="address" th:value="${RentalOffice.address}" type="text" autocomplete="off"/>
     </div>
     <div class="registry__element">
+        <input class="registry__element-label input-style" placeholder="Województwo" th:name="region.voivodeship" th:value="${RentalOffice.region?.voivodeship}"
+               type="text" autocomplete="off"/>
+        <input class="registry__element-label input-style" placeholder="Powiat" th:name="region.district"
+               th:value="${RentalOffice.region?.district}" type="text" autocomplete="off"/>
+    </div>
+    <div class="registry__element">
         <input class="registry__element-submit input-button-style" type="submit" value="Dodaj"/>
         <input type="reset" value="Reset" class="registry__element-reset input-button-style"/>
     </div>
