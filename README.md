@@ -1,4 +1,4 @@
-# wypozyczalnia_rowerow
+# Aplikacja Wypożyczalnia Rowerów
 
 Głównym zadaniem naszej aplikacji jest obsługa wypożyczeń wypożyczalni rowerowej. 
 Za jej pomocą właściciel wypożyczalni może wypożyczać rowery, które w danej chwili są dostępne. 
